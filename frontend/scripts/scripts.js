@@ -1,3 +1,20 @@
+function closeModalFunc() {
+    const modal = document.getElementById("modal");
+    const modalContent = modal.querySelector("div");
+
+	modalContent.classList.remove("scale-100", "opacity-100");
+	modalContent.classList.add("scale-95", "opacity-0");
+	setTimeout(() => {
+		modal.classList.remove("flex");
+		modal.classList.add("hidden");
+	}, 300);
+}
+
+document.getElementById("modal").addEventListener("click", function (e) {
+	if (e.target === modal) {
+		closeModalFunc();
+	}
+});
 
 
 function openModal(message) {
@@ -30,35 +47,6 @@ document.getElementById("search").addEventListener('keypress', (event) => {
 		sendPrompt();
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const modal = document.getElementById("modal");
-    const modalContent = modal.querySelector("div");
-    // const openModalBtn = document.getElementById("search-button");
-    const closeModal = document.getElementById("close-modal");
-
-    // Fonction pour ouvrir le modal avec animation
-
-
-    // Fonction pour fermer le modal avec animation
-    function closeModalFunc() {
-        modalContent.classList.remove("scale-100", "opacity-100");
-        modalContent.classList.add("scale-95", "opacity-0");
-        setTimeout(() => {
-            modal.classList.remove("flex");
-            modal.classList.add("hidden");
-        }, 300);
-    }
-
-    closeModal.addEventListener("click", closeModalFunc);
-
-    // Fermer en cliquant en dehors du contenu
-    modal.addEventListener("click", function (e) {
-        if (e.target === modal) {
-            closeModalFunc();
-        }
-    });
-});
-
-
 
 window.sendPrompt = sendPrompt;
+window.closeModalFunc = closeModalFunc;

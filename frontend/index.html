@@ -10,22 +10,16 @@
 	<link rel="stylesheet" href="styles/styles.css">
 </head>
 <body class="min-h-screen flex flex-col bg-white overflow-y-auto" style="background-color: #e4e2dd;">
-	<!-- Bouton pour ouvrir le modal -->
-	<!-- <button id="open-modal-btn" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600">
-		Ouvrir le Modal
-	</button> -->
-
 	<!-- Modal -->
-	<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-40">
+	<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
 		<div class="bg-white w-4/5 h-4/5 rounded-lg shadow-lg relative p-6 transform scale-95 opacity-0 transition-all duration-300">
-			<button id="close-modal" class="absolute top-4 right-4 text-gray-600 hover:text-red-500 text-2xl">&times;</button>
-			<!-- <h2 class="text-2xl font-bold">Your search</h2> -->
-			<p class="mt-4 text-gray-700 text-center font-bold" id="user-prompt" >Contenu du modal...</p>
+			<button id="close-modal" class="absolute top-4 right-4 text-gray-600 hover:text-red-500 text-2xl" onclick="closeModalFunc()">&times;</button>
+			<p class="mt-4 text-gray-700 text-center font-bold border-b-2 border-gray-400 pb-3" id="user-prompt"></p>
 		</div>
 	</div>
 
     <!-- Header -->
-    <header class="bg-white shadow-sm fixed w-full z-50" style="background-color: #e4e2dd;">
+    <header class="bg-white shadow-sm fixed w-full z-40" style="background-color: #e4e2dd;">
         <div class="container mx-auto px-4 py-4 flex items-center justify-between">
             <a href="/" class="flex items-center space-x-2">
 				<img src="assets/logo.svg" alt="GreenScore Logo" class="h-7">
