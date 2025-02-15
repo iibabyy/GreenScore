@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenScore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .custom-shape {
+            background-color: #f0f7f4;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        .icon-circle {
+            background-color: rgba(52, 211, 153, 0.1);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        .score-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ef4444;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+        }
+        .green-score-badge {
+            background: #22c55e;
+        }
+        .leaf-icon {
+            font-size: 1.5rem;
+            color: #22c55e;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col bg-white overflow-y-auto">
+    <!-- Header -->
+    <header class="bg-white shadow-sm fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-leaf leaf-icon"></i>
+                <span class="text-2xl font-bold text-gray-800">GreenScore</span>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="text-gray-600 hover:text-green-600">Application</a>
+                <a href="#" class="text-gray-600 hover:text-green-600">Independence</a>
+                <a href="#" class="text-gray-600 hover:text-green-600">About</a>
+                <a href="#" class="text-gray-600 hover:text-green-600">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Search -->
+    <div class="pt-24 custom-shape">
+        <div class="container mx-auto px-4 py-16">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Evaluate the Environmental Impact of Your Medications</h1>
+                <p class="text-xl text-gray-600 mb-8">Do you really know what you're taking? In just one scan, GreenScore analyzes and decodes labels for you - see which products are good and which ones to avoid.</p>
+                
+                <div class="relative max-w-2xl mx-auto mt-8">
+                    <input type="text" id="search" placeholder="Search for a medication..." 
+                        class="w-full px-6 py-4 text-lg border-2 border-green-200 rounded-full focus:outline-none focus:border-green-500 shadow-lg">
+                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Independent Project Section -->
+    <div class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-center mb-12">A 100% Independent Project</h2>
+        <div class="grid md:grid-cols-3 gap-12">
+            <div class="text-center">
+                <div class="icon-circle">
+                    <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">No Brand Influence</h3>
+                <p class="text-gray-600">No brand or industrial group can influence the ratings and recommendations provided.</p>
+            </div>
+            <div class="text-center">
+                <div class="icon-circle">
+                    <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">No Advertising</h3>
+                <p class="text-gray-600">No brand can pay GreenScore to promote its products in the application.</p>
+            </div>
+            <div class="text-center">
+                <div class="icon-circle">
+                    <svg class="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3">Healthy Funding</h3>
+                <p class="text-gray-600">GreenScore has developed three responsible funding methods to ensure no conflicts of interest affect the objectivity of analyses.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Comparison Section -->
+    <div class="bg-gray-50 py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12">Compare and Find Better Alternatives</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="product-card">
+                        <div class="score-badge">Poor - 4/10</div>
+                        <img src="https://placehold.co/200x300/png" alt="Product" class="mx-auto mb-4 w-32">
+                        <div class="text-center">
+                            <h3 class="font-semibold mb-2">Generic Medicine A</h3>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>High environmental impact</li>
+                                <li>Non-recyclable packaging</li>
+                                <li>Contains harmful chemicals</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="score-badge green-score-badge">Good - 8/10</div>
+                        <img src="https://placehold.co/200x300/png" alt="Product" class="mx-auto mb-4 w-32">
+                        <div class="text-center">
+                            <h3 class="font-semibold mb-2">Eco-friendly Alternative</h3>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>Low environmental impact</li>
+                                <li>Recyclable packaging</li>
+                                <li>Sustainable ingredients</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Reviews Section -->
+    <div class="container mx-auto px-4 py-16">
+        <div class="text-center mb-12">
+            <div class="flex justify-center items-center space-x-1 mb-4">
+                <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                </svg>
+                <span class="text-2xl font-bold">4.7/5</span>
+            </div>
+            <p class="text-gray-600">Based on 300,000+ reviews</p>
+        </div>
+    </div>
+
+    <!-- Press Section -->
+    <div class="bg-gray-50 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-8">They're Talking About GreenScore</h2>
+            <div class="flex flex-wrap justify-center items-center gap-8 opacity-60">
+                <img src="https://placehold.co/120x40/png" alt="Press Logo" class="h-8">
+                <img src="https://placehold.co/120x40/png" alt="Press Logo" class="h-8">
+                <img src="https://placehold.co/120x40/png" alt="Press Logo" class="h-8">
+                <img src="https://placehold.co/120x40/png" alt="Press Logo" class="h-8">
+            </div>
+        </div>
+    </div>
+
+    <!-- Impact Stats -->
+    <div class="container mx-auto px-4 py-16 text-center">
+        <h2 class="text-3xl font-bold mb-4">Thanks to GreenScore,</h2>
+        <p class="text-2xl mb-8">95% of users report having a <span class="text-green-500 underline">healthier impact</span> on the environment</p>
+        <button class="bg-green-500 text-white px-8 py-3 rounded-full hover:bg-green-600">
+            Learn more about GreenScore's impact
+        </button>
+    </div>
+
+    <footer class="bg-gray-50 py-8 text-center">
+        <p class="text-gray-600">&copy; GreenScore | Created with ❤️ by the <a href="https://github.com/iibabyy/GreenScore/" class="text-green-600 hover:underline">GreenScore team</a></p>
+    </footer>
+</body>
+</html>
