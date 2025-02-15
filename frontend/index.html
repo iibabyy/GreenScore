@@ -7,56 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        .custom-shape {
-            background-color: #f0f7f4;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
-        .icon-circle {
-            background-color: rgba(52, 211, 153, 0.1);
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-        }
-        .product-card {
-            background: white;
-            border-radius: 15px;
-            padding: 1rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-        .score-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: #ef4444;
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 999px;
-            font-size: 0.875rem;
-        }
-        .green-score-badge {
-            background: #22c55e;
-        }
-        .leaf-icon {
-            font-size: 1.5rem;
-            color: #22c55e;
-            margin-right: 0.5rem;
-        }
-    </style>
+	<link rel="stylesheet" href="styles/styles.css">
 </head>
-<body class="min-h-screen flex flex-col bg-white overflow-y-auto">
+<body class="min-h-screen flex flex-col bg-white overflow-y-auto" style="background-color: #e4e2dd;">
     <!-- Header -->
-    <header class="bg-white shadow-sm fixed w-full z-50">
+    <header class="bg-white shadow-sm fixed w-full z-50" style="background-color: #e4e2dd;">
         <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-leaf leaf-icon"></i>
-                <span class="text-2xl font-bold text-gray-800">GreenScore</span>
-            </div>
+            <a href="/" class="flex items-center space-x-2">
+				<img src="assets/logo.svg" alt="GreenScore Logo" class="h-10">
+			</a>
             <nav class="hidden md:flex space-x-6">
                 <a href="#" class="text-gray-600 hover:text-green-600">Application</a>
                 <a href="#" class="text-gray-600 hover:text-green-600">Independence</a>
@@ -76,7 +35,7 @@
                 <div class="relative max-w-2xl mx-auto mt-8">
                     <input type="text" id="search" placeholder="Search for a medication..." 
                         class="w-full px-6 py-4 text-lg border-2 border-green-200 rounded-full focus:outline-none focus:border-green-500 shadow-lg">
-                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600">
+                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600" onclick="sendPrompt()">
                         Search
                     </button>
                 </div>
@@ -126,7 +85,7 @@
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="product-card">
                         <div class="score-badge">Poor - 4/10</div>
-                        <img src="https://placehold.co/200x300/png" alt="Product" class="mx-auto mb-4 w-32">
+                        <img src="assets/Doliprane-1000-effervessant.jpg" alt="Product" class="mx-auto mb-4 w-32">
                         <div class="text-center">
                             <h3 class="font-semibold mb-2">Generic Medicine A</h3>
                             <ul class="text-sm text-gray-600 space-y-1">
@@ -138,7 +97,7 @@
                     </div>
                     <div class="product-card">
                         <div class="score-badge green-score-badge">Good - 8/10</div>
-                        <img src="https://placehold.co/200x300/png" alt="Product" class="mx-auto mb-4 w-32">
+                        <img src="assets/fortenuit-8h.jpg" alt="Product" class="mx-auto mb-4 w-32">
                         <div class="text-center">
                             <h3 class="font-semibold mb-2">Eco-friendly Alternative</h3>
                             <ul class="text-sm text-gray-600 space-y-1">
@@ -162,25 +121,12 @@
                 </svg>
                 <span class="text-2xl font-bold">4.7/5</span>
             </div>
-            <p class="text-gray-600">Based on 300,000+ reviews</p>
-        </div>
-    </div>
-
-    <!-- Press Section -->
-    <div class="bg-gray-50 py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold text-center mb-8">They're Talking About GreenScore</h2>
-            <div class="flex flex-wrap justify-center items-center gap-8 opacity-60">
-                <img src="https://placehold.co/120x40/png" alt="Press Logo" class="h-8">
-                <img src="https://placehold.co/120x40/png" alt="Press Logo" class="h-8">
-                <img src="https://placehold.co/120x40/png" alt="Press Logo" class="h-8">
-                <img src="https://placehold.co/120x40/png" alt="Press Logo" class="h-8">
-            </div>
+            <p class="text-gray-600">Based on your review</p>
         </div>
     </div>
 
     <!-- Impact Stats -->
-    <div class="container mx-auto px-4 py-16 text-center">
+    <div class="bg-gray-50 container mx-auto px-4 py-16 text-center">
         <h2 class="text-3xl font-bold mb-4">Thanks to GreenScore,</h2>
         <p class="text-2xl mb-8">95% of users report having a <span class="text-green-500 underline">healthier impact</span> on the environment</p>
         <button class="bg-green-500 text-white px-8 py-3 rounded-full hover:bg-green-600">
@@ -189,7 +135,9 @@
     </div>
 
     <footer class="bg-gray-50 py-8 text-center">
-        <p class="text-gray-600">&copy; GreenScore | Created with ❤️ by the <a href="https://github.com/iibabyy/GreenScore/" class="text-green-600 hover:underline">GreenScore team</a></p>
+        <p class="text-gray-600">&copy; GreenScore | Created with ❤️ by the <a href="https://github.com/iibabyy/GreenScore/" class="text-green-600 hover:underline">Broken team</a></p>
     </footer>
+
+	<script src="scripts/scripts.js"></script>
 </body>
 </html>
