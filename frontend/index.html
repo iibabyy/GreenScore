@@ -12,9 +12,16 @@
 <body class="min-h-screen flex flex-col bg-white overflow-y-auto" style="background-color: #e4e2dd;">
 	<!-- Modal -->
 	<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-		<div class="bg-white w-4/5 h-4/5 rounded-lg shadow-lg relative p-6 transform scale-95 opacity-0 transition-all duration-300">
+		<div class="bg-white w-4/5 h-4/5 rounded-lg shadow-lg relative p-6 flex flex-col transform scale-95 opacity-0 transition-all duration-300 overflow-y-auto">
 			<button id="close-modal" class="absolute top-4 right-4 text-gray-600 hover:text-red-500 text-2xl" onclick="closeModalFunc()">&times;</button>
+			
+			<!-- Contenu de la modal -->
 			<p class="mt-4 text-gray-700 text-center font-bold border-b-2 border-gray-400 pb-3" id="user-prompt"></p>
+			
+			<!-- Div qui prend tout l'espace restant et devient scrollable si besoin -->
+			<div id="test" class="flex-grow overflow-y-auto bg-gray-100 p-4 space-y-4">
+				Contenu de test très long qui devrait défiler...
+			</div>
 		</div>
 	</div>
 
