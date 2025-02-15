@@ -10,11 +10,25 @@
 	<link rel="stylesheet" href="styles/styles.css">
 </head>
 <body class="min-h-screen flex flex-col bg-white overflow-y-auto" style="background-color: #e4e2dd;">
+	<!-- Bouton pour ouvrir le modal -->
+	<!-- <button id="open-modal-btn" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600">
+		Ouvrir le Modal
+	</button> -->
+
+	<!-- Modal -->
+	<div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-40">
+		<div class="bg-white w-4/5 h-4/5 rounded-lg shadow-lg relative p-6 transform scale-95 opacity-0 transition-all duration-300">
+			<button id="close-modal" class="absolute top-4 right-4 text-gray-600 hover:text-red-500 text-2xl">&times;</button>
+			<!-- <h2 class="text-2xl font-bold">Your search</h2> -->
+			<p class="mt-4 text-gray-700 text-center font-bold" id="user-prompt" >Contenu du modal...</p>
+		</div>
+	</div>
+
     <!-- Header -->
     <header class="bg-white shadow-sm fixed w-full z-50" style="background-color: #e4e2dd;">
         <div class="container mx-auto px-4 py-4 flex items-center justify-between">
             <a href="/" class="flex items-center space-x-2">
-				<img src="assets/logo.svg" alt="GreenScore Logo" class="h-10">
+				<img src="assets/logo.svg" alt="GreenScore Logo" class="h-7">
 			</a>
             <nav class="hidden md:flex space-x-6">
                 <a href="#" class="text-gray-600 hover:text-green-600">Application</a>
@@ -35,7 +49,7 @@
                 <div class="relative max-w-2xl mx-auto mt-8">
                     <input type="text" id="search" placeholder="Search for a medication..." 
                         class="w-full px-6 py-4 text-lg border-2 border-green-200 rounded-full focus:outline-none focus:border-green-500 shadow-lg">
-                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600" onclick="sendPrompt()">
+                    <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600" onclick="sendPrompt()" id="search-button">
                         Search
                     </button>
                 </div>
