@@ -1,0 +1,139 @@
+{
+  "medications": [
+    {
+      "name": "Paradol 500",
+      "type": "Analgesic",
+      "active_ingredient": "Paracetamol",
+      "concentration": "500 mg",
+      "administration_route": "Oral",
+      "degradability": {
+        "water": "70%",
+        "soil": "30%",
+        "degradation_duration": "2 years"
+      },
+      "toxicity": {
+        "aquatic": "High",
+        "terrestrial": "Moderate",
+        "wildlife_impact": "Disruption of fish reproduction"
+      },
+      "production": {
+        "energy_consumed": "150 kWh/kg",
+        "co2_emissions": "0.5 kg CO2/kg",
+        "chemical_waste": "10 kg/kg"
+      },
+      "disposal": {
+        "recyclable": "No",
+        "hazardous_waste": "Yes",
+        "recommendations": "Selective collection at pharmacies"
+      }
+    },
+    {
+      "name": "Antibioxyl",
+      "type": "Antibiotic",
+      "active_ingredient": "Amoxicillin",
+      "concentration": "250 mg",
+      "administration_route": "Oral",
+      "degradability": {
+        "water": "50%",
+        "soil": "50%",
+        "degradation_duration": "5 years"
+      },
+      "toxicity": {
+        "aquatic": "Very high",
+        "terrestrial": "Low",
+        "wildlife_impact": "Bacterial resistance in aquatic ecosystems"
+      },
+      "production": {
+        "energy_consumed": "200 kWh/kg",
+        "co2_emissions": "0.8 kg CO2/kg",
+        "chemical_waste": "15 kg/kg"
+      },
+      "disposal": {
+        "recyclable": "No",
+        "hazardous_waste": "Yes",
+        "recommendations": "Do not flush down the toilet"
+      }
+    },
+    {
+      "name": "Deprexor",
+      "type": "Antidepressant",
+      "active_ingredient": "Fluoxetine",
+      "concentration": "20 mg",
+      "administration_route": "Oral",
+      "degradability": {
+        "water": "60%",
+        "soil": "40%",
+        "degradation_duration": "3 years"
+      },
+      "toxicity": {
+        "aquatic": "Moderate",
+        "terrestrial": "Low",
+        "wildlife_impact": "Altered behavior in crustaceans"
+      },
+      "production": {
+        "energy_consumed": "180 kWh/kg",
+        "co2_emissions": "0.6 kg CO2/kg",
+        "chemical_waste": "12 kg/kg"
+      },
+      "disposal": {
+        "recyclable": "No",
+        "hazardous_waste": "Yes",
+        "recommendations": "Return to pharmacies"
+      }
+    },
+    {
+      "name": "Cardiovax",
+      "type": "Antihypertensive",
+      "active_ingredient": "Lisinopril",
+      "concentration": "10 mg",
+      "administration_route": "Oral",
+      "degradability": {
+        "water": "80%",
+        "soil": "20%",
+        "degradation_duration": "1 year"
+      },
+      "toxicity": {
+        "aquatic": "Low",
+        "terrestrial": "Low",
+        "wildlife_impact": "No significant impact"
+      },
+      "production": {
+        "energy_consumed": "100 kWh/kg",
+        "co2_emissions": "0.3 kg CO2/kg",
+        "chemical_waste": "5 kg/kg"
+      },
+      "disposal": {
+        "recyclable": "No",
+        "hazardous_waste": "No",
+        "recommendations": "Dispose in the trash"
+      }
+    },
+    {
+      "name": "Insulix",
+      "type": "Antidiabetic",
+      "active_ingredient": "Insulin",
+      "concentration": "100 IU/ml",
+      "administration_route": "Injected",
+      "degradability": {
+        "water": "90%",
+        "soil": "10%",
+        "degradation_duration": "6 months"
+      },
+      "toxicity": {
+        "aquatic": "Very low",
+        "terrestrial": "Very low",
+        "wildlife_impact": "No significant impact"
+      },
+      "production": {
+        "energy_consumed": "50 kWh/kg",
+        "co2_emissions": "0.1 kg CO2/kg",
+        "chemical_waste": "2 kg/kg"
+      },
+      "disposal": {
+        "recyclable": "No",
+        "hazardous_waste": "Yes",
+        "recommendations": "Syringe collection at pharmacies"
+      }
+    }
+  ]
+}
