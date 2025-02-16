@@ -234,7 +234,7 @@ function getGreenScoreUrlImg(score) {
 // Fonction pour ouvrir la modal avec le contenu de la page "About"
 async function AboutModal(message) {
     const about = document.getElementById("test");
-    about.innerHTML = await fetch("../About.html").then((response) => response.text());
+    about.innerHTML = await fetch("../pages/About.html").then((response) => response.text());
     openModal(message);
 }
 
@@ -242,7 +242,7 @@ async function AboutModal(message) {
 async function InfoModal(message) {
     const about = document.getElementById("test");
     openModal(message);
-    about.innerHTML = await fetch("../info.html").then((response) => response.text());
+    about.innerHTML = await fetch("../pages/info.html").then((response) => response.text());
 }
 
 // Fonction pour envoyer la requête de recherche
