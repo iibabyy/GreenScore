@@ -31,6 +31,8 @@ function getGreenScoreUrlImg(score) {
 
 function showResult() {
     const modalBody = document.getElementById("test");
+    modalBody.classList.add("text-lg"); // Augmente la taille de tout le texte
+    
     const nbResult = 4;
     const MEDICINE_NAME = "fortenuit 8h";
     const GREEN_SCORE = 40;
@@ -46,146 +48,174 @@ function showResult() {
 
     const nbResultText = document.createElement('p');
     nbResultText.innerHTML = `${nbResult} Results`;
-    nbResultText.classList.add("text-lg", "font-medium", "mb-4", "text-gray-700");
-    
+    nbResultText.classList.add("text-xl", "font-medium", "mb-4", "text-gray-700");
+
     const gridContainer = document.createElement('div');
-    gridContainer.classList.add("grid", "grid-cols-2", "gap-6", "w-full");
+    gridContainer.classList.add("grid", "grid-cols-1", "lg:grid-cols-2", "gap-6", "w-full");
 
     modalBody.appendChild(nbResultText);
     modalBody.appendChild(gridContainer);
-
-    for (let i = 0; i < nbResult; i++) {
-        const oneMedicine = document.createElement('div');
-        oneMedicine.classList.add(
-            "border", 
-            "border-gray-200", 
-            "rounded-xl", 
-            "h-64", // Hauteur augmentée pour accommoder le bouton
-            "flex", 
-            "items-center", 
-            "p-6",
-            "gap-6",
-            "bg-white",
-            "shadow-sm",
-            "hover:shadow-md",
-            "transition-shadow",
-            "duration-200"
-        );
-
-        const imageContainer = document.createElement('div');
-        imageContainer.classList.add("relative", "h-full", "flex", "items-center");
-
-        const medicineImg = document.createElement('img');
-        medicineImg.src = "assets/fortenuit-8h.jpg";
-        medicineImg.alt = `${MEDICINE_NAME} image`;
-        medicineImg.classList.add("h-40", "w-40", "object-cover", "rounded-full", "border", "border-gray-100", "shadow-sm");
-
-        const medicineGreenScoreImg = document.createElement('img');
-        medicineGreenScoreImg.src = getGreenScoreUrlImg(GREEN_SCORE);
-        medicineGreenScoreImg.alt = "Green Score Image";
-        medicineGreenScoreImg.classList.add(
-            "w-20", 
-            "h-20", 
-            "absolute", 
-            "top-0", 
-            "right-0", 
-            "-translate-y-4", 
-            "translate-x-4",
-            "shadow-lg"
-        );
-
-        imageContainer.appendChild(medicineImg);
-        imageContainer.appendChild(medicineGreenScoreImg);
-
-        const medicineInfos = document.createElement('div');
-        medicineInfos.classList.add(
-            "flex", 
-            "flex-col", 
-            "h-full", 
-            "flex-grow",
-            "py-2"
-        );
-
-        const medicineName = document.createElement('h2');
-        medicineName.classList.add(
-            "text-2xl", 
-            "font-semibold", 
-            "text-gray-800",
-            "mb-4",
-            "capitalize"
-        );
-        medicineName.innerHTML = MEDICINE_NAME;
-
-        const ratingContainer = document.createElement('div');
-        ratingContainer.classList.add(
-            "grid", 
-            "grid-cols-2", 
-            "gap-3",
-            "text-sm",
-            "mb-4" // Ajout d'une marge en bas
-        );
-
-        ratingPoints.forEach(point => {
-            const ratingPoint = document.createElement('div');
-            ratingPoint.classList.add(
-                "flex", 
-                "items-center", 
-                "gap-2",
-                "bg-gray-50",
-                "p-2",
-                "rounded-lg"
-            );
-            
-            const label = document.createElement('span');
-            label.innerHTML = point.label;
-            label.classList.add("font-medium", "text-gray-600");
-            
-            const score = document.createElement('span');
-            score.innerHTML = "⭐".repeat(point.score);
-            score.classList.add("text-yellow-400", "ml-auto");
-            
-            ratingPoint.appendChild(label);
-            ratingPoint.appendChild(score);
-            ratingContainer.appendChild(ratingPoint);
-        });
-
-		// Ajout du bouton "En savoir plus"
+    
+	for (let i = 0; i < nbResult; i++) {
+		const oneMedicine = document.createElement('div');
+		
+		// Ajouter une classe spéciale pour le premier médicament
+		oneMedicine.classList.add(
+			"border", 
+			"border-gray-200", 
+			"rounded-xl", 
+			"h-auto", 
+			"flex", 
+			"flex-col", 
+			"p-6",
+			"gap-6",
+			"bg-white", 
+			"shadow-sm", 
+			"hover:shadow-md", 
+			"transition-shadow", 
+			"duration-200"
+		);
+		
+		// Si c'est le premier médicament, appliquer une bordure ou un fond distinct et ajouter le badge
+		if (i === 0) {
+			oneMedicine.classList.add("bg-yellow-100", "border-yellow-500", "shadow-lg");
+	
+			// Ajouter le badge "Best Recommendation" en haut à gauche
+			const bestRecommendationBadge = document.createElement('div');
+			bestRecommendationBadge.innerText = "Best Recommendation";
+			bestRecommendationBadge.classList.add(
+				"absolute", 
+				"top-0", 
+				"left-0", 
+				"bg-green-500", 
+				"text-white", 
+				"px-4", 
+				"py-1", 
+				"rounded-tl-lg",
+				"rounded-br-lg", // Coins arrondis en bas à droite pour le badge
+				"text-sm", 
+				"font-semibold", 
+				"shadow-md"
+			);
+	
+			oneMedicine.classList.add("relative"); // Assure-toi que le conteneur est positionné pour accueillir le badge
+			oneMedicine.appendChild(bestRecommendationBadge);
+		}
+	
+		const imageContainer = document.createElement('div');
+		imageContainer.classList.add("relative", "w-full", "flex", "justify-center");
+	
+		const medicineImg = document.createElement('img');
+		medicineImg.src = "assets/fortenuit-8h.jpg";
+		medicineImg.alt = `${MEDICINE_NAME} image`;
+		medicineImg.classList.add("h-40", "w-40", "object-cover", "rounded-full", "border", "border-gray-100", "shadow-sm");
+	
+		const medicineGreenScoreImg = document.createElement('img');
+		medicineGreenScoreImg.src = getGreenScoreUrlImg(GREEN_SCORE);
+		medicineGreenScoreImg.alt = "Green Score Image";
+		medicineGreenScoreImg.classList.add(
+			"absolute", 
+			"bottom-0", 
+			"right-0",
+			"w-16",
+			"h-16",
+			"sm:w-20",
+			"sm:h-20",
+			"md:w-24",
+			"md:h-24",
+			"lg:w-28",
+			"lg:h-28"
+		);
+	
+		imageContainer.appendChild(medicineImg);
+		imageContainer.appendChild(medicineGreenScoreImg);
+	
+		const medicineInfos = document.createElement('div');
+		medicineInfos.classList.add(
+			"flex", 
+			"flex-col", 
+			"h-full",
+			"justify-between"
+		);
+	
+		const medicineName = document.createElement('h2');
+		medicineName.classList.add(
+			"text-2xl", 
+			"font-semibold", 
+			"text-gray-800",
+			"mb-4",
+			"capitalize"
+		);
+		medicineName.innerHTML = MEDICINE_NAME;
+	
+		const ratingContainer = document.createElement('div');
+		ratingContainer.classList.add(
+			"grid", 
+			"grid-cols-2", 
+			"gap-3",
+			"text-lg",
+			"mb-4"
+		);
+	
+		ratingPoints.forEach(point => {
+			const ratingPoint = document.createElement('div');
+			ratingPoint.classList.add(
+				"flex", 
+				"items-center", 
+				"gap-2",
+				"bg-gray-50",
+				"p-2",
+				"rounded-lg"
+			);
+			
+			const label = document.createElement('span');
+			label.innerHTML = point.label;
+			label.classList.add("font-medium", "text-gray-600");
+			
+			const score = document.createElement('span');
+			score.innerHTML = "⭐".repeat(point.score);
+			score.classList.add("text-yellow-400", "ml-auto");
+			
+			ratingPoint.appendChild(label);
+			ratingPoint.appendChild(score);
+			ratingContainer.appendChild(ratingPoint);
+		});
+	
 		const moreInfoButton = document.createElement('button');
 		moreInfoButton.innerHTML = "En savoir plus";
 		moreInfoButton.classList.add(
-			"mt-auto",
 			"bg-green-500",
 			"hover:bg-green-600",
 			"text-white",
 			"font-medium",
-			"py-4",  // Encore plus grand en hauteur
-			"px-3",
+			"py-3",  
+			"px-6",
 			"rounded-lg",
 			"transition-colors",
 			"duration-200",
-			"text-xs",
-			"w-32",  // Plus serré en largeur
-			"ml-auto" // Le pousse vers la droite
+			"text-lg",
+			"w-full",  
+			"lg:w-auto", 
+			"self-end" 
 		);
-
-
-
-        // Ajout de l'événement click
-        moreInfoButton.addEventListener('click', () => {
-            // Ici vous pouvez ajouter la logique pour afficher plus d'informations
-            console.log(`Afficher plus d'informations pour ${MEDICINE_NAME}`);
-        });
-
-        medicineInfos.appendChild(medicineName);
-        medicineInfos.appendChild(ratingContainer);
-        medicineInfos.appendChild(moreInfoButton);
-
-        oneMedicine.appendChild(imageContainer);
-        oneMedicine.appendChild(medicineInfos);
-
-        gridContainer.appendChild(oneMedicine);
-    }
+	
+		moreInfoButton.addEventListener('click', () => {
+			console.log(`Afficher plus d'informations pour ${MEDICINE_NAME}`);
+		});
+	
+		medicineInfos.appendChild(medicineName);
+		medicineInfos.appendChild(ratingContainer);
+		medicineInfos.appendChild(moreInfoButton);
+	
+		oneMedicine.appendChild(imageContainer);
+		oneMedicine.appendChild(medicineInfos);
+	
+		gridContainer.appendChild(oneMedicine);
+	}
+	
 }
+
+
 
 function openModal(message) {
 	const modal = document.getElementById("modal");
