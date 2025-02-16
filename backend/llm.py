@@ -23,7 +23,8 @@ SYSTEM_PROMPT = system_prompt_file.read()
 system_prompt_file.close()
 
 
-def get_green_score(product: ProductDto):
+def get_green_score(product: ProductDto) -> json:
+    print(product.as_json())
     chat_response = client.chat.complete(
         model = model,
         messages = [
@@ -36,12 +37,13 @@ def get_green_score(product: ProductDto):
             #   user prompt
             {
                 "role": "user",
-                "content": str(product),
+                "content": product.as_json(),
             },
         ]
     )
 
-    return json.loads(str(chat_response.choices[0].message.content))
+    result = json.loads(chat_response.choices[0].message.content)
+    return result
 
 # print(get_green_score(
 #     {

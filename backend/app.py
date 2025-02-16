@@ -4,8 +4,20 @@ from fastapi import FastAPI, Response
 from pydantic import BaseModel
 from dtos import ProductDto
 from models import Product
+from types import SimpleNamespace
 
-products: list[Product] = []
+def read_products_from_file() -> list[Product]:
+	# open and read the products file
+	file = open("./products.json", "r")
+	data = file.read()
+	file.close()
+
+	products: list[Product] = json.loads(data, object_hook=lambda x: SimpleNamespace(**x))
+	print("products: ", products)
+
+	return products
+
+products: list[Product] = read_products_from_file()
 
 app = FastAPI()
 
@@ -13,14 +25,12 @@ app = FastAPI()
 def index(search: str, sort: str = "default"):
 		# maybe split search by space and search for keywords
 
-		list = [product for product in products if search in product["name"]];
+		list = [product for product in products if search in product.name];
 
-		if sort == "score":
-			list.sort(key=lambda x: x["greenScore"], reverse=True)
-		elif sort == "name":
-			list.sort(key=lambda x: x["name"], reverse=False)
-		elif sort == "default":
-			list.sort(key=lambda x: x["pertinence"], reverse=True)
+		if sort == "name":
+			list.sort(key=lambda x: x.note, reverse=False)
+		else:
+			list.sort(key=lambda x: x.note, reverse=False)
 
 		return list
 
