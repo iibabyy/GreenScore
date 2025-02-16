@@ -115,6 +115,7 @@
     {
       "name": "Insulix",
       "type": "Antidiabetic",
+      "picture": "https://images-eu.ssl-images-amazon.com/images/I/51-DV8MaNTL._AC_UL600_SR600,600_.jpg",
       "active_ingredient": "Insulin",
       "concentration": "100",
       "administration_route": "Injected",
@@ -170,6 +171,7 @@
     {
       "name": "Vitascorbol",
       "type": "Vitamin Supplement",
+      "picture": "https://gamme.vitascorbol.fr/thumbs/600%C3%97800/produit/18.png",
       "active_ingredient": "Vitamin C",
       "concentration": "1000mg",
       "administration_route": "Oral",
