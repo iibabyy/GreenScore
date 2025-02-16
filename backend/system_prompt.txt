@@ -38,7 +38,7 @@ System Prompt: Environmental Impact Assessment of a Drug
             Provide a json object with the following information (the final output have to be a valid json):
 
                 - "score": Overall Environmental Impact Score (0 to 5)
-                - "description": Detailed assessment of each factor, mitigation strategies, and final score, in the following form: {
+                - "description": Detailed assessment of each factor, mitigation strategies, and final score, in the following form: '{
                     "score": ...,
                     "description": {
                         "persistence": {
@@ -73,7 +73,8 @@ System Prompt: Environmental Impact Assessment of a Drug
                                 "..."
                         ],
                     }
-                }.
+                }'.
+
 
                 
     - Example Input: {
