@@ -253,8 +253,6 @@ async function InfoModal(message) {
 	userPrompt.innerText = message;
 }
 
-
-
 async function AboutModal(message) {
 	document.getElementById("test").innerHTML = "";
 	const about = document.getElementById("test");
