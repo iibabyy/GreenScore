@@ -4,8 +4,10 @@ function sendPrompt() {
     if (prompt === null || prompt.value === "") return;
 
     openModal(prompt.value.trim());
+	showResult(prompt.value.trim());
     console.log(`[${prompt.value}]`);
     prompt.value = "";
+
 }
 
 // Fonction pour fermer la modal
@@ -34,7 +36,6 @@ function openModal(search) {
         modalContent.classList.add("scale-100", "opacity-100");
     }, 10);
     userPrompt.innerText = search;
-	showResult(search);
 }
 
 
