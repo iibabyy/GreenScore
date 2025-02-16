@@ -52,7 +52,7 @@ def product_by_id(id: uuid.UUID) -> Product | None:
 def index(search: str, sort: str = "default"):
 		# maybe split search by space and search for keywords
 
-		list = [product for product in products if search in product.name];
+		list = [product for product in products if search.lower() in product.name.lower()];
 
 		list.sort(key=lambda x: x.note, reverse=True)
 
