@@ -166,6 +166,33 @@
         "hazardous_waste": "No",
         "recommendations": "Dispose in household waste"
       }
+    },
+    {
+      "name": "Vitascorbol",
+      "type": "Vitamin Supplement",
+      "active_ingredient": "Vitamin C",
+      "concentration": "1000mg",
+      "administration_route": "Oral",
+      "degradability": {
+        "water": "95%",
+        "soil": "50%",
+        "degradation_duration": "30"
+      },
+      "toxicity": {
+        "aquatic": "High",
+        "terrestrial": "High",
+        "wildlife_impact": "Disruption of fish reproduction"
+      },
+      "production": {
+        "energy_consumed": "200",
+        "co2_emissions": "0.10",
+        "chemical_waste": "18"
+      },
+      "disposal": {
+        "recyclable": "No",
+        "hazardous_waste": "No",
+        "recommendations": "Selective collection at pharmacies"
+      }
     }
   ]
 }
