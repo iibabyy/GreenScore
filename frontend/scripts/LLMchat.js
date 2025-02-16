@@ -49,7 +49,7 @@ function createBotDiv(botResponse) {
 		"bg-gray-200", "text-gray-800", "px-4", "py-2", "rounded-lg",
 		"shadow-md", "max-w-xs", "text-sm"
 	);
-	botBubble.textContent = generateLoremIpsum(100);
+	botBubble.textContent = botResponse;
 
 	botContainer.appendChild(botAvatar);
 	botContainer.appendChild(botBubble);
@@ -93,7 +93,7 @@ function createUserDiv(userPrompt) {
 	userBubble.textContent = userPrompt;
 
 	const userAvatar = document.createElement("img");
-	userAvatar.src = "assets/user.jpg";
+	userAvatar.src = "assets/user.svg";
 	userAvatar.alt = "User";
 	userAvatar.classList.add("w-8", "h-8", "rounded-full", "ml-2");
 
@@ -119,22 +119,26 @@ async function sendChatMessage(product) {
     chatInput.value = "";
 
 	try {
-		// const headers = new Headers();
-
-		// const response = await fetch("http://localhost:8000/ia/discussion",  {
-		// 	method: "POST",
-		// 	headers: headers,
-		// 	body: JSON.stringify({
-		// 		'prompt': message,
-		// 		'product_id': product.id
-		// 	})
-		// });
-		// if (!response.ok) {
-		// 	console.error("failed to check user creation")
-		// 	return;
-		// }
-		// const result = await response.json();
-		chatBox.prepend(createBotDiv(generateLoremIpsum(100)));
+		const headers = new Headers({
+			"Content-Type": "application/json"
+		});
+		
+		const response = await fetch("http://localhost:8000/ai/discussion", {
+			method: "POST",
+			headers: headers,
+			body: JSON.stringify({
+				'prompt': message,
+				'product_id': String(product.id)  // ✅ Ensure it's a string
+			})
+		});
+		
+		
+		if (!response.ok) {
+			console.error("failed to check user creation")
+			return;
+		}
+		const result = await response.json();
+		chatBox.prepend(createBotDiv(result.result));
 
 	} catch (error) {
 		console.error('Erreur :', error);
