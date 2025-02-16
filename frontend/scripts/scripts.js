@@ -249,7 +249,7 @@ async function InfoModal(message) {
 		modalContent.classList.remove("scale-100", "opacity-0");
 		modalContent.classList.add("scale-100", "opacity-100");
 	}, 10);
-	about.innerHTML = await fetch("scripts/donuts/donuts.html").then((response) => response.text());
+	about.innerHTML = await fetch("../info.html").then((response) => response.text());
 	userPrompt.innerText = message;
 }
 
