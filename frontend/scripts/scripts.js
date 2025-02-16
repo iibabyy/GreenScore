@@ -240,8 +240,8 @@ async function AboutModal(message) {
 // Fonction pour ouvrir la modal avec le contenu de la page "Info"
 async function InfoModal(message) {
     const about = document.getElementById("test");
-    about.innerHTML = await fetch("scripts/donuts/donuts.html").then((response) => response.text());
     openModal(message);
+    about.innerHTML = await fetch("../info.html").then((response) => response.text());
 }
 
 // Fonction pour envoyer la requête de recherche
