@@ -49,16 +49,33 @@ function createBotDiv(botResponse) {
 		"bg-gray-200", "text-gray-800", "px-4", "py-2", "rounded-lg",
 		"shadow-md", "max-w-xs", "text-sm"
 	);
-	botBubble.textContent = botResponse;
+	botBubble.textContent = generateLoremIpsum(100);
 
 	botContainer.appendChild(botAvatar);
 	botContainer.appendChild(botBubble);
 	botMessage.appendChild(botContainer);
 
-	// Réactiver le champ input après la réponse du bot
-	chatInput.removeAttribute("disabled");
-	chatInput.removeAttribute("aria-busy");
+
 	return botMessage;
+}
+
+function generateLoremIpsum(wordCount = 50) {
+    const loremWords = [
+        "lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit",
+        "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore",
+        "magna", "aliqua", "ut", "enim", "ad", "minim", "veniam", "quis", "nostrud",
+        "exercitation", "ullamco", "laboris", "nisi", "ut", "aliquip", "ex", "ea",
+        "commodo", "consequat", "duis", "aute", "irure", "dolor", "in", "reprehenderit",
+        "in", "voluptate", "velit", "esse", "cillum", "dolore", "eu", "fugiat", "nulla",
+        "pariatur"
+    ];
+
+    let loremText = [];
+    for (let i = 0; i < wordCount; i++) {
+        loremText.push(loremWords[Math.floor(Math.random() * loremWords.length)]);
+    }
+
+    return loremText.join(" ") + ".";
 }
 
 function createUserDiv(userPrompt) {
@@ -102,26 +119,29 @@ async function sendChatMessage(product) {
     chatInput.value = "";
 
 	try {
-		const headers = new Headers();
+		// const headers = new Headers();
 
-		const response = await fetch("http://localhost:8000/ia/discussion",  {
-			method: "POST",
-			headers: headers,
-			body: JSON.stringify({
-				'prompt': message,
-				'product_id': product.id
-			})
-		});
-		if (!response.ok) {
-			console.error("failed to check user creation")
-			return;
-		}
-		const result = await response.json();
-		chatBox.prepend(createBotDiv(result.response));
+		// const response = await fetch("http://localhost:8000/ia/discussion",  {
+		// 	method: "POST",
+		// 	headers: headers,
+		// 	body: JSON.stringify({
+		// 		'prompt': message,
+		// 		'product_id': product.id
+		// 	})
+		// });
+		// if (!response.ok) {
+		// 	console.error("failed to check user creation")
+		// 	return;
+		// }
+		// const result = await response.json();
+		chatBox.prepend(createBotDiv(generateLoremIpsum(100)));
 
 	} catch (error) {
 		console.error('Erreur :', error);
 	}
+		// Réactiver le champ input après la réponse du bot
+		chatInput.removeAttribute("disabled");
+		chatInput.removeAttribute("aria-busy");
 }
 
 function backToFirstModal() {
