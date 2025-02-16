@@ -266,11 +266,11 @@ function createMoreInfoButton(name, produit) {
 // Fonction pour obtenir l'URL de l'image du Green Score
 function getGreenScoreUrlImg(score) {
 	console.log("score", score);
-    if (score <= 1) return "assets/green_score/e.svg";
+    if (score <= 1) return "assets/green_score/a.svg";
     else if (score <= 2) return "assets/green_score/b.svg";
     else if (score <= 3) return "assets/green_score/c.svg";
-    else if (score <= 4) return "assets/green_score/b.svg";
-    else return "assets/green_score/a.svg";
+    else if (score <= 4) return "assets/green_score/d.svg";
+    else return "assets/green_score/e.svg";
 }
 
 window.sendPrompt = sendPrompt;
