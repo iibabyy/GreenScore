@@ -27,6 +27,7 @@ class DisposalDto(BaseModel):
 class ProductDto(BaseModel):
 		name: str
 		type: str
+		picture: str
 		active_ingredient: str
 		concentration: int		# in mg
 		administration_route: str
