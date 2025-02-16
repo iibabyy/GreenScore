@@ -7,3 +7,14 @@ services:
     restart: on-failure
     volumes:
       - ./frontend:/var/www/html
+
+  backend:
+    container_name: backend
+    build: backend
+    ports:
+      - "8000:8000"
+    restart: on-failure
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app
