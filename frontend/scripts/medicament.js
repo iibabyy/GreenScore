@@ -90,13 +90,19 @@ async function showResult(search) {
     modalBody.appendChild(gridContainer);
 
     for (let i = 0; i < products.length; i++) {
-        const oneMedicine = createMedicineCard(products[i].name, products[i].score, ratingPoints, i === 0);
+        const oneMedicine = createMedicineCard(
+			products[i].name, 
+			products[i].note, 
+			ratingPoints, 
+			products[i].picture, 
+			i === 0
+		);
         gridContainer.appendChild(oneMedicine);
     }
 }
 
 // Fonction pour créer une carte de médicament
-function createMedicineCard(name, greenScore, ratingPoints, isBestRecommendation) {
+function createMedicineCard(name, greenScore, ratingPoints, picturePath, isBestRecommendation) {
     const oneMedicine = document.createElement('div');
     oneMedicine.classList.add(
         "border",
@@ -121,7 +127,7 @@ function createMedicineCard(name, greenScore, ratingPoints, isBestRecommendation
         oneMedicine.appendChild(bestRecommendationBadge);
     }
 
-    const imageContainer = createImageContainer(name, greenScore);
+    const imageContainer = createImageContainer(name, greenScore, picturePath);
     const medicineInfos = createMedicineInfos(name, ratingPoints);
 
     oneMedicine.appendChild(imageContainer);
@@ -152,12 +158,12 @@ function createBestRecommendationBadge() {
 }
 
 // Fonction pour créer le conteneur d'image
-function createImageContainer(name, greenScore) {
+function createImageContainer(name, greenScore, picturePath) {
     const imageContainer = document.createElement('div');
     imageContainer.classList.add("relative", "w-full", "flex", "justify-center");
 
     const medicineImg = document.createElement('img');
-    medicineImg.src = "assets/fortenuit-8h.jpg";
+    medicineImg.src = picturePath;
     medicineImg.alt = `${name} image`;
     medicineImg.classList.add("h-40", "w-40", "object-cover", "rounded-full", "border", "border-gray-100", "shadow-sm");
 
@@ -258,10 +264,11 @@ function createMoreInfoButton(name) {
 
 // Fonction pour obtenir l'URL de l'image du Green Score
 function getGreenScoreUrlImg(score) {
-    if (score < 20) return "assets/green_score/e.svg";
-    else if (score < 40) return "assets/green_score/b.svg";
-    else if (score < 60) return "assets/green_score/c.svg";
-    else if (score < 80) return "assets/green_score/b.svg";
+	console.log("score", score);
+    if (score <= 1) return "assets/green_score/e.svg";
+    else if (score <= 2) return "assets/green_score/b.svg";
+    else if (score <= 3) return "assets/green_score/c.svg";
+    else if (score <= 4) return "assets/green_score/b.svg";
     else return "assets/green_score/a.svg";
 }
 
