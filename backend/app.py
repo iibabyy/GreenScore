@@ -5,6 +5,7 @@ from fastapi import FastAPI, Response
 from dtos import ProductDto, DiscussionDto
 from discussion_llm import get_response
 from models import Product
+from types import SimpleNamespace
 
 
 def get_product_list() -> list[Product]:
