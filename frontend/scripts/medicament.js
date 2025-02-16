@@ -90,13 +90,20 @@ async function showResult(search) {
     modalBody.appendChild(gridContainer);
 
     for (let i = 0; i < products.length; i++) {
-        const oneMedicine = createMedicineCard(products[i].name, products[i].score, ratingPoints, i === 0);
+        const oneMedicine = createMedicineCard(
+			products[i].name, 
+			products[i].note, 
+			ratingPoints, 
+			products[i].picture, 
+			i === 0,
+			products[i]
+		);
         gridContainer.appendChild(oneMedicine);
     }
 }
 
 // Fonction pour créer une carte de médicament
-function createMedicineCard(name, greenScore, ratingPoints, isBestRecommendation) {
+function createMedicineCard(name, greenScore, ratingPoints, picturePath, isBestRecommendation, produit) {
     const oneMedicine = document.createElement('div');
     oneMedicine.classList.add(
         "border",
@@ -121,8 +128,8 @@ function createMedicineCard(name, greenScore, ratingPoints, isBestRecommendation
         oneMedicine.appendChild(bestRecommendationBadge);
     }
 
-    const imageContainer = createImageContainer(name, greenScore);
-    const medicineInfos = createMedicineInfos(name, ratingPoints);
+    const imageContainer = createImageContainer(name, greenScore, picturePath);
+    const medicineInfos = createMedicineInfos(name, ratingPoints, produit);
 
     oneMedicine.appendChild(imageContainer);
     oneMedicine.appendChild(medicineInfos);
@@ -152,12 +159,12 @@ function createBestRecommendationBadge() {
 }
 
 // Fonction pour créer le conteneur d'image
-function createImageContainer(name, greenScore) {
+function createImageContainer(name, greenScore, picturePath) {
     const imageContainer = document.createElement('div');
     imageContainer.classList.add("relative", "w-full", "flex", "justify-center");
 
     const medicineImg = document.createElement('img');
-    medicineImg.src = "assets/fortenuit-8h.jpg";
+    medicineImg.src = picturePath;
     medicineImg.alt = `${name} image`;
     medicineImg.classList.add("h-40", "w-40", "object-cover", "rounded-full", "border", "border-gray-100", "shadow-sm");
 
@@ -185,7 +192,7 @@ function createImageContainer(name, greenScore) {
 }
 
 // Fonction pour créer les informations du médicament
-function createMedicineInfos(name, ratingPoints) {
+function createMedicineInfos(name, ratingPoints, produit) {
     const medicineInfos = document.createElement('div');
     medicineInfos.classList.add("flex", "flex-col", "h-full", "justify-between");
 
@@ -194,7 +201,7 @@ function createMedicineInfos(name, ratingPoints) {
     medicineName.innerHTML = name;
 
     const ratingContainer = createRatingContainer(ratingPoints);
-    const moreInfoButton = createMoreInfoButton(name);
+    const moreInfoButton = createMoreInfoButton(name, produit);
 
     medicineInfos.appendChild(medicineName);
     medicineInfos.appendChild(ratingContainer);
@@ -229,7 +236,7 @@ function createRatingContainer(ratingPoints) {
 }
 
 // Fonction pour créer le bouton "En savoir plus"
-function createMoreInfoButton(name) {
+function createMoreInfoButton(name, produit) {
     const moreInfoButton = document.createElement('button');
     moreInfoButton.innerHTML = "Show more";
     moreInfoButton.classList.add(
@@ -258,10 +265,11 @@ function createMoreInfoButton(name) {
 
 // Fonction pour obtenir l'URL de l'image du Green Score
 function getGreenScoreUrlImg(score) {
-    if (score < 20) return "assets/green_score/e.svg";
-    else if (score < 40) return "assets/green_score/b.svg";
-    else if (score < 60) return "assets/green_score/c.svg";
-    else if (score < 80) return "assets/green_score/b.svg";
+	console.log("score", score);
+    if (score <= 1) return "assets/green_score/e.svg";
+    else if (score <= 2) return "assets/green_score/b.svg";
+    else if (score <= 3) return "assets/green_score/c.svg";
+    else if (score <= 4) return "assets/green_score/b.svg";
     else return "assets/green_score/a.svg";
 }
 
