@@ -251,6 +251,7 @@ function sendPrompt() {
     if (prompt === null || prompt.value === "") return;
 
     openModal(prompt.value);
+	// TODO: send la recherche a idrissa 
     console.log(`[${prompt.value}]`);
     prompt.value = "";
 }
@@ -279,17 +280,74 @@ function openChatModal() {
     }, 10);
 }
 
+function generateLoremIpsum(wordCount = 50) {
+    const loremWords = [
+        "lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing", "elit",
+        "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore",
+        "magna", "aliqua", "ut", "enim", "ad", "minim", "veniam", "quis", "nostrud",
+        "exercitation", "ullamco", "laboris", "nisi", "ut", "aliquip", "ex", "ea",
+        "commodo", "consequat", "duis", "aute", "irure", "dolor", "in", "reprehenderit",
+        "in", "voluptate", "velit", "esse", "cillum", "dolore", "eu", "fugiat", "nulla",
+        "pariatur"
+    ];
 
+    let loremText = [];
+    for (let i = 0; i < wordCount; i++) {
+        loremText.push(loremWords[Math.floor(Math.random() * loremWords.length)]);
+    }
+
+    return loremText.join(" ") + ".";
+}
 
 function sendChatMessage() {
-	const chatInput = document.getElementById("chat-input");
-	const message = chatInput.value;
-	if (message.trim() !== "") {
-		// Handle sending the message (e.g., append to chat, send to server, etc.)
-		console.log("Message sent:", message);
-		chatInput.value = "";
-	}
+    const chatInput = document.getElementById("chat-llm-input");
+    const chatBox = document.getElementById("chat-with-llm");
+    const message = chatInput.value.trim();
+
+    if (!message)
+		return;
+
+    chatInput.setAttribute("disabled", "true");
+    chatInput.setAttribute("aria-busy", "true");
+
+    // Message utilisateur stylisé
+    const userMessage = document.createElement("div");
+    userMessage.classList.add("flex", "justify-end", "mb-2");
+
+    const messageBubble = document.createElement("div");
+    messageBubble.classList.add(
+        "bg-green-500", "text-white", "px-4", "py-2", "rounded-lg",
+        "shadow-md", "max-w-xs", "text-sm"
+    );
+    messageBubble.textContent = message;
+
+    userMessage.appendChild(messageBubble);
+    chatBox.prepend(userMessage);
+
+    // Effacer l'input après l'envoi
+    chatInput.value = "";
+
+    // Simuler une réponse du bot après 1 seconde
+    setTimeout(() => {
+        const botMessage = document.createElement("div");
+        botMessage.classList.add("flex", "justify-start", "mb-2");
+
+        const botBubble = document.createElement("div");
+        botBubble.classList.add(
+            "bg-gray-200", "text-gray-800", "px-4", "py-2", "rounded-lg",
+            "shadow-md", "max-w-xs", "text-sm"
+        );
+        botBubble.textContent = generateLoremIpsum();
+
+        botMessage.appendChild(botBubble);
+        chatBox.prepend(botMessage);
+
+        // Réactiver le champ input après la réponse du bot
+        chatInput.removeAttribute("disabled");
+        chatInput.removeAttribute("aria-busy");
+    }, 1000);
 }
+
 
 function backToFirstModal() {
 	closeChatModal();
@@ -303,6 +361,10 @@ document.getElementById("modal").addEventListener("click", function (e) {
     if (e.target === this) {
         closeModal();
     }
+});
+
+document.getElementById("chat-llm-input").addEventListener('keypress', (event) => {
+    if (event.key === "Enter") sendChatMessage();
 });
 
 document.getElementById("search").addEventListener('keypress', (event) => {
