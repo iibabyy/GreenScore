@@ -62,15 +62,12 @@ function createBotDiv(botResponse) {
 }
 
 function createUserDiv(userPrompt) {
-	// Création du message utilisateur
 	const userMessage = document.createElement("div");
 	userMessage.classList.add("flex", "justify-end", "items-start", "mb-2");
 
-	// Conteneur du message utilisateur (pour assurer un bon alignement)
 	const userContainer = document.createElement("div");
 	userContainer.classList.add("flex", "items-start", "space-x-2");
 
-	// Bulle de message
 	const userBubble = document.createElement("div");
 	userBubble.classList.add(
 		"bg-green-500", "text-white", "px-4", "py-2", "rounded-lg",
@@ -78,9 +75,8 @@ function createUserDiv(userPrompt) {
 	);
 	userBubble.textContent = userPrompt;
 
-	// Avatar utilisateur
 	const userAvatar = document.createElement("img");
-	userAvatar.src = "assets/user.jpg"; // Remplace avec l'image de l'utilisateur
+	userAvatar.src = "assets/user.jpg";
 	userAvatar.alt = "User";
 	userAvatar.classList.add("w-8", "h-8", "rounded-full", "ml-2");
 

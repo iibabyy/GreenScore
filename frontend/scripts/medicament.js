@@ -66,8 +66,6 @@ async function showResult(search) {
 
 	const products = await getProductsFromDatabase(search);
 
-    const GREEN_SCORE = 40;
-
     const ratingPoints = [
         { label: "Efficacité", score: 4 },
         { label: "Effets secondaires", score: 3 },
@@ -181,7 +179,6 @@ function createImageContainer(name, greenScore) {
 
     return imageContainer;
 }
-
 
 // Fonction pour créer les informations du médicament
 function createMedicineInfos(name, ratingPoints) {
