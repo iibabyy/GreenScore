@@ -197,7 +197,7 @@ function createRatingContainer(ratingPoints) {
 // Fonction pour créer le bouton "En savoir plus"
 function createMoreInfoButton(name) {
     const moreInfoButton = document.createElement('button');
-    moreInfoButton.innerHTML = "En savoir plus";
+    moreInfoButton.innerHTML = "Show more";
     moreInfoButton.classList.add(
         "bg-green-500",
         "hover:bg-green-600",
@@ -216,7 +216,7 @@ function createMoreInfoButton(name) {
 
     moreInfoButton.addEventListener('click', () => {
 		openChatModal();
-        console.log(`Afficher plus d'informations pour ${name}`);
+        console.log(`Afficher plus d'informations pour ${name}`); // TODO: a retirer
     });
 
     return moreInfoButton;
@@ -234,8 +234,8 @@ function getGreenScoreUrlImg(score) {
 // Fonction pour ouvrir la modal avec le contenu de la page "About"
 async function AboutModal(message) {
     const about = document.getElementById("test");
-    about.innerHTML = await fetch("../pages/About.html").then((response) => response.text());
     openModal(message);
+    about.innerHTML = await fetch("../pages/About.html").then((response) => response.text());
 }
 
 // Fonction pour ouvrir la modal avec le contenu de la page "Info"
