@@ -3,8 +3,7 @@ function sendPrompt() {
     const prompt = document.getElementById("search");
     if (prompt === null || prompt.value === "") return;
 
-    openModal(prompt.value);
-	// TODO: send la recherche a idrissa 
+    openModal(prompt.value.trim());
     console.log(`[${prompt.value}]`);
     prompt.value = "";
 }
@@ -22,8 +21,8 @@ function closeModal() {
     }, 300);
 }
 
-// Fonction pour ouvrir la modal avec un message
-function openModal(message) {
+// Fonction pour ouvrir la modal avec un search
+function openModal(search) {
     const modal = document.getElementById("modal");
     const modalContent = modal.querySelector("div");
     const userPrompt = document.getElementById("user-prompt");
@@ -34,18 +33,39 @@ function openModal(message) {
         modalContent.classList.remove("scale-95", "opacity-0");
         modalContent.classList.add("scale-100", "opacity-100");
     }, 10);
-    userPrompt.innerText = message;
-	showResult();
+    userPrompt.innerText = search;
+	showResult(search);
 }
 
 
+async function getProductsFromDatabase(search) {
+	try {
+		const headers = new Headers();
+		const response = await fetch(`http://localhost:8000/products/search/${search}`, {
+			method: "GET",
+			headers: headers,
+		});
+
+		if (!response.ok) {
+			console.error("failed to get my info");
+			return null;
+		}
+
+		const result = await response.json();
+		return result;
+	} catch (error) {
+		console.error("Error: ", error);
+	}
+	return null;
+}
+
 // Fonction pour afficher les résultats dans la modal
-function showResult() {
+async function showResult(search) {
     const modalBody = document.getElementById("default-modal");
     modalBody.classList.add("text-lg");
 
-    const nbResult = 4;
-    const MEDICINE_NAME = "fortenuit 8h";
+	const products = await getProductsFromDatabase(search);
+
     const GREEN_SCORE = 40;
 
     const ratingPoints = [
@@ -58,7 +78,7 @@ function showResult() {
     modalBody.innerHTML = "";
 
     const nbResultText = document.createElement('p');
-    nbResultText.innerHTML = `${nbResult} Results`;
+    nbResultText.innerHTML = `${products.length} Results`;
     nbResultText.classList.add("text-xl", "font-medium", "mb-4", "text-gray-700");
 
     const gridContainer = document.createElement('div');
@@ -67,8 +87,8 @@ function showResult() {
     modalBody.appendChild(nbResultText);
     modalBody.appendChild(gridContainer);
 
-    for (let i = 0; i < nbResult; i++) {
-        const oneMedicine = createMedicineCard(MEDICINE_NAME, GREEN_SCORE, ratingPoints, i === 0);
+    for (let i = 0; i < products.length; i++) {
+        const oneMedicine = createMedicineCard(products[i].name, products[i].score, ratingPoints, i === 0);
         gridContainer.appendChild(oneMedicine);
     }
 }
@@ -196,7 +216,7 @@ function createRatingContainer(ratingPoints) {
         label.classList.add("font-medium", "text-gray-600");
 
         const score = document.createElement('span');
-        score.innerHTML = "⭐".repeat(point.score);
+        score.innerHTML = "▱".repeat(point.score);
         score.classList.add("text-yellow-400", "ml-auto");
 
         ratingPoint.appendChild(label);
@@ -228,7 +248,7 @@ function createMoreInfoButton(name) {
     );
 
     moreInfoButton.addEventListener('click', () => {
-		openChatModal();
+		openChatModal(produit);
         console.log(`Afficher plus d'informations pour ${name}`); // TODO: a retirer
     });
 

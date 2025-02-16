@@ -19,9 +19,7 @@ document.getElementById("modal").addEventListener("click", function (e) {
     }
 });
 
-document.getElementById("chat-llm-input").addEventListener('keypress', (event) => {
-    if (event.key === "Enter") sendChatMessage();
-});
+
 
 document.getElementById("search").addEventListener('keypress', (event) => {
     if (event.key === "Enter") sendPrompt();
