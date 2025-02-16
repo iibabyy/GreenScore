@@ -21,8 +21,8 @@
             <p class="mt-4 text-gray-700 text-center font-bold border-b-2 border-gray-400 pb-3" id="user-prompt"></p>
 
             <!-- Div qui prend tout l'espace restant et devient scrollable si besoin -->
-            <div id="test" class="flex-grow overflow-y-auto bg-gray-100 p-4 space-y-4">
-                Contenu de test très long qui devrait défiler...
+            <div id="default-modal" class="flex-grow overflow-y-auto bg-gray-100 p-4 space-y-4">
+                Contenu de default-modal très long qui devrait défiler...
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@
 		<div class="bg-white w-4/5 h-4/5 max-h-screen rounded-lg shadow-lg relative p-6 flex flex-col transform scale-95 opacity-0 transition-all duration-300 overflow-y-auto">
 			<button id="close-chat-modal" class="absolute top-4 right-4 text-gray-600 hover:text-red-500 text-4xl" onclick="closeChatModal()">&times;</button>
 
-			<button id="back-to-first-modal" class="absolute top-4 left-4 text-gray-600 hover:text-green-500 text-4xl" onclick="backToFirstModal()">←</button>
+			<button id="back-to-default-modal" class="absolute top-4 left-4 text-gray-600 hover:text-green-500 text-4xl" onclick="backToFirstModal()">←</button>
 
 			<p class="mt-4 text-gray-700 text-center font-bold border-b-2 border-gray-400 pb-3">Mistral Large Language</p>
 			<div id="chat-with-llm" class="flex flex-col-reverse flex-grow overflow-y-auto bg-gray-100 p-4 space-y-4">

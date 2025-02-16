@@ -41,7 +41,7 @@ function openModal(message) {
 
 // Fonction pour afficher les résultats dans la modal
 function showResult() {
-    const modalBody = document.getElementById("test");
+    const modalBody = document.getElementById("default-modal");
     modalBody.classList.add("text-lg");
 
     const nbResult = 4;

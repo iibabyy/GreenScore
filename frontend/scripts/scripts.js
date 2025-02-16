@@ -1,13 +1,13 @@
 // Fonction pour ouvrir la modal avec le contenu de la page "About"
 async function AboutModal(message) {
-    const about = document.getElementById("test");
+    const about = document.getElementById("default-modal");
     openModal(message);
     about.innerHTML = await fetch("../pages/About.html").then((response) => response.text());
 }
 
 // Fonction pour ouvrir la modal avec le contenu de la page "Info"
 async function InfoModal(message) {
-    const about = document.getElementById("test");
+    const about = document.getElementById("default-modal");
     openModal(message);
     about.innerHTML = await fetch("../pages/info.html").then((response) => response.text());
 }
