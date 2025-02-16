@@ -67,6 +67,7 @@ async function showResult(search) {
 	if (products === null)
 		return;
 
+	console.log(products);
     const ratingPoints = [
         { label: "Efficacité", score: 4 },
         { label: "Effets secondaires", score: 3 },

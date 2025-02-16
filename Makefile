@@ -2,10 +2,14 @@ MAGENTA = \033[35m
 BLEU_CLAIR = \033[36m 
 RESET = \033[0m
 
-all : up 
+all : frontend backend
 
-up :
-	docker compose up --build
+frontend :
+	docker compose up --build -d
+
+backend :
+	(cd backend && python3 -m venv env && . env/bin/activate && pip install -r requirements.txt && echo "API is ready, listening on : http://localhost:8000" && uvicorn app:app)
+
 
 down : 
 	docker compose down
@@ -29,4 +33,4 @@ log :
 
 re : fclean all
 
-.PHONY : all up down fclean log re
+.PHONY : all up down fclean log re backend frontend
