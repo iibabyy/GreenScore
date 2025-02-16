@@ -1,4 +1,6 @@
 
+import json
+import uuid
 from pydantic import BaseModel
 
 
@@ -32,3 +34,19 @@ class ProductDto(BaseModel):
 		toxicity: ToxicityDto
 		production: ProductionsDto
 		disposal: DisposalDto
+
+		def to_json(self) -> str:
+				return json.dumps(
+					self,
+					default=lambda o: o.__dict__,
+					indent=4
+				)
+
+
+class MessageDto(BaseModel):
+		sender: str
+		content: str
+
+class DiscussionDto(BaseModel):
+		prompt: str
+		product_id: uuid.UUID
