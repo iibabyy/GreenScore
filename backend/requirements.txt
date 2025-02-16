@@ -1,4 +1,4 @@
 python-dotenv
-fastapi
+fastapi[all]
 uvicorn
 mistralai
