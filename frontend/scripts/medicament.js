@@ -95,14 +95,15 @@ async function showResult(search) {
 			products[i].note, 
 			ratingPoints, 
 			products[i].picture, 
-			i === 0
+			i === 0,
+			products[i]
 		);
         gridContainer.appendChild(oneMedicine);
     }
 }
 
 // Fonction pour créer une carte de médicament
-function createMedicineCard(name, greenScore, ratingPoints, picturePath, isBestRecommendation) {
+function createMedicineCard(name, greenScore, ratingPoints, picturePath, isBestRecommendation, produit) {
     const oneMedicine = document.createElement('div');
     oneMedicine.classList.add(
         "border",
@@ -128,7 +129,7 @@ function createMedicineCard(name, greenScore, ratingPoints, picturePath, isBestR
     }
 
     const imageContainer = createImageContainer(name, greenScore, picturePath);
-    const medicineInfos = createMedicineInfos(name, ratingPoints);
+    const medicineInfos = createMedicineInfos(name, ratingPoints, produit);
 
     oneMedicine.appendChild(imageContainer);
     oneMedicine.appendChild(medicineInfos);
@@ -191,7 +192,7 @@ function createImageContainer(name, greenScore, picturePath) {
 }
 
 // Fonction pour créer les informations du médicament
-function createMedicineInfos(name, ratingPoints) {
+function createMedicineInfos(name, ratingPoints, produit) {
     const medicineInfos = document.createElement('div');
     medicineInfos.classList.add("flex", "flex-col", "h-full", "justify-between");
 
@@ -200,7 +201,7 @@ function createMedicineInfos(name, ratingPoints) {
     medicineName.innerHTML = name;
 
     const ratingContainer = createRatingContainer(ratingPoints);
-    const moreInfoButton = createMoreInfoButton(name);
+    const moreInfoButton = createMoreInfoButton(name, produit);
 
     medicineInfos.appendChild(medicineName);
     medicineInfos.appendChild(ratingContainer);
@@ -235,7 +236,7 @@ function createRatingContainer(ratingPoints) {
 }
 
 // Fonction pour créer le bouton "En savoir plus"
-function createMoreInfoButton(name) {
+function createMoreInfoButton(name, produit) {
     const moreInfoButton = document.createElement('button');
     moreInfoButton.innerHTML = "Show more";
     moreInfoButton.classList.add(
