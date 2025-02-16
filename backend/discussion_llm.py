@@ -25,31 +25,35 @@ system_prompt_file.close()
 
 
 def get_response(message: str, product: Product):
-    prompt = f"""
-        Voici les donnees du produit: {product}.
-        Voici la question: {message}.
-    """
+    try:
 
-    print("prompt: ", prompt)
+        prompt = f"""
+            Voici les donnees du produit: {product}.
+            Voici la question: {message}.
+        """
 
-    chat_response = client.chat.complete(
-        model = model,
-        messages = [
-            #   system promtp
-            {
-                "role": "system",
-                "content": DISCUSSION_SYSTEM_PROMPT
-            },
-            #   user prompt
-            {
-                "role": "user",
-                "content": prompt,
-            },
-        ]
-    )
+        print("prompt: ", prompt)
 
-    result = str(chat_response.choices[0].message.content)
+        chat_response = client.chat.complete(
+            model = model,
+            messages = [
+                #   system promtp
+                {
+                    "role": "system",
+                    "content": DISCUSSION_SYSTEM_PROMPT
+                },
+                #   user prompt
+                {
+                    "role": "user",
+                    "content": prompt,
+                },
+            ]
+        )
 
-    print("result: ", result)
+        result = str(chat_response.choices[0].message.content)
 
-    return json.loads(result)
+        print("result: ", result)
+
+        return {"result": result}
+    except Exception as e:
+        return e
