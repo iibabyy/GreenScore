@@ -69,7 +69,6 @@ async function showResult(search) {
 	if (products === null)
 		return;
 
-	console.log(products);
     const ratingPoints = [
         { label: "Efficacité", score: 4 },
         { label: "Effets secondaires", score: 3 },
@@ -257,7 +256,6 @@ function createMoreInfoButton(name, produit) {
 
     moreInfoButton.addEventListener('click', () => {
 		openChatModal(produit);
-        console.log(`Afficher plus d'informations pour ${name}`); // TODO: a retirer
     });
 
     return moreInfoButton;
@@ -265,7 +263,6 @@ function createMoreInfoButton(name, produit) {
 
 // Fonction pour obtenir l'URL de l'image du Green Score
 function getGreenScoreUrlImg(score) {
-	console.log("score", score);
     if (score <= 1) return "assets/green_score/a.svg";
     else if (score <= 2) return "assets/green_score/b.svg";
     else if (score <= 3) return "assets/green_score/c.svg";
