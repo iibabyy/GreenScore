@@ -93,7 +93,7 @@ function createUserDiv(userPrompt) {
 	userBubble.textContent = userPrompt;
 
 	const userAvatar = document.createElement("img");
-	userAvatar.src = "assets/user.jpg";
+	userAvatar.src = "assets/user.svg";
 	userAvatar.alt = "User";
 	userAvatar.classList.add("w-8", "h-8", "rounded-full", "ml-2");
 
