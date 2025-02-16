@@ -78,21 +78,6 @@ make log
 make re
 ```
 
-## API Documentation
-
-The API documentation is available at http://localhost:8000/api/docs after starting the application.
-
-## Contribution
-
-The project is developed by BrokenTeam as part of the Doctolib AI Hackathon. If you wish to contribute or improve the application:
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/improvement`)
-3. Make your changes
-4. Commit your changes (`git commit -am 'Add new feature'`)
-5. Push to the branch (`git push origin feature/improvement`)
-6. Create a Pull Request
-
 ## Troubleshooting
 
 Common issues and their solutions:
@@ -109,7 +94,3 @@ Common issues and their solutions:
    # Restart the application
    make re
    ```
-
-## License
-
-This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
