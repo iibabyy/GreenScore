@@ -14,20 +14,24 @@ def get_product_list() -> list[Product]:
 
 	file.close()
 
-	load = json.loads(product_data)
-	print(load)
-	return [Product(ProductDto(
-		name= product["name"],
-		picture= product["picture"],
-		type= product["type"],
-		active_ingredient= product["active_ingredient"],
-		concentration= product["concentration"],
-		degradability= product["degradability"],
-		toxicity= product["toxicity"],
-		disposal= product["disposal"],
-		production= product["production"],
-		administration_route= product["administration_route"],
-	)) for product in load["medications"]]
+	try :
+		load = json.loads(product_data)
+		print(load)
+		return [Product(ProductDto(
+			name= product["name"],
+			picture= product["picture"],
+			type= product["type"],
+			active_ingredient= product["active_ingredient"],
+			concentration= product["concentration"],
+			degradability= product["degradability"],
+			toxicity= product["toxicity"],
+			disposal= product["disposal"],
+			production= product["production"],
+			administration_route= product["administration_route"],
+		)) for product in load["medications"]]
+	except Exception as e:
+		print("Model encountered an error, please try again ", e)
+		exit([1])
 
 app = FastAPI()
 
