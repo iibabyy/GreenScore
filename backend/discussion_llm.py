@@ -50,4 +50,6 @@ def get_response(message: str, product: Product):
 
     result = str(chat_response.choices[0].message.content)
 
+    print("result: ", result)
+
     return json.loads(result)
