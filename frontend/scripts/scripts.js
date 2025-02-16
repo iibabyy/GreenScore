@@ -215,6 +215,7 @@ function createMoreInfoButton(name) {
     );
 
     moreInfoButton.addEventListener('click', () => {
+		openChatModal();
         console.log(`Afficher plus d'informations pour ${name}`);
     });
 
@@ -254,6 +255,49 @@ function sendPrompt() {
     prompt.value = "";
 }
 
+function closeChatModal() {
+    const chatModal = document.getElementById("chat-modal");
+    const modalContent = chatModal.querySelector("div");
+
+
+    modalContent.classList.remove("scale-100", "opacity-100");
+    modalContent.classList.add("scale-95", "opacity-0");
+    setTimeout(() => {
+        chatModal.classList.remove("flex");
+        chatModal.classList.add("hidden");
+    }, 300);
+}
+
+function openChatModal() {
+    const chatModal = document.getElementById("chat-modal");
+	const modalContent = chatModal.querySelector("div");
+    chatModal.classList.remove("hidden");
+    setTimeout(() => {
+		chatModal.classList.add("flex");
+        modalContent.classList.remove("scale-95", "opacity-0");
+        modalContent.classList.add("scale-100", "opacity-100");
+    }, 10);
+}
+
+
+
+function sendChatMessage() {
+	const chatInput = document.getElementById("chat-input");
+	const message = chatInput.value;
+	if (message.trim() !== "") {
+		// Handle sending the message (e.g., append to chat, send to server, etc.)
+		console.log("Message sent:", message);
+		chatInput.value = "";
+	}
+}
+
+function backToFirstModal() {
+	closeChatModal();
+	// setTimeout(() => {
+	// 	openModal();
+	// }, 350);
+}
+
 // Écouteurs d'événements
 document.getElementById("modal").addEventListener("click", function (e) {
     if (e.target === this) {
@@ -279,3 +323,5 @@ document.getElementById("How-it-works").addEventListener('click', () => {
 
 window.sendPrompt = sendPrompt;
 window.closeModal = closeModal;
+window.backToFirstModal = backToFirstModal;
+window.closeChatModal = closeChatModal;

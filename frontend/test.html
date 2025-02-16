@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Double Modal Example</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex flex-col bg-white overflow-y-auto" style="background-color: #e4e2dd;">
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-16">
+        <h1 class="text-4xl font-bold text-gray-900 mb-6 text-center">Double Modal Example</h1>
+        <button id="open-first-modal" class="bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600">Open First Modal</button>
+    </div>
+
+    <!-- First Modal -->
+    <div id="first-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white w-4/5 h-4/5 rounded-lg shadow-lg relative p-6 flex flex-col transform scale-95 opacity-0 transition-all duration-300 overflow-y-auto">
+            <button id="close-first-modal" class="absolute top-4 right-4 text-gray-600 hover:text-red-500 text-2xl" onclick="closeFirstModal()">&times;</button>
+            <p class="mt-4 text-gray-700 text-center font-bold border-b-2 border-gray-400 pb-3">First Modal</p>
+            <div class="flex-grow overflow-y-auto bg-gray-100 p-4 space-y-4">
+                <p>Content of the first modal.</p>
+                <button id="open-second-modal" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600" onclick="openSecondModal()">Open Second Modal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Modal -->
+    <div id="second-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div class="bg-white w-4/5 h-4/5 rounded-lg shadow-lg relative p-6 flex flex-col transform scale-95 opacity-0 transition-all duration-300 overflow-y-auto">
+            <button id="close-second-modal" class="absolute top-4 right-4 text-gray-600 hover:text-red-500 text-2xl" onclick="closeSecondModal()">&times;</button>
+            <p class="mt-4 text-gray-700 text-center font-bold border-b-2 border-gray-400 pb-3">Second Modal</p>
+            <div class="flex-grow overflow-y-auto bg-gray-100 p-4 space-y-4">
+                <p>Content of the second modal.</p>
+                <button id="back-to-first-modal" class="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-yellow-600" onclick="backToFirstModal()">Back to First Modal</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openFirstModal() {
+            const firstModal = document.getElementById("first-modal");
+            firstModal.classList.remove("hidden");
+            setTimeout(() => {
+                firstModal.classList.add("flex");
+                firstModal.querySelector("div").classList.remove("scale-95", "opacity-0");
+                firstModal.querySelector("div").classList.add("scale-100", "opacity-100");
+            }, 10);
+        }
+
+        function closeFirstModal() {
+            const firstModal = document.getElementById("first-modal");
+            firstModal.querySelector("div").classList.remove("scale-100", "opacity-100");
+            firstModal.querySelector("div").classList.add("scale-95", "opacity-0");
+            setTimeout(() => {
+                firstModal.classList.remove("flex");
+                firstModal.classList.add("hidden");
+            }, 300);
+        }
+
+        function openSecondModal() {
+            const secondModal = document.getElementById("second-modal");
+            secondModal.classList.remove("hidden");
+            setTimeout(() => {
+                secondModal.classList.add("flex");
+                secondModal.querySelector("div").classList.remove("scale-95", "opacity-0");
+                secondModal.querySelector("div").classList.add("scale-100", "opacity-100");
+            }, 10);
+        }
+
+        function closeSecondModal() {
+            const secondModal = document.getElementById("second-modal");
+            secondModal.querySelector("div").classList.remove("scale-100", "opacity-100");
+            secondModal.querySelector("div").classList.add("scale-95", "opacity-0");
+            setTimeout(() => {
+                secondModal.classList.remove("flex");
+                secondModal.classList.add("hidden");
+            }, 300);
+        }
+
+        function backToFirstModal() {
+            closeSecondModal();
+            setTimeout(() => {
+                openFirstModal();
+            }, 350);
+        }
+
+        document.getElementById("open-first-modal").addEventListener("click", openFirstModal);
+        document.getElementById("open-second-modal").addEventListener("click", openSecondModal);
+        document.getElementById("back-to-first-modal").addEventListener("click", backToFirstModal);
+    </script>
+</body>
+</html>
