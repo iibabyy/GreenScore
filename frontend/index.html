@@ -39,7 +39,7 @@
 				<p class="text-gray-700">Bienvenue dans le chat ! Comment puis-je vous aider aujourd'hui ?</p>
 			</div>
 			<div class="mt-4">
-				<input type="text" id="chat-llm-input" placeholder="Type your message..." class="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-green-500">
+				<input type="text" autocomplete="off" id="chat-llm-input" placeholder="Type your message..." class="w-full px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-green-500">
 				<button id="send-llm-message" class="mt-2 bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600" onclick="sendChatMessage()">Send</button>
 			</div>
 		</div>
@@ -68,7 +68,7 @@
                 <p class="text-xl text-gray-600 mb-8">Do you really know what you're taking? In just one scan, GreenScore analyzes and decodes labels for you - see which products are good and which ones to avoid.</p>
 
                 <div class="relative max-w-2xl mx-auto mt-8">
-                    <input type="text" id="search" placeholder="Search for a medication..."
+                    <input type="text" id="search" autocomplete="off" placeholder="Search for a medication..."
                         class="w-full px-6 py-4 text-lg border-2 border-green-200 rounded-full focus:outline-none focus:border-green-500 shadow-lg">
                     <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-green-500 text-white px-6 py-2 rounded-full hover:bg-green-600" onclick="sendPrompt()" id="search-button">
                         Search
