@@ -1,0 +1,39 @@
+.custom-shape {
+	background-color: #f0f7f4;
+	clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+.icon-circle {
+	background-color: rgba(52, 211, 153, 0.1);
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto 1rem;
+}
+.product-card {
+	background: white;
+	border-radius: 15px;
+	padding: 1rem;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	position: relative;
+}
+.score-badge {
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	background: #ef4444;
+	color: white;
+	padding: 0.25rem 0.75rem;
+	border-radius: 999px;
+	font-size: 0.875rem;
+}
+.green-score-badge {
+	background: #22c55e;
+}
+.leaf-icon {
+	font-size: 1.5rem;
+	color: #22c55e;
+	margin-right: 0.5rem;
+}

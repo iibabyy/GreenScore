@@ -48,15 +48,15 @@ def index(search: str, sort: str = "default"):
 
 		return list
 
-@app.post("/ai/discussion")
-def respond(body: DiscussionDto, response: Response):
-	product = product_by_id(body.product_id)
-	if product is None:
-		response.status_code = 404
-		return {"error": "Product not found"}
+# @app.post("/ai/discussion")
+# def respond(body: DiscussionDto, response: Response):
+# 	product = product_by_id(body.product_id)
+# 	if product is None:
+# 		response.status_code = 404
+# 		return {"error": "Product not found"}
 	
-	reponse = get_response(body.prompt, product)
-	return {"response": reponse}
+# 	reponse = get_response(body.prompt, product)
+# 	return {"response": reponse}
 
 
 @app.get("/products/{id}")

@@ -3,6 +3,7 @@
     {
       "name": "Paradol 500",
       "type": "Analgesic",
+      "picture": "https://cdn11.bigcommerce.com/s-vhzbg5/images/stencil/1280x1280/products/1802/4926/api7iv7te__93324.1499347676.jpg?c=2",
       "active_ingredient": "Paracetamol",
       "concentration": "500",
       "administration_route": "Oral",
@@ -31,6 +32,7 @@
       "name": "Antibioxyl",
       "type": "Antibiotic",
       "active_ingredient": "Amoxicillin",
+      "picture": "https://cloudfront-eu-central-1.images.arcpublishing.com/leparisien/4LFDCB2WSVBGZEKF3MLP5QMSB4.jpg",
       "concentration": "250",
       "administration_route": "Oral",
       "degradability": {
@@ -57,6 +59,7 @@
     {
       "name": "Deprexor",
       "type": "Antidepressant",
+      "picture": "https://www.aversi.ge/uploads/matimg/5fdc29e1de4065fad5ed78c70a0a89e5.png",
       "active_ingredient": "Fluoxetine",
       "concentration": "20",
       "administration_route": "Oral",
