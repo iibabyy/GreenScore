@@ -119,22 +119,26 @@ async function sendChatMessage(product) {
     chatInput.value = "";
 
 	try {
-		const headers = new Headers();
-
-		const response = await fetch("http://localhost:8000/ai/discussion",  {
+		const headers = new Headers({
+			"Content-Type": "application/json"
+		});
+		
+		const response = await fetch("http://localhost:8000/ai/discussion", {
 			method: "POST",
 			headers: headers,
 			body: JSON.stringify({
 				'prompt': message,
-				'product_id': product.id
+				'product_id': String(product.id)  // ✅ Ensure it's a string
 			})
 		});
+		
+		
 		if (!response.ok) {
 			console.error("failed to check user creation")
 			return;
 		}
 		const result = await response.json();
-		chatBox.prepend(createBotDiv(result.response));
+		chatBox.prepend(createBotDiv(result.result));
 
 	} catch (error) {
 		console.error('Erreur :', error);
