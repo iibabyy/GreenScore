@@ -1,11 +1,10 @@
 // Fonction pour envoyer la requête de recherche
-function sendPrompt() {
+async function sendPrompt() {
     const prompt = document.getElementById("search");
     if (prompt === null || prompt.value === "") return;
 
     openModal(prompt.value.trim());
-	showResult(prompt.value.trim());
-    console.log(`[${prompt.value}]`);
+	await showResult(prompt.value.trim());
     prompt.value = "";
 
 }
@@ -38,7 +37,6 @@ function openModal(search) {
     userPrompt.innerText = search;
 }
 
-
 async function getProductsFromDatabase(search) {
 	try {
 		const headers = new Headers();
@@ -66,6 +64,8 @@ async function showResult(search) {
     modalBody.classList.add("text-lg");
 
 	const products = await getProductsFromDatabase(search);
+	if (products === null)
+		return;
 
     const ratingPoints = [
         { label: "Efficacité", score: 4 },

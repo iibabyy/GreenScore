@@ -21,8 +21,9 @@ document.getElementById("modal").addEventListener("click", function (e) {
 
 
 
-document.getElementById("search").addEventListener('keypress', (event) => {
-    if (event.key === "Enter") sendPrompt();
+document.getElementById("search").addEventListener('keypress', async (event) => {
+    if (event.key === "Enter") 
+		await sendPrompt();
 });
 
 document.getElementById("About").addEventListener('click', () => {

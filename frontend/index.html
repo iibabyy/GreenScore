@@ -6,6 +6,7 @@
     <title>GreenScore</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome CDN -->
+	<link rel="icon" href="assets/favicon.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles/styles.css">
 </head>
@@ -118,29 +119,32 @@
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-3xl font-bold text-center mb-12">Compare and Find Better Alternatives</h2>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="product-card">
-                        <div class="score-badge">Poor - 4/10</div>
-                        <img src="assets/mag2.webp" alt="Product" class="mx-auto mb-4 w-35">
-                        <div class="text-center">
-                            <h3 class="font-semibold mb-2">Cooper - Mag2</h3>
-                            <ul class="text-sm text-gray-600 space-y-1">
-                                <li>High environmental impact</li>
-                                <li>Non-recyclable packaging</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="product-card">
-                        <div class="score-badge green-score-badge">Good - 8/10</div>
-                        <img src="assets/fortenuit-8h.jpg" alt="Product" class="mx-auto mb-4 w-35">
-                        <div class="text-center">
-                            <h3 class="font-semibold mb-2">Forte Pharma - Fortenuit 8h</h3>
-                            <ul class="text-sm text-gray-600 space-y-1">
-                                <li>Low environmental impact</li>
-                                <li>Recyclable packaging</li>
-                                <li>Sustainable ingredients</li>
-                            </ul>
-                        </div>
-                    </div>
+					<div class="product-card">
+						<!-- Remplacer le badge texte par une image -->
+						<img src="assets/green_score/d.svg" alt="Poor Score" class="mx-auto mb-4 w-48">
+						<img src="assets/mag2.webp" alt="Product" class="mx-auto mb-4 w-35">
+						<div class="text-center">
+							<h3 class="font-semibold mb-2">Cooper - Mag2</h3>
+							<ul class="text-sm text-gray-600 space-y-1">
+								<li>High environmental impact</li>
+								<li>Non-recyclable packaging</li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="product-card">
+						<!-- Remplacer le badge texte par une image -->
+						<img src="assets/green_score/a.svg" alt="Good Score" class="mx-auto mb-4 w-48">
+						<img src="assets/fortenuit-8h.jpg" alt="Product" class="mx-auto mb-4 w-35">
+						<div class="text-center">
+							<h3 class="font-semibold mb-2">Forte Pharma - Fortenuit 8h</h3>
+							<ul class="text-sm text-gray-600 space-y-1">
+								<li>Low environmental impact</li>
+								<li>Recyclable packaging</li>
+								<li>Sustainable ingredients</li>
+							</ul>
+						</div>
+					</div>					
                 </div>
             </div>
         </div>
