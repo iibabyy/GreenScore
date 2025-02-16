@@ -6,7 +6,7 @@ from dtos import ProductDto, DiscussionDto
 from discussion_llm import get_response
 from models import Product
 from types import SimpleNamespace
-
+from fastapi.middleware.cors import CORSMiddleware
 
 def get_product_list() -> list[Product]:
 	file = open("products.json", "r", encoding="utf-8")
@@ -28,6 +28,15 @@ def get_product_list() -> list[Product]:
 	)) for product in load["medications"]]
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 products: list[Product] = get_product_list()
 
