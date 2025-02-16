@@ -25,10 +25,12 @@ class Product:
 		self.id = uuid.uuid4()
 		self.name = infos.name
 		self.infos = infos;
+		self.picture = infos.picture
 
 		product = ProductDto(
 			name=infos.name,
 			type=infos.type,
+			picture=infos.picture,
 			active_ingredient=infos.active_ingredient,
 			concentration=infos.concentration,
 			administration_route=infos.administration_route,

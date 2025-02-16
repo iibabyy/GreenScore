@@ -87,6 +87,7 @@
     {
       "name": "Cardiovax",
       "type": "Antihypertensive",
+      "picture": "https://www.healthynutritions.in/cdn/shop/files/1716980471683.png?v=1727007412&width=3000",
       "active_ingredient": "Lisinopril",
       "concentration": "10",
       "administration_route": "Oral",
@@ -136,6 +137,34 @@
         "recyclable": "No",
         "hazardous_waste": "Yes",
         "recommendations": "Syringe collection at pharmacies"
+      }
+    },
+    {
+      "name": "UPSA-C",
+      "picture": "https://assets.viata.be/uploads/cache/product_original/img/product/up/sa/upsa-c-energy-vitamine-c-1000-mg-sachets-20-pieces.69a861.jpg",
+      "type": "Analgesic",
+      "active_ingredient": "Paracetamol",
+      "concentration": "1000mg",
+      "administration_route": "Oral",
+      "degradability": {
+        "water": "80%",
+        "soil": "20%",
+        "degradation_duration": "12"
+      },
+      "toxicity": {
+        "aquatic": "Low",
+        "terrestrial": "Low",
+        "wildlife_impact": "No significant impact"
+      },
+      "production": {
+        "energy_consumed": "30",
+        "co2_emissions": "0.05",
+        "chemical_waste": "1"
+      },
+      "disposal": {
+        "recyclable": "No",
+        "hazardous_waste": "No",
+        "recommendations": "Dispose in household waste"
       }
     }
   ]
