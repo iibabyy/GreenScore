@@ -11,7 +11,7 @@ function closeChatModal() {
     }, 300);
 }
 
-export function openChatModal(product) {
+export async function openChatModal(product) {
     const chatModal = document.getElementById("chat-modal");
 	const modalContent = chatModal.querySelector("div");
     chatModal.classList.remove("hidden");
@@ -131,6 +131,5 @@ function backToFirstModal() {
 	// }, 350);
 }
 
-window.closeModal = closeModal;
 window.backToFirstModal = backToFirstModal;
 window.closeChatModal = closeChatModal;

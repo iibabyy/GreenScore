@@ -1,3 +1,5 @@
+import { openChatModal } from "./LLMchat.js";
+
 // Fonction pour envoyer la requête de recherche
 async function sendPrompt() {
     const prompt = document.getElementById("search");
@@ -264,3 +266,5 @@ function getGreenScoreUrlImg(score) {
 }
 
 window.sendPrompt = sendPrompt;
+
+window.closeModal = closeModal;
