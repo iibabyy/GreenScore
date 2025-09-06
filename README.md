@@ -2,6 +2,27 @@
 
 GreenScore is a full-stack application that helps users discover the environmental impact of pharmaceutical products, such as dietary supplements and medications. The goal is to enable consumers to make informed choices to reduce their carbon footprint based on the products they consume. GreenScore was developed for the Doctolib AI Hackathon, with a focus on environmental sustainability. It leverages the Mistral AI API to analyze products and provide detailed environmental insights.
 
+## Table of Contents
+- [GreenScore ♻️](#greenscore-️)
+	- [Table of Contents](#table-of-contents)
+	- [Features](#features)
+	- [Prerequisites](#prerequisites)
+	- [Installation](#installation)
+	- [Documentation](#documentation)
+		- [Quick Start](#quick-start)
+		- [Features](#features-1)
+		- [Architecture](#architecture)
+			- [Frontend](#frontend)
+			- [Backend](#backend)
+		- [API Endpoints](#api-endpoints)
+		- [Environmental Impact Scoring](#environmental-impact-scoring)
+		- [Development Commands](#development-commands)
+		- [Troubleshooting](#troubleshooting)
+	- [Usage](#usage)
+	- [Development](#development)
+	- [Acknowledgments](#acknowledgments)
+
+
 ## Features
 - Pharmaceutical Product Search: Search and compare pharmaceutical products based on their environmental impact
 - Product Ranking: Products are ranked from least to most polluting based on predefined criteria
