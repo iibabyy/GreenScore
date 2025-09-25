@@ -1,0 +1,104 @@
+version: '3.8'
+
+services:
+  # Base de données PostgreSQL
+  database:
+    image: postgres:13
+    container_name: greenscore_db
+    restart: always
+    environment:
+      POSTGRES_USER: greenscore_user
+      POSTGRES_PASSWORD: greenscore_password
+      POSTGRES_DB: greenscore_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./app/database/init:/docker-entrypoint-initdb.d
+    networks:
+      - greenscore_network
+
+  # Backend Node.js
+  backend:
+    build:
+      context: ./app/backend
+      dockerfile: Dockerfile
+    container_name: greenscore_backend
+    restart: always
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=postgresql://greenscore_user:greenscore_password@database:5432/greenscore_db
+      - NODE_ENV=development
+    depends_on:
+      - database
+    networks:
+      - greenscore_network
+
+  # Frontend React
+  frontend:
+    build:
+      context: ./app/frontend
+      dockerfile: Dockerfile
+    container_name: greenscore_frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:3001
+    volumes:
+      - ./app/frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - greenscore_network
+
+  # Service Ollama (modèle LLM)
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama_service
+    restart: always
+    ports:
+      - "11435:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - greenscore_network
+    # Assure-toi d'avoir téléchargé un modèle compatible avec Ollama
+    # par exemple : ollama pull phi3:mini
+  
+
+  # Service IA Python (FastAPI + RAG)
+  ai-service:
+    build:
+      context: ./app/ai-service
+      dockerfile: Dockerfile
+    container_name: greenscore_ai
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - OLLAMA_HOST=http://ollama:11434   # 🔥 on pointe sur le service docker "ollama"
+      - MODEL_NAME=phi3:mini
+      - PDF_DIR=./data
+    volumes:
+      - ./app/ai-service/data:/app/data  # mount PDFs
+    depends_on:
+      - ollama
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+        reservations:
+          memory: 1G
+    networks:
+      - greenscore_network
+
+networks:
+  greenscore_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  ollama_data:
