@@ -17,6 +17,13 @@ help:
 	@echo "  make clean        - Nettoyer les fichiers de build et node_modules"
 	@echo "  make help         - Afficher cette aide"
 
+
+
+#installer le modele ollama
+.PHONY: pull-model
+pull-model:
+	docker exec ollama_service ollama pull phi3:mini
+	
 # Démarrer en mode développement
 .PHONY: start
 start:

@@ -77,7 +77,7 @@ services:
     container_name: greenscore_ai
     restart: always
     ports:
-      - "5000:5000"
+      - "5001:5000"
     environment:
       - OLLAMA_HOST=http://ollama:11434   # 🔥 on pointe sur le service docker "ollama"
       - MODEL_NAME=phi3:mini

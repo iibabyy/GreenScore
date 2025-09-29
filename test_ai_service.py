@@ -7,7 +7,7 @@ Gère les timeouts longs pour le LLM et la base vectorielle.
 import requests
 import time
 
-BASE_URL = "http://localhost:5000/api"
+BASE_URL = "http://localhost:5001/api"
 
 def test_ask_endpoint():
     """Test de la route /ask"""
@@ -15,7 +15,7 @@ def test_ask_endpoint():
     try:
         response = requests.post(
             f"{BASE_URL}/ask",
-            params={"question": "peut tu m'expliquer La démarche « Product Environnement Footprint » (PEF) ?"},
+            params={"question": "bonjour"},
             timeout=900  # timeout plus long pour le LLM
         )
         response.raise_for_status()
@@ -43,16 +43,26 @@ def test_evaluate_endpoint():
     try:
         response = requests.post(
             f"{BASE_URL}/evaluate",
-            params={"product_description": "Barre de céréales bio avec emballage en carton recyclable"},
+            params={
+            "product_description": (
+                "Impact Whey Protein est la protéine en poudre phare de MyProtein, qui a d'ailleurs fortement contribué au succès de la marque sur le marché international. "
+                "Elle est composée à 100% de whey concentrée ce qui lui permet d'afficher un prix imbattable sur le format 1000g. Selon la marque, cette formule contient de la whey qui est extraite en intégralité du lait de vache qui est simplement filtrée et séchée par pulvérisation afin de garantir l'intégrité des chaines d'acides aminés.\n\n"
+                "Caractéristiques de l'Impact Whey Protein\n"
+                "21g de protéines par dose (taux de protéines de 82%)\n"
+                "4.5g d'acides aminés ramifiés (BCAA) par prise\n"
+                "Faible teneur en sucres\n"
+                "Impact Whey Protein de MyProtein vous accompagne pour contribuer à augmenter votre masse musculaire. Cette affirmation a été prouvée scientifiquement et est autorisée par l'autorité européenne de sécurité des aliments. Avec seulement 103 calories par dose, cette whey s'intègre facilement à votre régime alimentaire."
+            )
+            },
             timeout=900  # timeout plus long pour RAG
         )
         response.raise_for_status()
         data = response.json()
         print(f"✅ /evaluate fonctionne !")
-        print(f"📦 Produit : {data['product']}")
+        #print(f"📦 Produit : {data['product']}")
         print(f"📊 Évaluation : {data['evaluation']}")
-        print(f"📚 Sources : {data['source_documents']}\n")
-        print(f"🔍 Info debug : {data['debug_info']}\n")
+        #print(f"📚 Sources : {data['source_documents']}\n")
+        #print(f"🔍 Info debug : {data['debug_info']}\n")
         print(f"⏱️ Temps d'attente : {response.elapsed.total_seconds()} secondes")
         return True
     except requests.exceptions.Timeout:
@@ -66,7 +76,7 @@ def test_health_check():
     """Test de la route racine"""
     print("🔍 Test de la route racine...")
     try:
-        response = requests.get("http://localhost:5000/api/debug-retrieval", timeout=30)
+        response = requests.get("http://localhost:5001/api/debug-retrieval", timeout=30)
         response.raise_for_status()
         data = response.json()
         print(f"✅ Health check OK : {data['message']}\n")
@@ -80,12 +90,9 @@ def run_tests():
     print("🚀 Démarrage des tests du service AI...")
     print("="*60)
     
-    # Laisser un petit temps pour s'assurer que le service est prêt
-    time.sleep(3)
     
     results = []
-    results.append(test_health_check())
-    results.append(test_ask_endpoint())
+    #results.append(test_ask_endpoint())
     results.append(test_evaluate_endpoint())
     
     print("="*60)

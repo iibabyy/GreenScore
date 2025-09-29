@@ -17,7 +17,7 @@ def evaluate(product_description: str = Query(..., description="Description prod
 
     query = (
         f"Évalue l'impact environnemental de ce produit: {product_description}\n"
-        "Utilise uniquement les informations des documents fournis."
+        "Utilise uniquement les informations des documents fournis. si tu n'as pas assez d'informations, dis le clairement.\n"
     )
     
     print(f"🔍 Query construite: {query[:150]}...")
