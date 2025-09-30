@@ -1,9 +1,13 @@
 import threading
 from typing import Optional
-from langchain.vectorstores import FAISS
 from core.config import settings
 from .loader import load_documents
 from .vectorstore import create_vectorstore
+
+try:
+    from langchain_community.vectorstores import FAISS
+except Exception:
+    from langchain.vectorstores import FAISS
 
 
 class VectorStoreManager:

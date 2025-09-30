@@ -30,6 +30,7 @@ services:
     environment:
       - DATABASE_URL=postgresql://greenscore_user:greenscore_password@database:5432/greenscore_db
       - NODE_ENV=development
+      - AI_SERVICE_URL=http://ai-service:5000/api/evaluate
     depends_on:
       - database
     networks:
