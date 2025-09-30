@@ -12,6 +12,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     onSearch(searchTerm);
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    onSearch(value); // Recherche dynamique à chaque changement
+  };
+
   return (
     <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
       <div className="relative">
@@ -29,8 +35,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         <input
           type="text"
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Rechercher un complément alimentaire..."
+          onChange={handleChange}
+          placeholder="Rechercher un produit alimentaire..."
           className="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-accent sm:text-sm"
         />
         <button

@@ -1,85 +1,66 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SupplementCard from '../components/SupplementCard';
 import SearchBar from '../components/SearchBar';
 import FilterPanel from '../components/FilterPanel';
 import { Supplement } from '../lib/types';
 
-// Données de démonstration
-const mockSupplements: Supplement[] = [
-  {
-    id: '1',
-    name: 'Vitamine C',
-    brand: 'Nature\'s Best',
-    description: 'Complexe de vitamine C avec bioflavonoïdes',
-    ingredients: ['Vitamine C', 'Bioflavonoïdes', 'Acide ascorbique'],
-    dosage: '1000mg par jour',
-    environmentalScore: 75,
-    letterScore: 'B',
-    carbonFootprint: 2.5,
-    waterUsage: 150,
-    packagingScore: 4,
-    certifications: ['organic'],
-    createdAt: '2023-01-01',
-    updatedAt: '2023-01-01'
-  },
-  {
-    id: '2',
-    name: 'Oméga 3',
-    brand: 'Océan Health',
-    description: 'Huile de poisson sauvage riches en EPA et DHA',
-    ingredients: ['Huile de poisson', 'EPA', 'DHA'],
-    dosage: '2 capsules par jour',
-    environmentalScore: 60,
-    letterScore: 'C',
-    carbonFootprint: 4.2,
-    waterUsage: 200,
-    packagingScore: 3,
-    certifications: ['sustainable'],
-    createdAt: '2023-01-01',
-    updatedAt: '2023-01-01'
-  },
-  {
-    id: '3',
-    name: 'Probiotiques',
-    brand: 'BioLife',
-    description: 'Mélange de souches probiotiques pour la flore intestinale',
-    ingredients: ['Lactobacillus', 'Bifidobacterium', 'Inuline'],
-    dosage: '1 capsule par jour',
-    environmentalScore: 85,
-    letterScore: 'A',
-    carbonFootprint: 1.8,
-    waterUsage: 100,
-    packagingScore: 5,
-    certifications: ['organic', 'vegan'],
-    createdAt: '2023-01-01',
-    updatedAt: '2023-01-01'
-  }
-];
+// Les données sont maintenant récupérées dynamiquement depuis le backend
 
 const SupplementListPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredSupplements, setFilteredSupplements] = useState<Supplement[]>(mockSupplements);
+  const [filteredSupplements, setFilteredSupplements] = useState<Supplement[]>([]);
+  const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
-    if (term.trim() === '') {
-      setFilteredSupplements(mockSupplements);
-    } else {
-      const filtered = mockSupplements.filter(
-        supplement => 
-          supplement.name.toLowerCase().includes(term.toLowerCase()) ||
-          supplement.brand.toLowerCase().includes(term.toLowerCase()) ||
-          supplement.ingredients.some(ingredient => 
-            ingredient.toLowerCase().includes(term.toLowerCase())
-          )
-      );
-      setFilteredSupplements(filtered);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      fetchSupplements(term);
+    }, 200); // 200ms debounce pour plus de réactivité
+  };
+
+  const fetchSupplements = async (term: string) => {
+    try {
+      const cacheKey = `search_${term.toLowerCase().trim()}`;
+      
+      // Vérifier le cache localStorage d'abord
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        const { data, timestamp } = JSON.parse(cached);
+        const isExpired = Date.now() - timestamp > 5 * 60 * 1000; // 5 minutes
+        
+        if (!isExpired) {
+          console.log(`Cache frontend hit pour: "${term}"`);
+          setFilteredSupplements(data.results || []);
+          return;
+        } else {
+          localStorage.removeItem(cacheKey);
+        }
+      }
+
+      // Sinon, faire l'appel API
+      const res = await fetch(`/api/search?query=${encodeURIComponent(term)}`);
+      if (!res.ok) throw new Error('Erreur API');
+      const data = await res.json();
+      
+      // Mettre en cache le résultat
+      localStorage.setItem(cacheKey, JSON.stringify({
+        data,
+        timestamp: Date.now()
+      }));
+      
+      setFilteredSupplements(data.results || []);
+    } catch (err) {
+      setFilteredSupplements([]);
     }
   };
 
-  // Utilisation de la variable searchTerm pour éviter l'erreur TS6133
-  console.log('Terme de recherche:', searchTerm);
+
+  // Initial fetch (optionnel, pour afficher des suggestions au chargement)
+  useEffect(() => {
+    fetchSupplements('');
+  }, []);
 
   return (
     <div className="px-4 py-6 sm:px-0">
@@ -100,7 +81,7 @@ const SupplementListPage = () => {
               <button 
                 onClick={() => {
                   setSearchTerm('');
-                  setFilteredSupplements(mockSupplements);
+                  fetchSupplements('');
                 }}
                 className="mt-4 text-accent hover:underline"
               >

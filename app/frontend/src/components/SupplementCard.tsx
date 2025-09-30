@@ -19,6 +19,19 @@ const SupplementCard: React.FC<SupplementCardProps> = ({ supplement }) => {
 
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+      {supplement.imageUrl && (
+        <div className="h-48 w-full overflow-hidden">
+          <img 
+            src={supplement.imageUrl} 
+            alt={supplement.name}
+            className="h-full w-full object-cover"
+            onError={(e) => {
+              // Masquer l'image si elle ne peut pas être chargée
+              e.currentTarget.style.display = 'none';
+            }}
+          />
+        </div>
+      )}
       <div className="p-6">
         <div className="flex justify-between items-start mb-4">
           <div>
