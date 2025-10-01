@@ -1,23 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SupplementCard from '../components/SupplementCard';
 import SearchBar from '../components/SearchBar';
-import FilterPanel from '../components/FilterPanel';
 import { Supplement } from '../lib/types';
 
 // Les données sont maintenant récupérées dynamiquement depuis le backend
 
 const SupplementListPage = () => {
-  const [searchTerm, setSearchTerm] = useState('');
   const [filteredSupplements, setFilteredSupplements] = useState<Supplement[]>([]);
-  const debounceRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleSearch = (term: string) => {
-    setSearchTerm(term);
-    if (debounceRef.current) clearTimeout(debounceRef.current);
-    debounceRef.current = setTimeout(() => {
-      fetchSupplements(term);
-    }, 200); // 200ms debounce pour plus de réactivité
+    // Appel direct à l'API sans debounce : on peut ajouter un debounce si nécessaire
+    fetchSupplements(term);
   };
 
   const fetchSupplements = async (term: string) => {
@@ -69,20 +63,13 @@ const SupplementListPage = () => {
         <SearchBar onSearch={handleSearch} />
       </div>
 
-      <div className="flex flex-col md:flex-row gap-8">
-        <div className="md:w-1/4">
-          <FilterPanel />
-        </div>
-        
-        <div className="md:w-3/4">
+      <div className="flex flex-col gap-8">
+        <div>
           {filteredSupplements.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-xl text-gray-600">Aucun complément trouvé</p>
               <button 
-                onClick={() => {
-                  setSearchTerm('');
-                  fetchSupplements('');
-                }}
+                onClick={() => fetchSupplements('')}
                 className="mt-4 text-accent hover:underline"
               >
                 Réinitialiser la recherche
@@ -90,7 +77,7 @@ const SupplementListPage = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredSupplements.map(supplement => (
+              {filteredSupplements.map((supplement: Supplement) => (
                 <Link to={`/supplements/${supplement.id}`} key={supplement.id}>
                   <SupplementCard supplement={supplement} />
                 </Link>
