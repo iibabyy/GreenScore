@@ -136,3 +136,12 @@ __pycache__/
 
 .env
 *.env
+
+# Python virtualenvs
+/.venv
+/**/.venv
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
