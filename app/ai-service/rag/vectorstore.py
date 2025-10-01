@@ -23,7 +23,18 @@ def create_vectorstore(docs, persist_path: str = None, batch_size: int = 1024):
     - Batches embedding and adding to FAISS to handle large datasets without OOM.
     - Optionally persists the index to disk under `persist_path`.
     """
+    # Count by declared metadata types when available
+    type_counts = {}
+    for d in docs:
+        try:
+            t = d.metadata.get('type')
+        except Exception:
+            t = None
+        type_counts[t or 'unknown'] = type_counts.get(t or 'unknown', 0) + 1
+
     print(f"📄 Création de la vectorstore à partir de {len(docs)} documents")
+    for k, v in type_counts.items():
+        print(f"   - {k}: {v}")
 
     chunk_size = getattr(settings, 'CHUNK_SIZE', 400)
     chunk_overlap = getattr(settings, 'CHUNK_OVERLAP', 50)
@@ -37,6 +48,13 @@ def create_vectorstore(docs, persist_path: str = None, batch_size: int = 1024):
 
     chunks = splitter.split_documents(docs)
     print(f"✂️ Documents découpés en {len(chunks)} chunks (chunk_size={chunk_size}, overlap={chunk_overlap})")
+
+    # Example chunk metadata preview (helpful for debugging multi-source inputs)
+    try:
+        sample_meta = [getattr(c, 'metadata', {}) for c in (chunks[:10] or [])]
+        print(f"   (exemple metadata chunks: {sample_meta[:3]})")
+    except Exception:
+        pass
 
     # Multilingual embeddings for French
     print("🔤 Chargement du modèle d'embeddings multilingue...")

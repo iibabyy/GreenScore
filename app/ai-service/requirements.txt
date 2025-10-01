@@ -8,3 +8,7 @@ langchain>=0.0.350
 langchain-huggingface
 transformers>=4.30.0
 torch>=2.0.0
+beautifulsoup4
+requests
+pyyaml
+playwright

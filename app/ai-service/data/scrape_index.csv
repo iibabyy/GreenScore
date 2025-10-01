@@ -1,0 +1,4 @@
+id,url,local_path,status,notes
+carboncloud,https://apps.carboncloud.com/climatehub,./data/web/https___apps_carboncloud_com_climatehub_ac59de86c4.txt,ok,html
+eaternity,http://www.eaternity.org/foodprint/database,./data/web/http___www_eaternity_org_foodprint_datab_bb40fed43a.txt,ok,html
+nestle_reports,https://www.nestle.com,./data/nestle_reports.blocked,blocked,robots.txt
