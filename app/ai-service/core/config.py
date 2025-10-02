@@ -16,9 +16,9 @@ class Settings:
     PROCESSED_DIR: str = os.getenv("PROCESSED_DIR", "./data/processed")
     FAISS_DIR: str = os.getenv("FAISS_DIR", "./data/faiss")
     SCRAPE_INDEX: str = os.getenv("SCRAPE_INDEX", "./data/scrape_index.csv")
-    CHUNK_SIZE: int = int(os.getenv("CHUNK_SIZE", "400"))
-    CHUNK_OVERLAP: int = int(os.getenv("CHUNK_OVERLAP", "50"))
-    NUM_RETRIEVAL_DOCS: int = int(os.getenv("NUM_RETRIEVAL_DOCS", "3"))
+    CHUNK_SIZE: int = int(os.getenv("CHUNK_SIZE", "1000"))
+    CHUNK_OVERLAP: int = int(os.getenv("CHUNK_OVERLAP", "200"))
+    NUM_RETRIEVAL_DOCS: int = int(os.getenv("NUM_RETRIEVAL_DOCS", "6"))
     
     # Configuration embeddings
     EMBEDDING_MODEL: str = os.getenv("EMBEDDING_MODEL", "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2")
@@ -27,7 +27,8 @@ class Settings:
     
     # Configuration LLM
     TEMPERATURE: float = float(os.getenv("TEMPERATURE", "0.1"))
-    MAX_TOKENS: int = int(os.getenv("MAX_TOKENS", "150"))
+    # Reduced to 1000 tokens since responses are typically around 1500 chars
+    MAX_TOKENS: int = int(os.getenv("MAX_TOKENS", "500"))
     
     # Debug
     DEBUG_MODE: bool = os.getenv("DEBUG_MODE", "true").lower() == "true"
@@ -45,6 +46,39 @@ if settings.DEBUG_MODE:
     print(f"   Chunks: {settings.CHUNK_SIZE} chars, overlap {settings.CHUNK_OVERLAP}")
     print(f"   Embeddings: {settings.EMBEDDING_MODEL}")
     print(f"   Température: {settings.TEMPERATURE}")
+    print(f"   Max tokens (LLM): {settings.MAX_TOKENS}")
+
+
+# If running inside Docker, avoid using localhost for service discovery — prefer the docker service name.
+def _running_in_docker() -> bool:
+    try:
+        # /.dockerenv is present in many Docker containers
+        if os.path.exists('/.dockerenv'):
+            return True
+        # Fallback: check cgroup for docker/kubernetes identifiers
+        with open('/proc/1/cgroup', 'rt') as f:
+            content = f.read()
+            if 'docker' in content or 'kubepods' in content:
+                return True
+    except Exception:
+        pass
+    return False
+
+
+# Auto-fix common misconfiguration: when running inside container and OLLAMA_HOST points to localhost,
+# switch to the docker service hostname `http://ollama:11434` which the compose file exposes.
+if _running_in_docker():
+    try:
+        ll = settings.OLLAMA_HOST.lower()
+        if 'localhost' in ll or ll.startswith('127.'):
+            old = settings.OLLAMA_HOST
+            settings.OLLAMA_HOST = os.getenv('OLLAMA_HOST', 'http://ollama:11434') or 'http://ollama:11434'
+            if settings.DEBUG_MODE:
+                print(f"🔁 Running in container: overriding OLLAMA_HOST {old} -> {settings.OLLAMA_HOST}")
+    except Exception:
+        # best-effort, don't crash on startup
+        if settings.DEBUG_MODE:
+            print("⚠️ Could not auto-fix OLLAMA_HOST for container environment")
 
 # Ensure data directories exist (safe to call on startup)
 _data_dirs = [

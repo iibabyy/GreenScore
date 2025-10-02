@@ -145,3 +145,16 @@ env/
 ENV/
 env.bak/
 venv.bak/
+
+# macOS metadata
+.DS_Store
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Pytest cache
+.pytest_cache/
+
+# Local FAISS test index (keep main_index)
+app/ai-service/data/faiss/test_index/

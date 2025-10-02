@@ -33,6 +33,7 @@ services:
       - AI_SERVICE_URL=http://ai-service:5000/api/evaluate
     depends_on:
       - database
+      - ai-service
     networks:
       - greenscore_network
 
@@ -81,11 +82,15 @@ services:
     ports:
       - "5001:5000"
     environment:
-      - OLLAMA_HOST=http://ollama:11434   # 🔥 on pointe sur le service docker "ollama"
+      - OLLAMA_HOST=http://ollama:11434
       - MODEL_NAME=phi3:mini
       - PDF_DIR=./data
+      - PYTHONDONTWRITEBYTECODE=1  # Évite les fichiers .pyc
+      - PYTHONUNBUFFERED=1        # Output sans buffer
     volumes:
-      - ./app/ai-service/data:/app/data  # mount PDFs
+      - ./app/ai-service:/app     # Mount tout le code source pour le dev
+      - /app/__pycache__          # Ignore __pycache__
+      - /app/**/__pycache__       # Ignore les __pycache__ dans les sous-dossiers
     depends_on:
       - ollama
     deploy:

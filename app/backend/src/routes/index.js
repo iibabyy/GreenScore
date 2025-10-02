@@ -25,14 +25,22 @@ router.post('/evaluate-product', async (req, res) => {
       return res.status(400).json({ error: 'Missing product or product.description' });
     }
 
-    // URL de l'AI service - en dev via proxy/docker-compose
-    const aiUrl = process.env.AI_SERVICE_URL || 'http://localhost:5000/api/evaluate';
+    if (!process.env.AI_SERVICE_URL) {
+      throw new Error('AI_SERVICE_URL environment variable is not defined');
+    }
 
-    // FastAPI endpoint expects product_description as a query parameter (Query(...)).
-    const urlWithQuery = `${aiUrl}?product_description=${encodeURIComponent(product.description)}`;
+    const aiUrl = process.env.AI_SERVICE_URL;
+    console.log('Calling AI service at:', aiUrl);
 
-    const aiResponse = await fetch(urlWithQuery, {
-      method: 'POST'
+    // FastAPI endpoint expects product_description in the request body
+    const aiResponse = await fetch(aiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        product_description: product.description
+      })
     });
 
     if (!aiResponse.ok) {

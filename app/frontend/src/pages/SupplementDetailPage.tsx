@@ -11,6 +11,7 @@ const SupplementDetailPage = () => {
   const [supplement, setSupplement] = useState<Supplement | null>(null);
   const [loading, setLoading] = useState(false);
   const [mrGreenAnswer, setMrGreenAnswer] = useState<string | null>(null);
+  const [evaluationLength, setEvaluationLength] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   // Utilisation de la variable id pour éviter l'erreur TS6133
@@ -83,6 +84,7 @@ const SupplementDetailPage = () => {
               const evalData = await evalRes.json();
               const text = evalData.evaluation || evalData.answer || JSON.stringify(evalData);
               setMrGreenAnswer(String(text));
+              setEvaluationLength(evalData?.debug_info?.evaluation_length ?? null);
             }
           } catch (e) {
             console.error('Erreur appel evaluate-product:', e);
@@ -136,81 +138,6 @@ const SupplementDetailPage = () => {
 
   return (
     <div className="px-4 py-6 sm:px-0">
-      <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">{supplement.name}</h1>
-            <p className="text-xl text-gray-600">{supplement.brand}</p>
-          </div>
-          <button 
-            onClick={toggleFavorite}
-            className={`mt-4 md:mt-0 px-4 py-2 rounded-full flex items-center ${
-              isFavorite 
-                ? 'bg-red-100 text-red-600 hover:bg-red-200' 
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-            }`}
-          >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-5 w-5 mr-1" 
-              viewBox="0 0 20 20" 
-              fill={isFavorite ? "currentColor" : "none"} 
-              stroke="currentColor"
-            >
-              <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-            </svg>
-            {isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
-          </button>
-        </div>
-
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-2">Description</h2>
-          <p className="text-gray-700">{supplement.description}</p>
-        </div>
-
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-2">Ingrédients</h2>
-          <ul className="list-disc pl-5 text-gray-700">
-            {supplement.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-2">Dosage recommandé</h2>
-          <p className="text-gray-700">{supplement.dosage}</p>
-        </div>
-
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-4">Évaluation environnementale</h2>
-          <div className="flex flex-col md:flex-row gap-8">
-            <div className="md:w-1/3">
-              <RatingDisplay 
-                score={supplement.environmentalScore} 
-                letter={supplement.letterScore} 
-              />
-            </div>
-            <div className="md:w-2/3">
-              <EnvironmentalMetrics supplement={supplement} />
-            </div>
-          </div>
-        </div>
-
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-2">Certifications</h2>
-          <div className="flex flex-wrap gap-2">
-            {supplement.certifications.map((cert, index) => (
-              <span 
-                key={index} 
-                className="bg-accent text-gray-800 px-3 py-1 rounded-full text-sm"
-              >
-                {cert}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
       {/* Mr Green response card */}
       <div>
         <MrGreenCard
@@ -234,6 +161,7 @@ const SupplementDetailPage = () => {
                 } else {
                   const data = await res.json();
                   setMrGreenAnswer(data.evaluation || data.answer || JSON.stringify(data));
+                  setEvaluationLength(data?.debug_info?.evaluation_length ?? null);
                 }
               } catch (e) {
                 setError('Erreur réseau lors du retry');

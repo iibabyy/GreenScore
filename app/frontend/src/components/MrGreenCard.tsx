@@ -8,7 +8,13 @@ interface MrGreenCardProps {
   error?: string | null;
 }
 
+import { useState } from 'react';
+
 const MrGreenCard: React.FC<MrGreenCardProps> = ({ text, loading, onRetry, error }) => {
+  const [expanded, setExpanded] = useState(false);
+  const LONG_THRESHOLD = 1000; // chars; heuristic to show "Afficher plus"
+  const isLong = !!text && text.length > LONG_THRESHOLD;
+
   return (
     <div className="bg-white rounded-lg shadow-md p-6 flex gap-6">
       <div className="flex-shrink-0">
@@ -35,9 +41,27 @@ const MrGreenCard: React.FC<MrGreenCardProps> = ({ text, loading, onRetry, error
               <div className="h-4 bg-gray-200 rounded w-2/3" />
             </div>
           ) : text ? (
-            <div className="prose text-gray-800">
-              <ReactMarkdown>{text}</ReactMarkdown>
-            </div>
+            <>
+              {/* eslint-disable-next-line no-console */}
+              {console.log('MrGreenCard evaluation data:', text)}
+              <div className="prose text-gray-800">
+                {/* make long answers scrollable inside the card; allow expand */}
+                <div className={`${expanded ? '' : 'max-h-64 overflow-auto pr-2'}`} aria-label="Mr Green réponse">
+                  <ReactMarkdown>{text}</ReactMarkdown>
+                </div>
+                {isLong && (
+                  <div className="mt-2">
+                    <button
+                      onClick={() => setExpanded(!expanded)}
+                      className="text-sm text-blue-600 hover:underline"
+                      aria-expanded={expanded}
+                    >
+                      {expanded ? 'Réduire' : 'Afficher plus'}
+                    </button>
+                  </div>
+                )}
+              </div>
+            </>
           ) : (
             <p className="text-gray-500">Aucune évaluation disponible.</p>
           )}
