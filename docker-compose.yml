@@ -31,6 +31,10 @@ services:
       - DATABASE_URL=postgresql://greenscore_user:greenscore_password@database:5432/greenscore_db
       - NODE_ENV=development
       - AI_SERVICE_URL=http://ai-service:5000/api/evaluate
+    volumes:
+      - ./app/backend:/app          # Monte ton code local
+      - /app/node_modules           # Préserve node_modules du container
+    command: npm run dev            # Nodemon pour reload automatique
     depends_on:
       - database
       - ai-service
@@ -47,11 +51,11 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - REACT_APP_API_URL=http://localhost:3001
-      - VITE_API_URL=http://backend:3001
+      - VITE_API_URL=http://backend:3001  # ✅ utilise le service backend, pas localhost
     volumes:
       - ./app/frontend:/app
       - /app/node_modules
+    command: npm run dev
     depends_on:
       - backend
     networks:
@@ -63,14 +67,13 @@ services:
     container_name: ollama_service
     restart: always
     ports:
-      - "11435:11434"
+      - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
     networks:
       - greenscore_network
     # Assure-toi d'avoir téléchargé un modèle compatible avec Ollama
-    # par exemple : ollama pull phi3:mini
-  
+    # exemple : docker exec -it ollama_service ollama pull phi3:mini
 
   # Service IA Python (FastAPI + RAG)
   ai-service:
@@ -85,20 +88,14 @@ services:
       - OLLAMA_HOST=http://ollama:11434
       - MODEL_NAME=phi3:mini
       - PDF_DIR=./data
-      - PYTHONDONTWRITEBYTECODE=1  # Évite les fichiers .pyc
-      - PYTHONUNBUFFERED=1        # Output sans buffer
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
     volumes:
-      - ./app/ai-service:/app     # Mount tout le code source pour le dev
-      - /app/__pycache__          # Ignore __pycache__
-      - /app/**/__pycache__       # Ignore les __pycache__ dans les sous-dossiers
+      - ./app/ai-service:/app       # Monte ton code local
+      - /app/__pycache__            # Ignore cache Python
+    command: uvicorn app:app --host 0.0.0.0 --port 5000 --reload
     depends_on:
       - ollama
-    deploy:
-      resources:
-        limits:
-          memory: 2G
-        reservations:
-          memory: 1G
     networks:
       - greenscore_network
 

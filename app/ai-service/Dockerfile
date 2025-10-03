@@ -12,8 +12,7 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copier le code
-COPY . .
+# Pas de COPY . . ici → le code sera monté par docker-compose
 
 EXPOSE 5000
 

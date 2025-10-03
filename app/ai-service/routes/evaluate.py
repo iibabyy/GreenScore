@@ -1,6 +1,9 @@
 # ===== 5. evaluate.py (modifié avec debug) =====
 from fastapi import APIRouter, Query, HTTPException
 from fastapi.responses import StreamingResponse
+from langchain_community.llms import Ollama
+from langchain.callbacks.manager import CallbackManager
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 import asyncio
 import json
 from rag.rag_chain import build_rag_chain
@@ -9,6 +12,8 @@ import time
 import traceback
 from core.ollama_client import ensure_ollama_warm, get_llm
 from core.config import settings
+import ollama
+import os
 
 MAX_EVAL_RETRIES = 3
 RETRY_BACKOFF_BASE = 0.75
@@ -22,8 +27,14 @@ async def generate_streaming_response(product_description: str, debug: bool = Fa
     print("⚡ Démarrage du processus d'évaluation...")
     
     print("🔄 Initialisation LLM...")
+    print("valeur dans l'os env OLLAMA_HOST:", os.getenv("OLLAMA_HOST", "http://localhost:11434"))
     start_init = time.time()
-    llm = get_llm() if not debug else None
+    llm = Ollama(
+        model="phi3:mini",
+        base_url=os.getenv("OLLAMA_HOST", "http://localhost:11434"),
+        callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]),
+        temperature=0.3,
+    )
     init_time = time.time() - start_init
     print(f"✅ LLM initialisé en {init_time:.1f}s")
     
@@ -31,11 +42,21 @@ async def generate_streaming_response(product_description: str, debug: bool = Fa
     qa_chain = build_rag_chain(vectordb, llm=llm, k=settings.NUM_RETRIEVAL_DOCS, debug=debug)
     print("✅ Chaîne RAG construite")
 
-    query = (
-        "Tu es un expert en analyse environnementale qui doit évaluer l'impact d'un produit. "
-        "Commence par une courte introduction narrative qui résume ton analyse de manière conversationnelle. "
-        "Ensuite, fournis les détails techniques dans un format structuré.\n\n"
-        f"Produit à évaluer: {product_description}"
+query = (f"""
+    Tu es un expert en analyse environnementale, mais tu t'adresses à quelqu'un de curieux, pas à un spécialiste. 
+    Ton objectif est d'expliquer de manière claire, engageante et naturelle l'impact écologique du produit suivant : {product_description}.
+
+    Règles pour rédiger le texte :  
+
+    1. Écris de façon **narrative et fluide**, comme si tu racontais une histoire ou expliquais à un ami curieux.  
+    2. Intègre **tous les scores et données** dans le récit, sans créer de blocs séparés ou de listes.  
+    - Par exemple, parle du score global, de l’empreinte carbone, de la consommation d’eau et de l’impact sur les sols **dans des phrases naturelles**.  
+    3. Décris chaque étape du cycle du produit (production, transport, emballage, distribution) **dans le texte**, avec des notes (0-5) **intégrées aux phrases**.  
+    - Exemple : "La production consomme pas mal d’eau, surtout à cause du lait utilisé. Score : 2/5."  
+    4. Ajoute ensuite des recommandations concrètes, sous forme de **conseils simples et pratiques**, intégrés dans le texte.  
+    5. ⚠️ Utilise uniquement les données disponibles. Si une donnée n’existe pas, dis "Non disponible".  
+    6. ⚠️ Évite le ton académique ou juridique : le texte doit se lire comme une discussion naturelle, engageante et accessible.  
+    """
     )
     print(f"🔍 Query construite: {query[:150]}...")
 

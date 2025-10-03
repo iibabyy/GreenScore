@@ -18,6 +18,11 @@ help:
 	@echo "  make help         - Afficher cette aide"
 
 
+# tout premier lancement
+.PHONY: init
+init: start pull-model
+	@echo "Attente de 10 secondes pour que le service Ollama soit prêt..."
+	@sleep 10
 
 #installer le modele ollama
 .PHONY: pull-model
