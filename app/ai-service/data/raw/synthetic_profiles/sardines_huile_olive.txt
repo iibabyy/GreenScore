@@ -1,0 +1,25 @@
+Données SYNTHÉTIQUES (fictives) – test RAG – ne pas utiliser comme référence réelle.
+
+Profil environnemental – Sardines entières à l’huile d’olive vierge extra
+Cycle de vie (synthèse):
+1. Pêche pélagique (filets tournants) – intensité carburant modérée, principal poste d’émission (~46%).
+2. Transformation côtière : éviscération manuelle, cuisson rapide vapeur / légère friture, ajout d’huile d’olive pressée à froid.
+3. Mise en conserve : stérilisation thermique contrôlée (optimisation énergie), remplissage boîte acier étamé recyclabilité élevée (>90%).
+4. Transport : maritime (lot agrégé) + segment routier réfrigéré court (faible part).
+5. Fin de vie : boîte largement recyclée dans filière métal, huile résiduelle à évacuer correctement.
+
+Indicateurs (par 100 g égoutté):
+ - Empreinte carbone: ~310 g CO2e
+ - Eau douce mobilisée: 14 L
+ - Énergie transformation: 0.85 kWh/kg
+ - Emballage primaire: 18 g acier (92% taux de recyclage)
+ - Oméga-3 totaux: 1450 mg
+
+Points d’amélioration:
+ - Optimiser carburant navires (pilote vitesse éco)
+ - Augmenter part d’acier recyclé entrant
+ - Communication recyclage claire au consommateur
+
+Recommandations consommation:
+ - Égoutter et réutiliser partiellement l’huile (cuisine) pour limiter gaspillage
+ - Recycler systématiquement la boîte rincée

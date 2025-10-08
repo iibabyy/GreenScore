@@ -1,0 +1,8 @@
+{
+  "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "chunk_size": 1000,
+  "chunk_overlap": 200,
+  "doc_count": 5,
+  "chunk_count": 7,
+  "signature": "3c6d382ed324b9a6"
+}

@@ -1,0 +1,23 @@
+Données SYNTHÉTIQUES (fictives) – test RAG – ne pas utiliser comme référence réelle.
+
+Profil environnemental – Barre énergétique avoine & cacao
+Chaîne de valeur:
+1. Avoine locale (basse intensité GES) + cacao import (part majoritaire de l’impact ingrédients).
+2. Mélange humide / extrusion basse température.
+3. Refroidissement, découpe, enrobage léger.
+4. Emballage film composite (PE/PET) faible recyclabilité (18%).
+5. Transport routier sec – impact modéré.
+
+Indicateurs (barre 50 g):
+ - Empreinte carbone: ~110 g CO2e
+ - Eau totale: 42 L
+ - Energie transformation: 1.2 kWh/kg
+
+Répartition: Ingrédients 68%, transformation 14%, emballage 10%, transport 8%.
+
+Axes d’amélioration:
+ - Passer à mono-matériau recyclable
+ - Augmenter cacao certifié bas carbone
+ - Valoriser co-produits avoine
+
+Conseil: stocker au sec, recycler carton secondaire si présent.

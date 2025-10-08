@@ -27,8 +27,9 @@ class Settings:
     
     # Configuration LLM
     TEMPERATURE: float = float(os.getenv("TEMPERATURE", "0.1"))
-    # Reduced to 1000 tokens since responses are typically around 1500 chars
-    MAX_TOKENS: int = int(os.getenv("MAX_TOKENS", "400"))
+    # Séparer fenêtre de contexte et longueur de génération
+    MAX_CONTEXT_TOKENS: int = int(os.getenv("MAX_CONTEXT_TOKENS", "4096"))
+    MAX_GENERATION_TOKENS: int = int(os.getenv("MAX_GENERATION_TOKENS", os.getenv("MAX_TOKENS", "220")))
     
     # Debug
     DEBUG_MODE: bool = os.getenv("DEBUG_MODE", "true").lower() == "true"
@@ -46,7 +47,8 @@ if settings.DEBUG_MODE:
     print(f"   Chunks: {settings.CHUNK_SIZE} chars, overlap {settings.CHUNK_OVERLAP}")
     print(f"   Embeddings: {settings.EMBEDDING_MODEL}")
     print(f"   Température: {settings.TEMPERATURE}")
-    print(f"   Max tokens (LLM): {settings.MAX_TOKENS}")
+    print(f"   Context tokens (LLM): {settings.MAX_CONTEXT_TOKENS}")
+    print(f"   Generation tokens (LLM): {settings.MAX_GENERATION_TOKENS}")
 
 
 # If running inside Docker, avoid using localhost for service discovery — prefer the docker service name.

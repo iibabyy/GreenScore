@@ -119,14 +119,11 @@ def get_llm():
         "base_url": settings.OLLAMA_HOST,
         "temperature": settings.TEMPERATURE,
         "top_p": 0.9,
-        "repeat_penalty": 1.1,
-        "num_predict": settings.MAX_TOKENS,
-        "num_ctx": settings.MAX_TOKENS,  # Ensure context window is large enough
+        "repeat_penalty": 1.05,
+        "num_predict": settings.MAX_GENERATION_TOKENS,
+        "num_ctx": settings.MAX_CONTEXT_TOKENS,
     }
-    advanced_kwargs = {
-        # Some wrappers may accept these; we'll try to add them after instantiation
-        "max_tokens": settings.MAX_TOKENS,
-    }
+    advanced_kwargs = {}
 
     llm = None
     try:
@@ -148,17 +145,11 @@ def get_llm():
         pass
 
     # Attempt to apply advanced kwargs via attribute setting if supported
-    for k, v in advanced_kwargs.items():
-        if not hasattr(llm, k):
-            continue
-        try:
-            setattr(llm, k, v)
-        except Exception:
-            pass
+    # (Plus d'advanced kwargs pour éviter warnings d'options invalides)
 
     if settings.DEBUG_MODE:
         try:
-            print(f"🧪 LLM final base_url={getattr(llm,'base_url',None)} model={getattr(llm,'model',None)} num_predict={getattr(llm,'num_predict',None)}")
+            print(f"🧪 LLM final base_url={getattr(llm,'base_url',None)} model={getattr(llm,'model',None)} num_predict={getattr(llm,'num_predict',None)} num_ctx={getattr(llm,'num_ctx',None)}")
         except Exception:
             pass
 

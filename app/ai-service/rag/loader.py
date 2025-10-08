@@ -128,13 +128,27 @@ def load_html(path: str) -> List[Document]:
 
 
 # registry
+def _load_text_with_tags(path: str) -> List[Document]:
+    try:
+        content = open(path, 'r', encoding='utf-8').read()
+    except Exception as e:
+        print(f"Error loading TXT {path}: {e}")
+        return []
+    fname = os.path.basename(path)
+    meta = {"source": fname, "type": "text"}
+    if 'synthetic_profiles' in path:
+        # derive product_id from filename before extension
+        product_id = os.path.splitext(fname)[0]
+        meta.update({"synthetic": True, "product_id": product_id})
+    return [Document(page_content=content, metadata=meta)]
+
 _LOADERS: Dict[str, Callable[[str], List[Document]]] = {
     '.pdf': load_pdf,
     '.csv': load_csv,
     '.json': load_json,
     '.html': load_html,
     '.htm': load_html,
-    '.txt': lambda p: [Document(page_content=open(p, 'r', encoding='utf-8').read(), metadata={"source": os.path.basename(p), "type": "text"})]
+    '.txt': _load_text_with_tags
 }
 
 
