@@ -2,6 +2,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from core.config import settings
 import math
 import os
+import json
+import hashlib
 try:
     # Prefer community/huggingface packages when available
     from langchain_huggingface import HuggingFaceEmbeddings
@@ -107,6 +109,19 @@ def create_vectorstore(docs, persist_path: str = None, batch_size: int = 1024):
         try:
             print(f"💾 Sauvegarde de l'index FAISS dans {index_path}...")
             vectordb.save_local(index_path)
+            # Écriture métadonnées index
+            meta = {
+                "embedding_model": getattr(settings, 'EMBEDDING_MODEL', ''),
+                "chunk_size": chunk_size,
+                "chunk_overlap": chunk_overlap,
+                "doc_count": len(docs),
+                "chunk_count": len(chunks),
+            }
+            # Hash simple du nombre de chunks + nom modèle (signature rapide)
+            raw_sig = f"{meta['embedding_model']}:{meta['chunk_count']}:{meta['chunk_size']}".encode()
+            meta['signature'] = hashlib.sha256(raw_sig).hexdigest()[:16]
+            with open(os.path.join(persist_path, 'embedding_meta.json'), 'w', encoding='utf-8') as fh:
+                json.dump(meta, fh, ensure_ascii=False, indent=2)
         except Exception as e:
             print(f"Erreur lors de la sauvegarde locale du vectordb: {e}")
 

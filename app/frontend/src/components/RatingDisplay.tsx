@@ -1,15 +1,7 @@
+import { scoreStyle } from '../lib/scoreStyles';
+
 const RatingDisplay = ({ score, letter }: { score: number; letter: string }) => {
-  // Déterminer la couleur en fonction de la note
-  const getScoreColor = (letter: string) => {
-    switch (letter) {
-      case 'A': return 'bg-green-100 text-green-800 border-green-200';
-      case 'B': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'C': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'D': return 'bg-orange-100 text-orange-800 border-orange-200';
-      case 'E': return 'bg-red-100 text-red-800 border-red-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
-    }
-  };
+  const style = scoreStyle(letter);
 
   // Calculer le pourcentage pour le cercle
   const percentage = score;
@@ -34,14 +26,14 @@ const RatingDisplay = ({ score, letter }: { score: number; letter: string }) => 
         
         {/* Contenu du cercle */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className={`text-4xl font-bold ${getScoreColor(letter).split(' ')[1]}`}>
+          <span className={`text-4xl font-bold ${style.primary}`}>
             {letter}
           </span>
           <span className="text-lg text-gray-600">{score}/100</span>
         </div>
       </div>
       
-      <div className={`px-6 py-2 rounded-full border ${getScoreColor(letter)} text-lg font-semibold`}>
+  <div className={`px-6 py-2 rounded-full border ${style.badge} text-lg font-semibold`}>
         {letter === 'A' && 'Excellent impact environnemental'}
         {letter === 'B' && 'Bon impact'}
         {letter === 'C' && 'Impact modéré'}

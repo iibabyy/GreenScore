@@ -1,5 +1,6 @@
 import threading
 import os
+import json
 from typing import Optional
 from core.config import settings
 from .loader import load_documents
@@ -44,6 +45,7 @@ class VectorStoreManager:
                 if not self._initialized:
                     # If a persisted FAISS index exists, load it (preferred)
                     persist_dir = os.path.join(settings.FAISS_DIR, 'main_index', 'faiss_index')
+                    meta_path = os.path.join(settings.FAISS_DIR, 'main_index', 'embedding_meta.json')
                     if os.path.isdir(persist_dir):
                         print(f"Chargement de l'index FAISS persistant depuis: {persist_dir}")
                         try:
@@ -55,6 +57,16 @@ class VectorStoreManager:
                             )
                             # allow_dangerous_deserialization True because index is local/trusted
                             self._vectordb = FAISS.load_local(persist_dir, embeddings, allow_dangerous_deserialization=True)
+                            # Vérification meta si présent
+                            if os.path.isfile(meta_path):
+                                try:
+                                    with open(meta_path, 'r', encoding='utf-8') as fh:
+                                        meta = json.load(fh)
+                                    expected = getattr(settings, 'EMBEDDING_MODEL', '')
+                                    if meta.get('embedding_model') != expected:
+                                        print(f"⚠️ Mismatch embedding_model meta={meta.get('embedding_model')} != runtime={expected}")
+                                except Exception as me:
+                                    print(f"⚠️ Lecture meta échouée: {me}")
                             print("Index FAISS chargé avec succès depuis le disque.")
                             self._initialized = True
                             return self._vectordb

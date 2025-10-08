@@ -2,12 +2,18 @@ from langchain.chains import RetrievalQA
 from langchain.prompts import PromptTemplate
 from core.ollama_client import get_llm
 from typing import Any, Dict
+import os
 
+PROMPTS_DIR = os.path.join(os.path.dirname(__file__), 'prompts')
 
-from langchain.chains import RetrievalQA
-from langchain.prompts import PromptTemplate
-from core.ollama_client import get_llm
-from typing import Any, Dict
+def _load_prompt(name: str = 'analysis_v1.txt') -> str:
+    path = os.path.join(PROMPTS_DIR, name)
+    try:
+        with open(path, 'r', encoding='utf-8') as fh:
+            return fh.read()
+    except Exception as e:
+        # Fallback minimal prompt
+        return f"Réponds à la question en utilisant uniquement le contexte.\nContexte: {{context}}\nQuestion: {{question}}\n(Erreur chargement prompt: {e})"
 
 
 def build_rag_chain(vectordb, llm=None, k: int = 8, debug: bool = False):
@@ -41,37 +47,8 @@ def build_rag_chain(vectordb, llm=None, k: int = 8, debug: bool = False):
     retriever = vectordb.as_retriever(search_type="similarity", search_kwargs={"k": k})
     print(f"🔍 Retriever configuré pour récupérer {k} documents")
 
-    template = """Tu es un expert en analyse environnementale. Utilise les données du contexte pour répondre de manière naturelle et informative.
-
-Commence par un bref résumé de ton analyse qui explique les points importants de manière simple.
-
-Ensuite, fournis les détails techniques dans ce format:
-
-1. IDENTIFICATION
-- Nom exact: [nom dans les données]
-- Catégorie: [catégorie dans les données]
-
-2. SCORES ENVIRONNEMENTAUX
-- Score EF: [valeur exacte]
-- CO2: [valeur exacte] kg CO2/kg
-- Eau: [valeur exacte] m3/kg
-
-3. ANALYSE PAR ÉTAPE
-- Production: [valeur] - [explication simple]
-- Transport: [valeur] - [explication simple] 
-- Emballage: [valeur] - [explication simple]
-- Distribution: [valeur] - [explication simple]
-
-4. RECOMMANDATIONS
-[2-3 suggestions concrètes basées sur les données]
-
-IMPORTANT: Utilise uniquement les valeurs trouvées dans le contexte. Si une donnée n'est pas disponible, indique "Non disponible".
-
-Contexte:
-{context}
-
-Question: {question}
-"""
+    # Chargement du template externe (externalisé Sprint 1)
+    template = _load_prompt('analysis_v1.txt')
 
     qa_prompt = PromptTemplate.from_template(template)
     print("📝 Template amélioré configuré")

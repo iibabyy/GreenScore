@@ -1,5 +1,5 @@
 # ===== 4. ask.py (modifié avec debug complet) =====
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, HTTPException
 from core.ollama_client import get_llm
 from rag.rag_chain import build_rag_chain
 from rag.vectorstore_manager import VectorStoreManager
@@ -56,19 +56,23 @@ def debug_retrieval(question: str = Query(..., description="Question pour tester
         ]
     }
 
+MAX_QUESTION_LEN = 500
+
 @router.post("/ask")
 def ask(question: str = Query(..., description="Question à poser au modèle")):
+    if len(question) > MAX_QUESTION_LEN:
+        raise HTTPException(status_code=400, detail=f"Question trop longue (>{MAX_QUESTION_LEN} caractères)")
     print(f"\n🤔 Question reçue: {question}")
     
-    # 1. Construction de la chaîne RAG
-    llm = get_llm()
-    qa_chain = build_rag_chain(vectordb, llm=llm, k=3)
-    
-    # 2. Récupération des documents (pour debug)
+    # 1. Récupération des documents (une seule fois)
     retriever = vectordb.as_retriever(search_type="similarity", search_kwargs={"k": 3})
     start_retrieval = time.time()
     retrieved_docs = retriever.get_relevant_documents(question)
     retrieval_time = time.time() - start_retrieval
+
+    # 2. Construction de la chaîne RAG (LLM + prompt) après avoir les docs
+    llm = get_llm()
+    qa_chain = build_rag_chain(vectordb, llm=llm, k=3)
     
     print(f"🔍 Récupération terminée en {retrieval_time:.2f}s")
     print(f"📚 {len(retrieved_docs)} documents récupérés:")
@@ -80,11 +84,12 @@ def ask(question: str = Query(..., description="Question à poser au modèle")):
     # 3. Génération de la réponse
     print(f"🤖 Génération de la réponse avec {llm.model}...")
     start_generation = time.time()
+    # Invocation standard
     result = qa_chain.invoke({"query": question})
     generation_time = time.time() - start_generation
-    
+
     answer = result.get("result", "")
-    source_docs = result.get("source_documents", [])
+    source_docs = result.get("source_documents", []) or retrieved_docs
     
     print(f"⏱️ Génération terminée en {generation_time:.2f}s")
     print(f"📝 Réponse générée ({len(answer)} caractères):")

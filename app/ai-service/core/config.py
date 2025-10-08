@@ -28,7 +28,7 @@ class Settings:
     # Configuration LLM
     TEMPERATURE: float = float(os.getenv("TEMPERATURE", "0.1"))
     # Reduced to 1000 tokens since responses are typically around 1500 chars
-    MAX_TOKENS: int = int(os.getenv("MAX_TOKENS", "500"))
+    MAX_TOKENS: int = int(os.getenv("MAX_TOKENS", "400"))
     
     # Debug
     DEBUG_MODE: bool = os.getenv("DEBUG_MODE", "true").lower() == "true"
