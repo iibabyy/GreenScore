@@ -67,6 +67,8 @@ def reindex(background_tasks: BackgroundTasks, sync: bool = Query(False, descrip
 
 @router.post('/search')
 def search(req: SearchRequest):
+    if req.k < 1 or req.k > 10:
+        raise HTTPException(status_code=400, detail='k must be between 1 and 10')
     vectordb = vsm.get_vectordb()
     if not vectordb:
         raise HTTPException(status_code=500, detail='Vectorstore not available')

@@ -102,7 +102,19 @@ def load_html(path: str) -> List[Document]:
                     txt = el.get_text(separator=' ', strip=True)
                     if txt:
                         texts.append(txt)
-                content = '\n\n'.join(texts)
+                # Supprimer doublons consécutifs et lignes très courtes répétitives
+                filtered = []
+                last = None
+                for t in texts:
+                    if t == last:
+                        continue
+                    if len(t) < 3 and any(ch.isalpha() for ch in t) is False:
+                        continue
+                    filtered.append(t)
+                    last = t
+                content = '\n\n'.join(filtered)
+                # Collapse whitespaces globaux
+                content = '\n'.join([' '.join(line.split()) for line in content.splitlines()])
             else:
                 # fallback: naive remove tags
                 import re
