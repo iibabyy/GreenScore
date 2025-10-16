@@ -1,0 +1,97 @@
+{
+  "_disclaimer": "DONNEES SYNTHETIQUES FICTIVES POUR TEST RAG — NE PAS UTILISER COMME REFERENCE SCIENTIFIQUE",
+  "products": [
+    {
+      "id": "sardines_huile_olive",
+      "name": "Sardines entières à l’huile d’olive vierge extra",
+      "category": "poisson conserve",
+      "functional_unit": "100 g égoutté",
+      "carbon_footprint_g_co2e": 310,
+      "water_use_l": 14,
+      "energy_processing_kwh_per_kg": 0.85,
+      "packaging": {"primary": "Boîte acier étamé", "weight_g": 18, "recyclability": 0.92},
+      "transport_mode": "maritime + routier réfrigéré court segment",
+      "sourcing_region": "Atlantique Est (zone FAO fictive)",
+      "omega3_mg_per_100g": 1450,
+      "protein_g_per_100g": 21,
+      "impact_breakdown_percent": {"pêche": 46, "transformation": 24, "emballage": 18, "transport": 12},
+      "improvement_recommendations": [
+        "Optimiser carburant navires (pêche pélagique efficiente)",
+        "Augmenter taux d'acier recyclé dans la boîte",
+        "Promouvoir recyclage via pictogramme clair"
+      ]
+    },
+    {
+      "id": "pizza_margherita_sourdough",
+      "name": "Pizza Margherita levain (sourdough)",
+      "category": "plat préparé",
+      "functional_unit": "1 portion 300 g",
+      "carbon_footprint_g_co2e": 820,
+      "water_use_l": 180,
+      "energy_processing_kwh_per_kg": 1.9,
+      "packaging": {"primary": "Boîte carton fibre recyclée", "weight_g": 32, "recyclability": 0.97},
+      "transport_mode": "surgelee - chaîne du froid",
+      "sourcing_region": "Ingrédients UE (tomate, lait, blé)",
+      "impact_breakdown_percent": {"ingrédients": 55, "cuisson_usine": 17, "chaîne_froid": 15, "emballage": 8, "distribution": 5},
+      "improvement_recommendations": [
+        "Réduire épaisseur carton ou ajouter calage recyclé",
+        "Optimiser fermentation pour limiter pertes de pâte",
+        "Source mozzarella à plus faible intensité méthane"
+      ]
+    },
+    {
+      "id": "barre_energie_avoine_cacao",
+      "name": "Barre énergétique avoine & cacao",
+      "category": "snack",
+      "functional_unit": "Barre 50 g",
+      "carbon_footprint_g_co2e": 110,
+      "water_use_l": 42,
+      "energy_processing_kwh_per_kg": 1.2,
+      "packaging": {"primary": "Sachet composite PE/PET", "weight_g": 2.4, "recyclability": 0.18},
+      "transport_mode": "routier sec",
+      "sourcing_region": "Avoine locale / Cacao import mix",
+      "impact_breakdown_percent": {"ingrédients": 68, "transformation": 14, "emballage": 10, "transport": 8},
+      "improvement_recommendations": [
+        "Substituer film multicouche par mono-matériau recyclable",
+        "Augmenter part cacao certifié bas carbone",
+        "Valoriser résidus d'avoine en sous-produit"
+      ]
+    },
+    {
+      "id": "proteine_vegetale_poudre",
+      "name": "Poudre protéine végétale mix pois / riz",
+      "category": "complément protéiné",
+      "functional_unit": "Portion 30 g",
+      "carbon_footprint_g_co2e": 210,
+      "water_use_l": 55,
+      "energy_processing_kwh_per_kg": 2.4,
+      "packaging": {"primary": "Sachet kraft + doublure PE", "weight_g": 28, "recyclability": 0.52},
+      "transport_mode": "routier + maritime (isolée)",
+      "sourcing_region": "Pois UE / Riz Asie (fictif)",
+      "impact_breakdown_percent": {"ingrédients": 62, "isolation_protéique": 22, "emballage": 9, "transport": 7},
+      "improvement_recommendations": [
+        "Remplacer doublure PE par bio-based compostable",
+        "Optimiser rendement extraction protéique",
+        "Améliorer logistique groupée pour réduire transport"
+      ]
+    },
+    {
+      "id": "omega3_vegetal_capsules",
+      "name": "Capsules Oméga-3 algues DHA/EPA",
+      "category": "complément lipidique",
+      "functional_unit": "2 capsules (1 g)",
+      "carbon_footprint_g_co2e": 48,
+      "water_use_l": 6,
+      "energy_processing_kwh_per_kg": 3.1,
+      "packaging": {"primary": "Flacon PET ambré", "weight_g": 32, "recyclability": 0.94},
+      "transport_mode": "maritime vrac + routier",
+      "sourcing_region": "Culture microalgues photobioréacteurs (fictif)",
+      "impact_breakdown_percent": {"culture_algues": 58, "extraction_huile": 21, "capsulage": 11, "emballage": 6, "transport": 4},
+      "improvement_recommendations": [
+        "Réutilisation chaleur fatale photobioréacteurs",
+        "Augmenter part PET recyclé du flacon",
+        "Optimiser rendement extraction lipides"
+      ]
+    }
+  ]
+}

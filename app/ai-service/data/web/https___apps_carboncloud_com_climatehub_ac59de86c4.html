@@ -1,0 +1,534 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><title>Explore climate footprints | CarbonCloud</title><meta name="google-site-verification" content="_DANpV8RLOFcAkaBvTHsAvJ0QcRmjsJ2XeLTHoHAD0g"><meta name="google-site-verification" content="fEGgub1-byaLLjwyf2a5RUhiIgcx1lSYkSWaGNwfDMU"><meta property="og:url" content="https://apps.carboncloud.com/climatehub/"><meta property="og:image" content="https://carboncloud.com/app/uploads/2022/01/logo_vertical_black-on-white.png"><meta property="og:description" content="Explore climate footprints of food from around the world"><meta property="og:title" content="Explore climate footprints | CarbonCloud"><meta name="author" content="CarbonCloud"><meta name="description" content="Explore climate footprints of food from around the world"><base href="/climatehub/"><link rel="shortcut icon" type="image/x-icon" href="favicon.ico"><script>// Boolean flag for not running code during SSR
+      // This is because jsdom has problems with asynchronous script loading
+      // https://github.com/jsdom/jsdom/blob/737c16cb45f8f7981954d7bce3e2da5a601d36d2/README.md#asynchronous-script-loading
+      const JSDOM = navigator.userAgent.includes("jsdom");
+      const enableKeycloak = true;</script><script>var head = document.getElementsByTagName("head")[0];
+      var js = document.createElement("script");
+
+      js.type = "text/javascript";
+
+      if (!JSDOM) {
+          js.src =
+            "https://cdnjs.cloudflare.com/ajax/libs/oidc-client-ts/2.0.2/browser/oidc-client-ts.min.js";
+          js.integrity =
+            "sha512-rdbkxE9Yeq45VbTj7Br2sC9VReiwslheRNBm1RnTIqJmJqttroaqkhMU6bjfcUWthhVjL2Ol3PC1CPoXvEjwwA==";
+          js.crossOrigin = "anonymous";
+          js.referrerpolicy = "no-referrer";
+      }
+
+      head.appendChild(js);</script><script type="text/javascript"></script><script>function runStatisticsScripts() {
+        // Matomo
+        var _mtm = (window._mtm = window._mtm || []);
+        _mtm.push({
+          "mtm.startTime": new Date().getTime(),
+          event: "mtm.Start",
+        });
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.type = "text/javascript";
+        g.defer = true;
+        g.src =
+          "https://cdn.matomo.cloud/carboncloud.matomo.cloud/container_wLxyhrW0.js";
+        s.parentNode.insertBefore(g, s);
+
+        // Satismeter NPS
+        (function () {
+          window.satismeter =
+            window.satismeter ||
+            function () {
+              (window.satismeter.q = window.satismeter.q || []).push(arguments);
+            };
+          window.satismeter.l = 1 * new Date();
+          var script = document.createElement("script");
+          var parent = document.getElementsByTagName("script")[0].parentNode;
+          script.defer = 1;
+          script.src = "https://app.satismeter.com/satismeter.js";
+          parent.appendChild(script);
+        })();
+        satismeter({
+          writeKey: "Ob7YtWXhDv3DlRuT",
+        });
+      }
+
+      if (!JSDOM) {
+        // Callbacks
+        function CookiebotCallback_OnDialogDisplay() {
+          // Put cookie banner at end of body to not interfere with Elm DOM
+          let cookieBanner = document.getElementById("CybotCookiebotDialog");
+          document.body.insertAdjacentElement(
+            "beforeend",
+            CybotCookiebotDialog
+          );
+        }
+
+        function CookiebotCallback_OnAccept() {
+          if (Cookiebot.consent.statistics) runStatisticsScripts();
+        }
+
+        function CookiebotCallback_OnDecline() {}
+
+        // Insert Cookiebot script tag
+        var d = document,
+          g = d.createElement("script"),
+          s = d.getElementsByTagName("script")[0];
+        g.id = "Cookiebot";
+        g.type = "text/javascript";
+        g.async = true;
+        g.src =
+          "https://consent.cookiebot.com/uc.js?cbid=3a3e07c2-5ede-43e6-a9b0-8b322b0df735";
+        s.parentNode.insertBefore(g, s);
+      }</script><script>if (!JSDOM) {
+        (function (w, d, s, l, i) {
+          w[l] = w[l] || [];
+          w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+          var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+          j.async = true;
+          j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+          f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-PLVSH9XC");
+      }</script><noscript><p><img src="https://carboncloud.matomo.cloud/matomo.php?idsite=7&amp;rec=1" style="border: 0" alt=""/></p></noscript><style>/* latin */
+      @font-face {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 200;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/poppins/v15/pxiByp8kv8JHgFVrLFj_Z1xlFQ.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      @font-face {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/poppins/v15/pxiEyp8kv8JHgFVrJJfecg.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      @font-face {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/poppins/v15/pxiByp8kv8JHgFVrLGT9Z1xlFQ.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      @font-face {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/poppins/v15/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      @font-face {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 800;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/poppins/v15/pxiByp8kv8JHgFVrLDD4Z1xlFQ.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      /* latin */
+      @font-face {
+        font-family: "Merriweather";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/merriweather/v25/u-440qyriQwlOrhSvowK_l5-fCZM.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }
+
+      @font-face {
+        font-family: "Merriweather";
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url(https://fonts.gstatic.com/s/merriweather/v25/u-4n0qyriQwlOrhSvowK_l52xwNZWMf6.woff2)
+          format("woff2");
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
+          U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+          U+2212, U+2215, U+FEFF, U+FFFD;
+      }</style><script>// IMPORTANT: The config is set globally here to decouple configuration from the bundling process.
+      // It's set as a template parameter for EJS which is replaced during building.
+      const config = {"basePath":"/climatehub/","climateApiUrl":"https://api.carboncloud.com/v0/","climateLabelUrl":"https://apps.carboncloud.com/label/","managementApiUrl":"https://apps.carboncloud.com/climatehub/","keycloakClientId":"carboncloud","keycloakRealm":"https://auth.carboncloud.com/realms/prod","signUpUrl":"https://apps.carboncloud.com/dagda/pages/sign-up"} // We currently add the hubspot tracking code through Matomos tag manager for climatehub
+      var _hsq = window._hsq = window._hsq || [];
+
+      const appendPorts = async elmApp => {
+
+        if (!JSDOM) {
+            /**
+            * @type {import("oidc-client-ts").UserManagerSettings}
+            */
+            const oidcSettings = {
+              authority: config.keycloakRealm,
+              client_id: config.keycloakClientId,
+              redirect_uri: window.location.origin + config.basePath,
+              response_type: "code",
+              post_logout_redirect_uri: window.location.origin + config.basePath + "logout",
+          };
+
+          userManager = new oidc.UserManager(oidcSettings) 
+        }
+
+        elmApp.ports.login.subscribe(function () {
+          if (!JSDOM) {
+            userManager.signinRedirect();
+          }
+        });
+
+        elmApp.ports.logout.subscribe(function () {
+          if (!JSDOM) {
+            const url = window.location.origin;
+            userManager.signoutRedirect({ post_logout_redirect_uri: url + config.basePath});
+          }
+        });
+
+        elmApp.ports.showNPS.subscribe(() => {
+          if (!JSDOM && window.satismeter) {
+            satismeter("track", { event: "NPS" });
+          }
+        });
+
+        elmApp.ports.setMetaElements.subscribe((metaTags) => {
+          //Remove all meta tags which are not default
+          [...document.getElementsByTagName("meta")]
+            .filter((t) => !(t.hasAttribute("name") && t.name === "viewport"))
+            .filter((t) => !t.hasAttribute("charset"))
+            .forEach((t) => t.remove());
+
+          metaTags.forEach((metaTag) => {
+            const key = metaTag.hasOwnProperty("property")
+              ? "property"
+              : "name";
+
+            const meta = document.createElement("meta");
+            meta.setAttribute(key, metaTag[key]);
+            meta.content = metaTag.content;
+
+            document
+              .getElementsByTagName("title")[0]
+              .insertAdjacentElement("afterend", meta);
+          });
+        });
+
+        elmApp.ports.setLinkCanonicalElement.subscribe((urlOrNull) => {
+          //Remove all '<link rel="canonical" ...>' elements
+          [...document.getElementsByTagName("link")]
+            .filter((t) => (t.hasAttribute("rel") && t.rel === "canonical"))
+            .forEach((t) => t.remove());
+
+          if (urlOrNull) {
+            const link = document.createElement("link");
+            link.setAttribute("rel", "canonical");
+            link.setAttribute("href", urlOrNull)
+            document
+              .getElementsByTagName("title")[0]
+              .insertAdjacentElement("afterend", link)
+          }
+        });
+
+        elmApp.ports.windowScrollIntoView.subscribe((id) => {
+          const element = document.getElementById(id);
+          if (element) {
+            const { offsetTop, offsetLeft } = element;
+            const { offsetHeight } = document.getElementById("top-bar");
+            window.scrollTo({
+              top: offsetTop - offsetHeight,
+              left: offsetLeft,
+              behavior: "smooth",
+            });
+          }
+        });
+
+        elmApp.ports.elementScrollIntoView.subscribe((id) => {
+          const element = document.getElementById(id);
+          if (element) element.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+
+        elmApp.ports.matomoTrackPageView.subscribe((title) => {
+          if (!JSDOM && window._paq) {
+            _paq.push(["setCustomUrl", location.href]);
+            _paq.push(["setDocumentTitle", title]);
+            _paq.push(["trackPageView"]);
+            if (window._hsq) {
+              document.title = title;
+              _hsq.push(['setPath', location.pathname]);
+              _hsq.push(['trackPageView']);
+            }
+          }
+        });
+
+        // ------ Incoming ports (to Elm)
+        if (!JSDOM) {
+          window.addEventListener("afterprint", () => {
+            elmApp.ports.onAfterPrint.send();
+          });
+        }
+
+        if (!JSDOM && location.search.includes("state=") &&
+          (location.search.includes("code=") ||
+            location.search.includes("error="))) {
+
+              try {
+                await userManager.signinCallback() 
+              } catch (e) {
+                await userManager.removeUser();
+                await userManager.signoutSilently();                
+              }
+
+          window.history.replaceState({}, document.title, window.location.origin + config.basePath);
+        }
+        if (!JSDOM) {
+          const user = await userManager.getUser();
+          if (user && user.profile) {
+            if (window._hsq) {
+              _hsq.push(["identify", { email: user.profile.email }]);
+            }
+            elmApp.ports.onAuthRedirectResult.send(user.profile);
+          }
+        }
+
+      };</script><script defer="defer" src="assets/main.f365c978f121a7ff6ceb.js"></script><link href="assets/css/main.f365c978f121a7ff6ceb.css" rel="stylesheet"></head><body onload="startElmApp(config, appendPorts)"><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PLVSH9XC" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript><div><div id="loaded"></div><span style="display: none;" class="elm-css-style-wrapper"><style>._a82a9a1d1a5f145f5819357842cbaf7ea{font-family:'Poppins', sans-serif;color:#081E1E;white-space:normal;font-weight:400;font-size:12px;}
+._a02b1daa99a9b41ea8f2c2ce26691059e{font-family:'Poppins', sans-serif;color:#081E1E;white-space:normal;}
+._adf3be948deee42f98eb8a3f58394ed16{font-family:'Poppins', sans-serif;color:#081E1E;white-space:normal;font-weight:400;font-size:14px;}
+._ab1da3c2cf6cf4879a38e51021215295a{font-family:'Poppins', sans-serif;color:#081E1E;white-space:normal;font-weight:400;font-size:17px;line-height:1.6;}
+._a5eeba64dd5a7491f8bb378ab1a9235e3{font-family:'Poppins', sans-serif;color:#081E1E;white-space:normal;font-weight:400;font-size:20px;}
+._388ad02301124581896a31b3e82af005{font-family:'Poppins', sans-serif;color:#081E1E;white-space:normal;font-family:'Poppins', sans-serif;font-size:17px;}
+._aed6e9e1556f941e5b2236133ba9a9f00{font-family:'Poppins', sans-serif;color:#081E1E;white-space:normal;}
+._ac02c2c75aed64e1fafecff493edd92fd{font-size:20px;font-weight:400;font-family:'Poppins', sans-serif;color:#081E1E;white-space:normal;}
+._aba0986aed33e4ea7a951f281ece5ac98{color:#2F2F2F;font-weight:bold;font-size:34px;font-family:'Poppins', sans-serif;color:#081E1E;white-space:normal;}
+._a8f0bdc22590c43a984c1cf252fe8641d{font-family:'Poppins', sans-serif;font-size:20px;color:#081E1E;font-weight:bold;}
+._d323909835064067b74fba00d88cadec{font-family:'B612 Mono', monospace;font-size:20px;color:#081E1E;font-weight:bold;}
+._922414c81ef34c0ab8bdf85170d789a4{font-family:'Poppins', sans-serif;font-style:italic;font-weight:200;color:#287387;}
+._9baf5ac54bd943729a6b8c4df15108f7{font-family:'Poppins', sans-serif;font-weight:400;font-size:20px;}
+._e0a02bd87e0c4cc4a904c10bca475ad6{font-family:'Poppins', sans-serif;font-size:14px;color:#081E1E;font-weight:bold;}
+._3a120c3bc4a0488d89be97ebeca47373{font-family:'Poppins', sans-serif;color:#081E1E;white-space:normal;font-weight:400;font-size:17px;line-height:1.6;color:#28A0A6;cursor:pointer;}</style></span><div class="_f1040181"><span style="display: none;" class="elm-css-style-wrapper"><style>
+._4099a79e{background-color:#287387;color:#FCFCFC;position:fixed;width:100%;height:65px;display:flex;display:flex;align-items:center;padding:10px 25px;z-index:100;}
+@media only screen and (max-width: 759px){._4099a79e{flex-direction:column;height:100px;}}
+._6e0b9fde{background-color:#28A0A6;width:220px;color:#FCFCFC;border-radius:2em;border:0;font-size:14px;text-align:center;font-weight:bold;padding:0.75em;cursor:pointer;box-shadow:0px 2px 4px 0px rgb(0 0 0 / 20%);color:#FCFCFC;text-decoration:none;}
+._6e0b9fde:hover{background-color:#226174;}
+._bb316133{display:flex;align-items:center;border:0;background-color:transparent;padding:10px 16px;border-radius:24px;font-weight:bold;color:rgba(255,255,255,1);cursor:pointer;font-size:14px;font-family:"Poppins", "system-ui", "sans-serif";font-weight:400;color:rgba(252,252,252,1);line-height:1;background-color:rgba(40,160,166,1);border:0;color:rgba(255,255,255,1);white-space:nowrap;fill:rgba(255,255,255,1);box-shadow:0 1px 1px 0 rgba(0, 0, 0, 0.11), 0 2px 2px 0 rgba(0, 0, 0, 0.11), 0 6px 8px 0 rgba(0, 0, 0, 0.11);}
+._bb316133:focus{outline:1px solid rgba(40,160,166,1);}
+._bb316133:hover{background-color:rgba(34,97,116,1);}
+._12da2d3{display:flex;align-items:center;border:0;background-color:transparent;padding:10px 16px;border-radius:24px;font-weight:bold;color:rgba(255,255,255,1);cursor:pointer;font-size:14px;font-family:"Poppins", "system-ui", "sans-serif";font-weight:400;color:rgba(252,252,252,1);line-height:1;color:rgba(40,160,166,1);font-weight:500;white-space:nowrap;fill:rgba(40,160,166,1);}
+._12da2d3:focus{outline:1px solid rgba(40,160,166,1);}
+._12da2d3:hover{background-color:rgba(202,232,233,1);}
+._f0f101f3{display:flex;align-items:center;border:0;background-color:transparent;padding:10px 16px;border-radius:24px;font-weight:bold;color:rgba(255,255,255,1);cursor:pointer;font-size:14px;font-family:"Poppins", "system-ui", "sans-serif";font-weight:400;color:rgba(252,252,252,1);line-height:1;color:rgba(54,66,134,1);font-weight:500;white-space:nowrap;fill:rgba(54,66,134,1);color:rgba(255,255,255,1);}
+._f0f101f3:focus{outline:1px solid rgba(40,160,166,1);}
+._f0f101f3:hover{background-color:rgba(230,232,245,1);}
+._f1040181{display:flex;flex-direction:column;background-color:#F8F8F8;}
+._11853799{display:flex;flex-direction:column;display:flex;align-items:center;margin-top:1em;}
+._2974d4{display:flex;flex-direction:column;display:flex;align-items:center;padding:2em 1em;}
+._c153135f{display:flex;flex-direction:column;margin-top:85px;}
+@media only screen and (max-width: 759px){._c153135f{margin-top:120px;}}
+._fd567d89{display:flex;flex-direction:column;}
+._3ce41ce9{display:flex;flex-direction:row;gap:15px;}
+._84f7a906{display:flex;justify-content:center;}
+._dafd98d8{display:inline-block;min-width:9em;width:9em;margin-top:0.22em;}
+._df8b6a61{display:inline-block;width:2em;margin-right:0.5em;}
+._bdc6a4a2{flex:1;}
+._897e6a62{font-size:16px;font-family:"Poppins", "system-ui", "sans-serif";font-weight:400;color:rgba(68,68,68,1);line-height:1.5;}
+._23627aca{height:100%;position:relative;}
+@media only screen and (max-width: 759px){._23627aca{width:100%;padding:0 1em;}}
+@media only screen and (min-width: 760px){._23627aca{width:600px;margin-right:1em;}}
+._44fa238b{list-style-type:none;margin:0;display:flex;align-items:center;font-weight:bold;white-space:nowrap;padding:0;font-family:'Poppins', sans-serif;color:#081E1E;white-space:normal;color:#FCFCFC;}
+@media only screen and (max-width: 759px){._44fa238b{height:25px;margin-top:7.5px;}}
+._2fac78c7{margin-left:20px;}
+._27c5411c{margin:0 0.5em;border-right:1px solid;height:1.5em;white-space:nowrap;}
+._7670dd99{margin:auto auto auto 0;}
+._69290d1f{max-width:880px;width:90vw;box-shadow:0 10px 15px 7px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);border-radius:2px;}
+._5cc91e26{position:absolute;left:0.4em;width:2.5em;height:2.5em;display:flex;background-color:transparent;border:0;border-radius:1.5em;align-items:center;cursor:pointer;padding:9px;color:#FCFCFC;}
+._5cc91e26:hover{background-color:#C4E7E4;}
+._5cc91e26:focus{background-color:#C4E7E4;outline:none;}
+._b00e6aa6{position:fixed;left:1em;max-width:90vw;height:4em;box-sizing:border-box;background-color:#FCFCFC;padding:0 1.5em;text-align:center;border-radius:1em;z-index:10000;font-family:'Poppins', sans-serif;overflow:auto;box-shadow:0 10px 15px 7px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);user-select:none;display:flex;flex-direction:row;align-items:center;transition:opacity 250ms 0ms ease-in-out,bottom 250ms 0ms ease-in-out;opacity:0;bottom:-5em;}
+._accff378{position:relative;}
+._11d7c421{text-align:center;color:#287387;line-height:1.2;margin:1em auto;width:80%;max-width:650px;}
+._b0a5da56{text-align:center;max-width:900px;margin:45px auto;}
+._58bbbb3c{text-align:center;}
+._9d4ad23a{text-decoration:none;color:#FCFCFC;display:flex;align-items:center;}
+._ecc0d7a3{width:9em;height:1.5em;overflow-x:hidden;overflow-y:hidden;transition:width 250ms 0ms ease-in-out;}
+@media only screen and (max-width: 759px){._810ae13a{display:flex;}}
+@media only screen and (max-width: 759px){._ed3fd257{margin-top:0.5em;}}</style></span><div class="_fd567d89"><header id="top-bar" class="_4099a79e"><div class="_810ae13a"><nav><ul class="_44fa238b"><li class="_ecc0d7a3"><a href="https://carboncloud.com" title="Go to startpage" class="_dafd98d8"><svg viewBox="0 0 160.646 18"><title>Go to startpage</title><g id="horizontal" transform="translate(0 -22)"><path id="Path_4804" d="M16.667,32.9l-.121.346-4.517-1.212.087-.346s.073-.227.073-.229A6.608,6.608,0,0,1,25.1,33.423a6.526,6.526,0,0,1-1.163,3.729l-.012.018A6.606,6.606,0,0,1,18.493,40h-2.06L20.1,34.4a1.747,1.747,0,0,0,.278-.981,1.888,1.888,0,0,0-3.635-.708Zm-.573,2.486a8.773,8.773,0,0,1-1.8,2.068,8.742,8.742,0,1,1,1.776-11.411l-4.69,1.235a4.37,4.37,0,1,0,.033,6.893Zm12.989-4.158a7.255,7.255,0,0,1,.827-3.5,5.994,5.994,0,0,1,2.308-2.393,6.57,6.57,0,0,1,3.356-.857,6.313,6.313,0,0,1,3.935,1.244A5.984,5.984,0,0,1,41.7,29.121H38.24a2.931,2.931,0,0,0-1.1-1.234,3.02,3.02,0,0,0-1.6-.424,2.982,2.982,0,0,0-2.354,1.027,4.01,4.01,0,0,0-.9,2.742,4.046,4.046,0,0,0,.9,2.752,3.035,3.035,0,0,0,5.056-.641H41.7a5.942,5.942,0,0,1-2.188,3.383,6.346,6.346,0,0,1-3.935,1.234,6.57,6.57,0,0,1-3.356-.857,6.01,6.01,0,0,1-2.308-2.384A7.2,7.2,0,0,1,29.083,31.232Zm75.5,0a7.255,7.255,0,0,1,.827-3.5,5.994,5.994,0,0,1,2.308-2.393,6.57,6.57,0,0,1,3.356-.857,6.313,6.313,0,0,1,3.935,1.244,5.984,5.984,0,0,1,2.188,3.392h-3.457a2.93,2.93,0,0,0-1.1-1.234,3.02,3.02,0,0,0-1.6-.424,2.982,2.982,0,0,0-2.354,1.027,4.01,4.01,0,0,0-.9,2.742,4.046,4.046,0,0,0,.9,2.752,3.035,3.035,0,0,0,5.056-.641H117.2a5.941,5.941,0,0,1-2.188,3.383,6.346,6.346,0,0,1-3.935,1.234,6.57,6.57,0,0,1-3.356-.857,6.008,6.008,0,0,1-2.307-2.384,7.2,7.2,0,0,1-.827-3.487ZM43.743,32.589a6.417,6.417,0,0,1,.6-2.846,4.535,4.535,0,0,1,1.627-1.885,4.172,4.172,0,0,1,2.3-.66,3.871,3.871,0,0,1,1.9.452,3.287,3.287,0,0,1,1.259,1.187V27.349h3.144V37.866H51.429V36.377a3.427,3.427,0,0,1-1.278,1.187,3.869,3.869,0,0,1-1.9.452,4.1,4.1,0,0,1-2.28-.669,4.59,4.59,0,0,1-1.627-1.9A6.478,6.478,0,0,1,43.743,32.589Zm7.686.019a2.675,2.675,0,0,0-.653-1.9,2.172,2.172,0,0,0-3.181-.01,2.641,2.641,0,0,0-.652,1.894A2.71,2.71,0,0,0,47.6,34.5a2.153,2.153,0,0,0,3.181.009,2.675,2.675,0,0,0,.652-1.9Zm9.628-3.374a4.351,4.351,0,0,1,1.388-1.461,3.319,3.319,0,0,1,1.829-.537v3.411h-.864a2.6,2.6,0,0,0-1.765.518,2.337,2.337,0,0,0-.588,1.819v4.881H57.913V27.349h3.144v1.885Zm8.917-.4a3.264,3.264,0,0,1,1.269-1.187,3.882,3.882,0,0,1,1.894-.452,4.172,4.172,0,0,1,2.3.66,4.533,4.533,0,0,1,1.627,1.885,7.1,7.1,0,0,1,0,5.7,4.59,4.59,0,0,1-1.627,1.9,4.128,4.128,0,0,1-2.3.669,3.882,3.882,0,0,1-1.894-.443A3.371,3.371,0,0,1,69.974,36.4v1.47H66.83V23.919h3.144v4.919Zm4.486,3.75a2.641,2.641,0,0,0-.652-1.894,2.13,2.13,0,0,0-1.609-.688,2.1,2.1,0,0,0-1.591.7,3.1,3.1,0,0,0,0,3.807A2.163,2.163,0,0,0,73.8,34.5a2.686,2.686,0,0,0,.662-1.913Zm10.278,5.428a5.554,5.554,0,0,1-2.712-.659,4.767,4.767,0,0,1-1.894-1.885,6.239,6.239,0,0,1,.009-5.72,4.8,4.8,0,0,1,1.912-1.894,5.943,5.943,0,0,1,5.442,0,4.8,4.8,0,0,1,1.912,1.894,5.7,5.7,0,0,1,.7,2.855,5.637,5.637,0,0,1-.708,2.855,4.841,4.841,0,0,1-1.931,1.894A5.659,5.659,0,0,1,84.738,38.016Zm0-2.77a2.012,2.012,0,0,0,1.535-.688,2.772,2.772,0,0,0,.634-1.951,2.826,2.826,0,0,0-.616-1.951,2.036,2.036,0,0,0-3.043-.01,2.848,2.848,0,0,0-.607,1.96,2.883,2.883,0,0,0,.6,1.951A1.9,1.9,0,0,0,84.738,35.246Zm13.753-8.01a3.679,3.679,0,0,1,2.878,1.2,4.741,4.741,0,0,1,1.076,3.289v6.144H99.319v-5.71a2.345,2.345,0,0,0-.533-1.64,2.053,2.053,0,0,0-2.869,0,2.345,2.345,0,0,0-.533,1.64v5.71H92.24V27.349h3.144v1.395a3.337,3.337,0,0,1,1.287-1.1,4.01,4.01,0,0,1,1.82-.405Zm23.973-3.317V37.866H119.32V23.919Zm7.423,14.1a5.554,5.554,0,0,1-2.712-.659,4.767,4.767,0,0,1-1.894-1.885,6.239,6.239,0,0,1,.009-5.72,4.8,4.8,0,0,1,1.912-1.894,5.943,5.943,0,0,1,5.443,0,4.8,4.8,0,0,1,1.912,1.894,5.7,5.7,0,0,1,.7,2.855,5.637,5.637,0,0,1-.708,2.855,4.841,4.841,0,0,1-1.931,1.894,5.659,5.659,0,0,1-2.73.659Zm0-2.77a2.012,2.012,0,0,0,1.535-.688,2.772,2.772,0,0,0,.635-1.951,2.826,2.826,0,0,0-.616-1.951,2.036,2.036,0,0,0-3.043-.01,2.848,2.848,0,0,0-.607,1.96,2.883,2.883,0,0,0,.6,1.951,1.9,1.9,0,0,0,1.5.688Zm17.633-7.9V37.866h-3.144V36.433a3.473,3.473,0,0,1-1.3,1.121,3.877,3.877,0,0,1-1.811.424,3.978,3.978,0,0,1-2.078-.537,3.59,3.59,0,0,1-1.4-1.555,5.4,5.4,0,0,1-.5-2.394V27.349h3.126v5.71a2.344,2.344,0,0,0,.533,1.64,1.847,1.847,0,0,0,1.434.584,1.869,1.869,0,0,0,1.452-.584,2.344,2.344,0,0,0,.533-1.64V27.349Zm2.3,5.352a6.414,6.414,0,0,1,.6-2.846,4.532,4.532,0,0,1,1.627-1.885,4.172,4.172,0,0,1,2.3-.659,3.956,3.956,0,0,1,1.848.433,3.4,3.4,0,0,1,1.315,1.168V24.032h3.144V37.978H157.5V36.471a3.239,3.239,0,0,1-1.26,1.206,3.87,3.87,0,0,1-1.9.452,4.128,4.128,0,0,1-2.3-.669,4.588,4.588,0,0,1-1.627-1.9,6.477,6.477,0,0,1-.6-2.855Zm7.686.019a2.675,2.675,0,0,0-.653-1.9,2.172,2.172,0,0,0-3.181-.009,2.64,2.64,0,0,0-.653,1.894,2.71,2.71,0,0,0,.653,1.913,2.153,2.153,0,0,0,3.181.009,2.675,2.675,0,0,0,.653-1.9Z" fill="#fcfcfcff" fill-rule="evenodd"></path></g></svg></a></li><li class="_27c5411c"></li><li class="_7670dd99"><a href="" class="_9d4ad23a">ClimateHub</a></li></ul></nav></div><div class="_23627aca"><div class="_2fac78c7"><div class="_ed3fd257"><div class="_accff378"><button id="search-button" type="submit" aria-label="Search" class="_5cc91e26"><div class="_aed951f"><span style="display: none;" class="elm-css-style-wrapper"><style>
+._5de4d9d4{position:absolute;top:0;right:0;width:100%;height:100%;}
+._e5b87c31{position:absolute;width:53.5%;height:53.5%;top:14%;right:14%;display:inline;}
+._aed951f{width:100%;height:100%;position:relative;}
+@keyframes _1bdce8b7{100%{-moz-transform:rotate(360deg);-webkit-transform:rotate(360deg);transform:rotate(360deg);}}
+._b26ae620{width:100%;height:100%;display:block;transform-origin:center;-webkit-transform-origin:center;-moz-transform-origin:center;-ms-transform-origin:center;-o-transform-origin:center;animation-iteration-count:infinite;animation-timing-function:linear;animation-duration:1.2s;animation-name:_1bdce8b7;-webkit-animation-play-state:paused;animation-play-state:paused;}</style></span><span class="_e5b87c31"><svg class="_b26ae620" version="1.0" viewBox="0 0 128 128"><g><path d="M75.4 126.63a11.43 11.43 0 0 1-2.1-22.65 40.9 40.9 0 0 0 30.5-30.6 11.4 11.4 0 1 1 22.27 4.87h.02a63.77 63.77 0 0 1-47.8 48.05v-.02a11.38 11.38 0 0 1-2.93.37z" fill="currentColor" fill-opacity="1"></path></g></svg></span><svg class="_5de4d9d4" viewBox="0 0 35.999 35.999"><path id="Path_5181" d="M31.728,24.929A14.607,14.607,0,0,0,11.071,4.271,14.323,14.323,0,0,0,8.873,21.9a.614.614,0,0,1-.085.732L1.336,30.085C-.147,31.568-.5,33.642.815,34.958l.226.226c1.315,1.316,3.39.963,4.873-.521l7.437-7.437a.624.624,0,0,1,.748-.1A14.323,14.323,0,0,0,31.728,24.929Zm-17.961-2.7a10.793,10.793,0,1,1,15.264,0A10.805,10.805,0,0,1,13.767,22.232Z" transform="translate(-0.001 0)" fill="currentColor"></path></svg></div></button></div></div></div></div><span class="_bdc6a4a2"></span><div class="_84f7a906"><button class="_f0f101f3" role="button">Log in</button><button class="_bb316133" role="button">Create account</button></div></header></div><div class="_c153135f"><div class="_11853799"><h1 class="_aed6e9e1556f941e5b2236133ba9a9f00 _11d7c421">Explore emission factors for 52439 food products</h1><div class="_3ce41ce9"><button class="_12da2d3" role="button">Log in</button><button class="_bb316133" role="button">Create account</button></div><p class="_b0a5da56"><span class="_897e6a62">
+                            ClimateHub is an open climate footprint database, that can be used for internal purposes without cost. 
+                            For commercial use of the footprints, such as building an app with the Climate API, 
+                            consulting clients or corporate GHG emission reporting, get in touch!
+                            </span></p><img class="_69290d1f" src="assets/img/climatehub-search-screenshot.png"><div class="_b00e6aa6" id="session-expired"><span class="_df8b6a61"><svg viewBox="0 0 29 25"><g transform="translate(-639.58015,-314.14226)"><g transform="translate(0,4)"><path d="m 12.65,7.677 a 5,5 0 0 1 8.7,0 l 8.42,14.858 A 5,5 0 0 1 25.42,30 H 8.58 A 5,5 0 0 1 4.23,22.535 Z" transform="translate(636,305)" fill="#fa876aff"></path><text transform="translate(649,311)" font-size="20" font-weight="700" font-family="Poppins-Bold, Poppins" fill="#fcfcfcff"><tspan x="0" y="21" id="tspan882">!</tspan></text></g></g></svg></span>Cannot load data from server, please&nbsp;<a href="mailto:dev-climatehub@carboncloud.com">contact support</a>.</div></div><div class="_2974d4 _ab1da3c2cf6cf4879a38e51021215295a"><div class="_58bbbb3c"><h2>Did we miss your product?</h2><p>Doesn't your food product or beverage deserve a spot in the climate limelight?<br>Contact us to get your product listed with its own climate footprint and breakdown.</p></div><a class="_6e0b9fde" href="https://carboncloud.com/get-listed/">Get listed in ClimateHub</a></div><div class="bg-255-255-255-0 fc-0-0-0-255 font-size-20 font-open-sanshelveticaverdanasans-serif s e ui s e"><div><style>@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {.s.r > .s { flex-basis: auto !important; } .s.r > .s.ctr { flex-basis: auto !important; }}
+input[type="search"],
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
+
+input[type=range] {
+  -webkit-appearance: none; 
+  background: transparent;
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:10;
+  width: 100%;
+  outline: dashed 1px;
+  height: 100%;
+  opacity: 0;
+}
+
+input[type=range]::-moz-range-track {
+    background: transparent;
+    cursor: pointer;
+}
+input[type=range]::-ms-track {
+    background: transparent;
+    cursor: pointer;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    background: transparent;
+    cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    opacity: 0.5;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    border:none;
+    border-radius: 5px;
+}
+input[type=range]::-moz-range-thumb {
+    opacity: 0.5;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    border:none;
+    border-radius: 5px;
+}
+input[type=range]::-ms-thumb {
+    opacity: 0.5;
+    width: 80px;
+    height: 80px;
+    background-color: black;
+    border:none;
+    border-radius: 5px;
+}
+input[type=range][orient=vertical]{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical;  /* WebKit */
+}
+
+.explain {
+    border: 6px solid rgb(174, 121, 15) !important;
+}
+.explain > .s {
+    border: 4px dashed rgb(0, 151, 167) !important;
+}
+
+.ctr {
+    border: none !important;
+}
+.explain > .ctr > .s {
+    border: 4px dashed rgb(0, 151, 167) !important;
+}
+
+html,body{height:100%;padding:0;margin:0;}.s.e.ic{display:block;}.s.e.ic.hf > img{max-height:100%;object-fit:cover;}.s.e.ic.wf > img{max-width:100%;object-fit:cover;}.s:focus{outline:none;}.ui{width:100%;height:auto;min-height:100%;z-index:0;}.ui.s.hf{height:100%;}.ui.s.hf > .hf{height:100%;}.ui > .fr.nb{position:fixed;z-index:20;}.nb{position:relative;border:none;display:flex;flex-direction:row;flex-basis:auto;}.nb.e{display:flex;flex-direction:column;white-space:pre;}.nb.e.hbh{z-index:0;}.nb.e.hbh > .bh{z-index:-1;}.nb.e.sbt > .t.hf{flex-grow:0;}.nb.e.sbt > .t.wf{align-self:auto !important;}.nb.e > .hc{height:auto;}.nb.e > .hf{flex-grow:100000;}.nb.e > .wf{width:100%;}.nb.e > .wfp{width:100%;}.nb.e > .wc{align-self:flex-start;}.nb.e.ct{justify-content:flex-start;}.nb.e > .s.at{margin-bottom:auto !important;margin-top:0 !important;}.nb.e.cb{justify-content:flex-end;}.nb.e > .s.ab{margin-top:auto !important;margin-bottom:0 !important;}.nb.e.cr{align-items:flex-end;}.nb.e > .s.ar{align-self:flex-end;}.nb.e.cl{align-items:flex-start;}.nb.e > .s.al{align-self:flex-start;}.nb.e.ccx{align-items:center;}.nb.e > .s.cx{align-self:center;}.nb.e.ccy > .s{margin-top:auto;margin-bottom:auto;}.nb.e > .s.cy{margin-top:auto !important;margin-bottom:auto !important;}.nb.a{position:absolute;bottom:100%;left:0;width:100%;z-index:20;margin:0 !important;pointer-events:none;}.nb.a > .hf{height:auto;}.nb.a > .wf{width:100%;}.nb.a > *{pointer-events:auto;}.nb.b{position:absolute;bottom:0;left:0;height:0;width:100%;z-index:20;margin:0 !important;pointer-events:none;}.nb.b > *{pointer-events:auto;}.nb.b > .hf{height:auto;}.nb.or{position:absolute;left:100%;top:0;height:100%;margin:0 !important;z-index:20;pointer-events:none;}.nb.or > *{pointer-events:auto;}.nb.ol{position:absolute;right:100%;top:0;height:100%;margin:0 !important;z-index:20;pointer-events:none;}.nb.ol > *{pointer-events:auto;}.nb.fr{position:absolute;width:100%;height:100%;left:0;top:0;margin:0 !important;pointer-events:none;}.nb.fr > *{pointer-events:auto;}.nb.bh{position:absolute;width:100%;height:100%;left:0;top:0;margin:0 !important;z-index:0;pointer-events:none;}.nb.bh > *{pointer-events:auto;}.s{position:relative;border:none;flex-shrink:0;display:flex;flex-direction:row;flex-basis:auto;resize:none;font-feature-settings:inherit;box-sizing:border-box;margin:0;padding:0;border-width:0;border-style:solid;font-size:inherit;color:inherit;font-family:inherit;line-height:1;font-weight:inherit;text-decoration:none;font-style:inherit;}.s.wrp{flex-wrap:wrap;}.s.notxt{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;}.s.cptr{cursor:pointer;}.s.ctxt{cursor:text;}.s.ppe{pointer-events:none !important;}.s.cpe{pointer-events:auto !important;}.s.clr{opacity:0;}.s.oq{opacity:1;}.s.hvclr:hover{opacity:0;}.s.hvoq:hover{opacity:1;}.s.fcsclr:focus{opacity:0;}.s.fcsoq:focus{opacity:1;}.s.atvclr:active{opacity:0;}.s.atvoq:active{opacity:1;}.s.ts{transition:transform 160ms, opacity 160ms, filter 160ms, background-color 160ms, color 160ms, font-size 160ms;}.s.sb{overflow:auto;flex-shrink:1;}.s.sbx{overflow-x:auto;}.s.sbx.r{flex-shrink:1;}.s.sby{overflow-y:auto;}.s.sby.c{flex-shrink:1;}.s.sby.e{flex-shrink:1;}.s.cp{overflow:hidden;}.s.cpx{overflow-x:hidden;}.s.cpy{overflow-y:hidden;}.s.wc{width:auto;}.s.bn{border-width:0;}.s.bd{border-style:dashed;}.s.bdt{border-style:dotted;}.s.bs{border-style:solid;}.s.t{white-space:pre;display:inline-block;}.s.it{line-height:1.05;background:transparent;text-align:inherit;}.s.e{display:flex;flex-direction:column;white-space:pre;}.s.e.hbh{z-index:0;}.s.e.hbh > .bh{z-index:-1;}.s.e.sbt > .t.hf{flex-grow:0;}.s.e.sbt > .t.wf{align-self:auto !important;}.s.e > .hc{height:auto;}.s.e > .hf{flex-grow:100000;}.s.e > .wf{width:100%;}.s.e > .wfp{width:100%;}.s.e > .wc{align-self:flex-start;}.s.e.ct{justify-content:flex-start;}.s.e > .s.at{margin-bottom:auto !important;margin-top:0 !important;}.s.e.cb{justify-content:flex-end;}.s.e > .s.ab{margin-top:auto !important;margin-bottom:0 !important;}.s.e.cr{align-items:flex-end;}.s.e > .s.ar{align-self:flex-end;}.s.e.cl{align-items:flex-start;}.s.e > .s.al{align-self:flex-start;}.s.e.ccx{align-items:center;}.s.e > .s.cx{align-self:center;}.s.e.ccy > .s{margin-top:auto;margin-bottom:auto;}.s.e > .s.cy{margin-top:auto !important;margin-bottom:auto !important;}.s.r{display:flex;flex-direction:row;}.s.r > .s{flex-basis:0%;}.s.r > .s.we{flex-basis:auto;}.s.r > .s.lnk{flex-basis:auto;}.s.r > .hf{align-self:stretch !important;}.s.r > .hfp{align-self:stretch !important;}.s.r > .wf{flex-grow:100000;}.s.r > .ctr{flex-grow:0;flex-basis:auto;align-self:stretch;}.s.r > u:first-of-type.acr{flex-grow:1;}.s.r > s:first-of-type.accx{flex-grow:1;}.s.r > s:first-of-type.accx > .cx{margin-left:auto !important;}.s.r > s:last-of-type.accx{flex-grow:1;}.s.r > s:last-of-type.accx > .cx{margin-right:auto !important;}.s.r > s:only-of-type.accx{flex-grow:1;}.s.r > s:only-of-type.accx > .cy{margin-top:auto !important;margin-bottom:auto !important;}.s.r > s:last-of-type.accx ~ u{flex-grow:0;}.s.r > u:first-of-type.acr ~ s.accx{flex-grow:0;}.s.r.ct{align-items:flex-start;}.s.r > .s.at{align-self:flex-start;}.s.r.cb{align-items:flex-end;}.s.r > .s.ab{align-self:flex-end;}.s.r.cr{justify-content:flex-end;}.s.r.cl{justify-content:flex-start;}.s.r.ccx{justify-content:center;}.s.r.ccy{align-items:center;}.s.r > .s.cy{align-self:center;}.s.r.sev{justify-content:space-between;}.s.r.lbl{align-items:baseline;}.s.c{display:flex;flex-direction:column;}.s.c > .s{flex-basis:0px;min-height:min-content;}.s.c > .s.he{flex-basis:auto;}.s.c > .hf{flex-grow:100000;}.s.c > .wf{width:100%;}.s.c > .wfp{width:100%;}.s.c > .wc{align-self:flex-start;}.s.c > u:first-of-type.acb{flex-grow:1;}.s.c > s:first-of-type.accy{flex-grow:1;}.s.c > s:first-of-type.accy > .cy{margin-top:auto !important;margin-bottom:0 !important;}.s.c > s:last-of-type.accy{flex-grow:1;}.s.c > s:last-of-type.accy > .cy{margin-bottom:auto !important;margin-top:0 !important;}.s.c > s:only-of-type.accy{flex-grow:1;}.s.c > s:only-of-type.accy > .cy{margin-top:auto !important;margin-bottom:auto !important;}.s.c > s:last-of-type.accy ~ u{flex-grow:0;}.s.c > u:first-of-type.acb ~ s.accy{flex-grow:0;}.s.c.ct{justify-content:flex-start;}.s.c > .s.at{margin-bottom:auto;}.s.c.cb{justify-content:flex-end;}.s.c > .s.ab{margin-top:auto;}.s.c.cr{align-items:flex-end;}.s.c > .s.ar{align-self:flex-end;}.s.c.cl{align-items:flex-start;}.s.c > .s.al{align-self:flex-start;}.s.c.ccx{align-items:center;}.s.c > .s.cx{align-self:center;}.s.c.ccy{justify-content:center;}.s.c > .ctr{flex-grow:0;flex-basis:auto;width:100%;align-self:stretch !important;}.s.c.sev{justify-content:space-between;}.s.g{display:-ms-grid;}.s.g > .gp > .s{width:100%;}@supports (display:grid) {.s.g{display:grid;
+}}.s.g > .s.at{justify-content:flex-start;}.s.g > .s.ab{justify-content:flex-end;}.s.g > .s.ar{align-items:flex-end;}.s.g > .s.al{align-items:flex-start;}.s.g > .s.cx{align-items:center;}.s.g > .s.cy{justify-content:center;}.s.pg{display:block;}.s.pg > .s:first-child{margin:0 !important;}.s.pg > .s.al:first-child + .s{margin:0 !important;}.s.pg > .s.ar:first-child + .s{margin:0 !important;}.s.pg > .s.ar{float:right;}.s.pg > .s.ar::after{content:"";display:table;clear:both;}.s.pg > .s.al{float:left;}.s.pg > .s.al::after{content:"";display:table;clear:both;}.s.iml{white-space:pre-wrap !important;height:100%;width:100%;background-color:transparent;}.s.implw.e{flex-basis:auto;}.s.imlp{white-space:pre-wrap !important;cursor:text;}.s.imlp > .imlf{white-space:pre-wrap !important;color:transparent;}.s.p{display:block;white-space:normal;overflow-wrap:break-word;}.s.p.hbh{z-index:0;}.s.p.hbh > .bh{z-index:-1;}.s.p .t{display:inline;white-space:normal;}.s.p .p{display:inline;}.s.p .p::after{content:none;}.s.p .p::before{content:none;}.s.p .e{display:inline;white-space:normal;}.s.p .e.we{display:inline-block;}.s.p .e.fr{display:flex;}.s.p .e.bh{display:flex;}.s.p .e.a{display:flex;}.s.p .e.b{display:flex;}.s.p .e.or{display:flex;}.s.p .e.ol{display:flex;}.s.p .e > .t{display:inline;white-space:normal;}.s.p > .r{display:inline;}.s.p > .c{display:inline-flex;}.s.p > .g{display:inline-grid;}.s.p > .s.ar{float:right;}.s.p > .s.al{float:left;}.s.hidden{display:none;}.s.w1{font-weight:100;}.s.w2{font-weight:200;}.s.w3{font-weight:300;}.s.w4{font-weight:400;}.s.w5{font-weight:500;}.s.w6{font-weight:600;}.s.w7{font-weight:700;}.s.w8{font-weight:800;}.s.w9{font-weight:900;}.s.i{font-style:italic;}.s.sk{text-decoration:line-through;}.s.u{text-decoration:underline;text-decoration-skip-ink:auto;text-decoration-skip:ink;}.s.u.sk{text-decoration:line-through underline;text-decoration-skip-ink:auto;text-decoration-skip:ink;}.s.tun{font-style:normal;}.s.tj{text-align:justify;}.s.tja{text-align:justify-all;}.s.tc{text-align:center;}.s.tr{text-align:right;}.s.tl{text-align:left;}.s.modal{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;}.border-0{border-width:0px;}.border-1{border-width:1px;}.border-2{border-width:2px;}.border-3{border-width:3px;}.border-4{border-width:4px;}.border-5{border-width:5px;}.border-6{border-width:6px;}.font-size-8{font-size:8px;}.font-size-9{font-size:9px;}.font-size-10{font-size:10px;}.font-size-11{font-size:11px;}.font-size-12{font-size:12px;}.font-size-13{font-size:13px;}.font-size-14{font-size:14px;}.font-size-15{font-size:15px;}.font-size-16{font-size:16px;}.font-size-17{font-size:17px;}.font-size-18{font-size:18px;}.font-size-19{font-size:19px;}.font-size-20{font-size:20px;}.font-size-21{font-size:21px;}.font-size-22{font-size:22px;}.font-size-23{font-size:23px;}.font-size-24{font-size:24px;}.font-size-25{font-size:25px;}.font-size-26{font-size:26px;}.font-size-27{font-size:27px;}.font-size-28{font-size:28px;}.font-size-29{font-size:29px;}.font-size-30{font-size:30px;}.font-size-31{font-size:31px;}.font-size-32{font-size:32px;}.p-0{padding:0px;}.p-1{padding:1px;}.p-2{padding:2px;}.p-3{padding:3px;}.p-4{padding:4px;}.p-5{padding:5px;}.p-6{padding:6px;}.p-7{padding:7px;}.p-8{padding:8px;}.p-9{padding:9px;}.p-10{padding:10px;}.p-11{padding:11px;}.p-12{padding:12px;}.p-13{padding:13px;}.p-14{padding:14px;}.p-15{padding:15px;}.p-16{padding:16px;}.p-17{padding:17px;}.p-18{padding:18px;}.p-19{padding:19px;}.p-20{padding:20px;}.p-21{padding:21px;}.p-22{padding:22px;}.p-23{padding:23px;}.p-24{padding:24px;}.v-smcp{font-variant:small-caps;}.v-smcp-off{font-variant:normal;}.v-zero{font-feature-settings:"zero";}.v-zero-off{font-feature-settings:"zero" 0;}.v-onum{font-feature-settings:"onum";}.v-onum-off{font-feature-settings:"onum" 0;}.v-liga{font-feature-settings:"liga";}.v-liga-off{font-feature-settings:"liga" 0;}.v-dlig{font-feature-settings:"dlig";}.v-dlig-off{font-feature-settings:"dlig" 0;}.v-ordn{font-feature-settings:"ordn";}.v-ordn-off{font-feature-settings:"ordn" 0;}.v-tnum{font-feature-settings:"tnum";}.v-tnum-off{font-feature-settings:"tnum" 0;}.v-afrc{font-feature-settings:"afrc";}.v-afrc-off{font-feature-settings:"afrc" 0;}.v-frac{font-feature-settings:"frac";}.v-frac-off{font-feature-settings:"frac" 0;}</style></div><div><style>.font-open-sanshelveticaverdanasans-serif.cap, .font-open-sanshelveticaverdanasans-serif .cap {line-height: 1;} .font-open-sanshelveticaverdanasans-serif.cap> .t, .font-open-sanshelveticaverdanasans-serif .cap > .t {vertical-align: 0;line-height: 1;}.max-width-200{
+  max-width: 200px;
+}.spacing-0-25.r > .s + .s{
+  margin-left: 0px;
+}.spacing-0-25.wrp.r > .s{
+  margin: 12.5px 0px;
+}.spacing-0-25.c > .s + .s{
+  margin-top: 25px;
+}.spacing-0-25.pg > .s + .s{
+  margin-top: 25px;
+}.spacing-0-25.pg > .al{
+  margin-right: 0px;
+}.spacing-0-25.pg > .ar{
+  margin-left: 0px;
+}.spacing-0-25.p{
+  line-height: calc(1em + 25px);
+}textarea.s.spacing-0-25{
+  line-height: calc(1em + 25px);
+  height: calc(100% + 25px);
+}.spacing-0-25.p > .al{
+  margin-right: 0px;
+}.spacing-0-25.p > .ar{
+  margin-left: 0px;
+}.spacing-0-25.p::after{
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+  margin-top: -12px;
+}.spacing-0-25.p::before{
+  content: '';
+  display: block;
+  height: 0;
+  width: 0;
+  margin-bottom: -12px;
+}.p-25{
+  padding: 25px 25px 25px 25px;
+}.max-width-600{
+  max-width: 600px;
+}.bg-226-226-226-255{
+  background-color: rgba(226,226,226,1);
+}.font-open-sanshelveticaverdanasans-serif{
+  font-family: "Open Sans", "Helvetica", "Verdana", sans-serif;
+  font-feature-settings: ;
+  font-variant: normal;
+}.fc-0-0-0-255{
+  color: rgba(0,0,0,1);
+}.bg-255-255-255-0{
+  background-color: rgba(255,255,255,0);
+}.focus-within:focus-within{
+  box-shadow: 0px 0px 0px 3px rgba(155,203,255,1);
+  outline: none;
+}.s:focus .focusable, .s.focusable:focus, .ui-slide-bar:focus + .s .focusable-thumb{
+  box-shadow: 0px 0px 0px 3px rgba(155,203,255,1);
+  outline: none;
+}</style></div><div class="hc bg-226-226-226-255 s e wf"><div class="hc ah cx p-25 spacing-0-25 s c max-width-600 wf ct cl"><div class="ah cx av at sev hf s r wf cl ccy"><div class="hc av at s e wf"><div><span style="display: none;" class="elm-css-style-wrapper"><style>
+._eec5396d{list-style-type:none;padding-left:0;line-height:1.5;}</style></span><h1 class="_388ad02301124581896a31b3e82af005">Support</h1><ul class="_eec5396d"><li><a href="https://carboncloud.com/faq/" class="_388ad02301124581896a31b3e82af005">FAQ</a></li><li><a href="https://carboncloud.com/privacy-policy/" class="_388ad02301124581896a31b3e82af005">Privacy policy</a></li><li><a href="https://carboncloud.com/api/" class="_388ad02301124581896a31b3e82af005">API</a></li></ul></div></div><div class="hc av at s e wf"><div><span style="display: none;" class="elm-css-style-wrapper"><style>
+._eec5396d{list-style-type:none;padding-left:0;line-height:1.5;}</style></span><h1 class="_388ad02301124581896a31b3e82af005">Company</h1><ul class="_eec5396d"><li><a href="https://carboncloud.com/about/" class="_388ad02301124581896a31b3e82af005">About</a></li><li><a href="https://carboncloud.com/press/" class="_388ad02301124581896a31b3e82af005">Press</a></li><li><a href="https://careers.carboncloud.com" class="_388ad02301124581896a31b3e82af005">Working here</a></li></ul></div></div><div class="hc av at s e wf"><div><span style="display: none;" class="elm-css-style-wrapper"><style>
+._eec5396d{list-style-type:none;padding-left:0;line-height:1.5;}</style></span><h1 class="_388ad02301124581896a31b3e82af005">Resources</h1><ul class="_eec5396d"><li><a href="https://carboncloud.com/news/" class="_388ad02301124581896a31b3e82af005">News &amp; Articles</a></li><li><a href="https://carboncloud.com/the-science/" class="_388ad02301124581896a31b3e82af005">The Science</a></li></ul></div></div></div><div class="hc ah cx s e max-width-200 wf"><a href="https://carboncloud.com"><span style="display: none;" class="elm-css-style-wrapper"><style></style></span><svg viewBox="0 0 160.646 18"><title>Go to startpage</title><g id="horizontal" transform="translate(0 -22)"><path id="Path_4804" d="M16.667,32.9l-.121.346-4.517-1.212.087-.346s.073-.227.073-.229A6.608,6.608,0,0,1,25.1,33.423a6.526,6.526,0,0,1-1.163,3.729l-.012.018A6.606,6.606,0,0,1,18.493,40h-2.06L20.1,34.4a1.747,1.747,0,0,0,.278-.981,1.888,1.888,0,0,0-3.635-.708Zm-.573,2.486a8.773,8.773,0,0,1-1.8,2.068,8.742,8.742,0,1,1,1.776-11.411l-4.69,1.235a4.37,4.37,0,1,0,.033,6.893Zm12.989-4.158a7.255,7.255,0,0,1,.827-3.5,5.994,5.994,0,0,1,2.308-2.393,6.57,6.57,0,0,1,3.356-.857,6.313,6.313,0,0,1,3.935,1.244A5.984,5.984,0,0,1,41.7,29.121H38.24a2.931,2.931,0,0,0-1.1-1.234,3.02,3.02,0,0,0-1.6-.424,2.982,2.982,0,0,0-2.354,1.027,4.01,4.01,0,0,0-.9,2.742,4.046,4.046,0,0,0,.9,2.752,3.035,3.035,0,0,0,5.056-.641H41.7a5.942,5.942,0,0,1-2.188,3.383,6.346,6.346,0,0,1-3.935,1.234,6.57,6.57,0,0,1-3.356-.857,6.01,6.01,0,0,1-2.308-2.384A7.2,7.2,0,0,1,29.083,31.232Zm75.5,0a7.255,7.255,0,0,1,.827-3.5,5.994,5.994,0,0,1,2.308-2.393,6.57,6.57,0,0,1,3.356-.857,6.313,6.313,0,0,1,3.935,1.244,5.984,5.984,0,0,1,2.188,3.392h-3.457a2.93,2.93,0,0,0-1.1-1.234,3.02,3.02,0,0,0-1.6-.424,2.982,2.982,0,0,0-2.354,1.027,4.01,4.01,0,0,0-.9,2.742,4.046,4.046,0,0,0,.9,2.752,3.035,3.035,0,0,0,5.056-.641H117.2a5.941,5.941,0,0,1-2.188,3.383,6.346,6.346,0,0,1-3.935,1.234,6.57,6.57,0,0,1-3.356-.857,6.008,6.008,0,0,1-2.307-2.384,7.2,7.2,0,0,1-.827-3.487ZM43.743,32.589a6.417,6.417,0,0,1,.6-2.846,4.535,4.535,0,0,1,1.627-1.885,4.172,4.172,0,0,1,2.3-.66,3.871,3.871,0,0,1,1.9.452,3.287,3.287,0,0,1,1.259,1.187V27.349h3.144V37.866H51.429V36.377a3.427,3.427,0,0,1-1.278,1.187,3.869,3.869,0,0,1-1.9.452,4.1,4.1,0,0,1-2.28-.669,4.59,4.59,0,0,1-1.627-1.9A6.478,6.478,0,0,1,43.743,32.589Zm7.686.019a2.675,2.675,0,0,0-.653-1.9,2.172,2.172,0,0,0-3.181-.01,2.641,2.641,0,0,0-.652,1.894A2.71,2.71,0,0,0,47.6,34.5a2.153,2.153,0,0,0,3.181.009,2.675,2.675,0,0,0,.652-1.9Zm9.628-3.374a4.351,4.351,0,0,1,1.388-1.461,3.319,3.319,0,0,1,1.829-.537v3.411h-.864a2.6,2.6,0,0,0-1.765.518,2.337,2.337,0,0,0-.588,1.819v4.881H57.913V27.349h3.144v1.885Zm8.917-.4a3.264,3.264,0,0,1,1.269-1.187,3.882,3.882,0,0,1,1.894-.452,4.172,4.172,0,0,1,2.3.66,4.533,4.533,0,0,1,1.627,1.885,7.1,7.1,0,0,1,0,5.7,4.59,4.59,0,0,1-1.627,1.9,4.128,4.128,0,0,1-2.3.669,3.882,3.882,0,0,1-1.894-.443A3.371,3.371,0,0,1,69.974,36.4v1.47H66.83V23.919h3.144v4.919Zm4.486,3.75a2.641,2.641,0,0,0-.652-1.894,2.13,2.13,0,0,0-1.609-.688,2.1,2.1,0,0,0-1.591.7,3.1,3.1,0,0,0,0,3.807A2.163,2.163,0,0,0,73.8,34.5a2.686,2.686,0,0,0,.662-1.913Zm10.278,5.428a5.554,5.554,0,0,1-2.712-.659,4.767,4.767,0,0,1-1.894-1.885,6.239,6.239,0,0,1,.009-5.72,4.8,4.8,0,0,1,1.912-1.894,5.943,5.943,0,0,1,5.442,0,4.8,4.8,0,0,1,1.912,1.894,5.7,5.7,0,0,1,.7,2.855,5.637,5.637,0,0,1-.708,2.855,4.841,4.841,0,0,1-1.931,1.894A5.659,5.659,0,0,1,84.738,38.016Zm0-2.77a2.012,2.012,0,0,0,1.535-.688,2.772,2.772,0,0,0,.634-1.951,2.826,2.826,0,0,0-.616-1.951,2.036,2.036,0,0,0-3.043-.01,2.848,2.848,0,0,0-.607,1.96,2.883,2.883,0,0,0,.6,1.951A1.9,1.9,0,0,0,84.738,35.246Zm13.753-8.01a3.679,3.679,0,0,1,2.878,1.2,4.741,4.741,0,0,1,1.076,3.289v6.144H99.319v-5.71a2.345,2.345,0,0,0-.533-1.64,2.053,2.053,0,0,0-2.869,0,2.345,2.345,0,0,0-.533,1.64v5.71H92.24V27.349h3.144v1.395a3.337,3.337,0,0,1,1.287-1.1,4.01,4.01,0,0,1,1.82-.405Zm23.973-3.317V37.866H119.32V23.919Zm7.423,14.1a5.554,5.554,0,0,1-2.712-.659,4.767,4.767,0,0,1-1.894-1.885,6.239,6.239,0,0,1,.009-5.72,4.8,4.8,0,0,1,1.912-1.894,5.943,5.943,0,0,1,5.443,0,4.8,4.8,0,0,1,1.912,1.894,5.7,5.7,0,0,1,.7,2.855,5.637,5.637,0,0,1-.708,2.855,4.841,4.841,0,0,1-1.931,1.894,5.659,5.659,0,0,1-2.73.659Zm0-2.77a2.012,2.012,0,0,0,1.535-.688,2.772,2.772,0,0,0,.635-1.951,2.826,2.826,0,0,0-.616-1.951,2.036,2.036,0,0,0-3.043-.01,2.848,2.848,0,0,0-.607,1.96,2.883,2.883,0,0,0,.6,1.951,1.9,1.9,0,0,0,1.5.688Zm17.633-7.9V37.866h-3.144V36.433a3.473,3.473,0,0,1-1.3,1.121,3.877,3.877,0,0,1-1.811.424,3.978,3.978,0,0,1-2.078-.537,3.59,3.59,0,0,1-1.4-1.555,5.4,5.4,0,0,1-.5-2.394V27.349h3.126v5.71a2.344,2.344,0,0,0,.533,1.64,1.847,1.847,0,0,0,1.434.584,1.869,1.869,0,0,0,1.452-.584,2.344,2.344,0,0,0,.533-1.64V27.349Zm2.3,5.352a6.414,6.414,0,0,1,.6-2.846,4.532,4.532,0,0,1,1.627-1.885,4.172,4.172,0,0,1,2.3-.659,3.956,3.956,0,0,1,1.848.433,3.4,3.4,0,0,1,1.315,1.168V24.032h3.144V37.978H157.5V36.471a3.239,3.239,0,0,1-1.26,1.206,3.87,3.87,0,0,1-1.9.452,4.128,4.128,0,0,1-2.3-.669,4.588,4.588,0,0,1-1.627-1.9,6.477,6.477,0,0,1-.6-2.855Zm7.686.019a2.675,2.675,0,0,0-.653-1.9,2.172,2.172,0,0,0-3.181-.009,2.64,2.64,0,0,0-.653,1.894,2.71,2.71,0,0,0,.653,1.913,2.153,2.153,0,0,0,3.181.009,2.675,2.675,0,0,0,.653-1.9Z" fill="#81e1eff" fill-rule="evenodd"></path></g></svg></a></div></div></div></div></div></div></div><noscript><style>#noscript {
+          height: calc(100vh - 1rem);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+
+        #noscript * {
+          max-width: 80vw;
+          font-size: min(2rem, 5vw);
+        }</style><div id="noscript"><img src="https://carboncloud.com/app/uploads/2020/10/cropped-carboncloud_logo.png"/><h1>Javascript needs to be enabled for this app to work correctly.</h1></div></noscript></body></html>

@@ -1,0 +1,24 @@
+Données SYNTHÉTIQUES (fictives) – test RAG – ne pas utiliser comme référence réelle.
+
+Profil environnemental – Pizza Margherita levain
+Etapes clés:
+1. Ingrédients: farine blé UE, purée tomate, mozzarella lait partiellement écrémé, huile d’olive trace.
+2. Fermentation levain longue (réduction levure industrielle) – impact CO2 mineur mais influence texture.
+3. Cuisson industrielle four tunnel gaz haute efficacité.
+4. Surgélation rapide (azote ou air forcé) stabilisant chaîne du froid.
+5. Emballage carton fibre recyclée (32 g) imprimé encres à eau.
+
+Indicateurs (portion 300 g):
+ - Empreinte carbone: ~820 g CO2e
+ - Eau bleue mobilisée: 180 L
+ - Chaîne du froid: 15% impact total
+ - Énergie cuisson: 1.9 kWh/kg
+
+Répartition impacts: Ingrédients 55%, cuisson 17%, froid 15%, emballage 8%, distribution 5%.
+
+Axes d’amélioration:
+ - Source mozzarella faible méthane
+ - Optimiser charge four (batching) pour baisser kWh/produit
+ - Réduire grammage carton ou passer à insert compostable
+
+Conseil utilisateur: cuisson domestique rapide four préchauffé (éviter sur-cuisson), recycler le carton propre.

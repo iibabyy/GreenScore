@@ -1,0 +1,37 @@
+# scrape_config.yaml
+# List of sources to scrape. Each entry may include: id, domain, url, type (json/html/pdf), notes, manual_download_fallback
+# Example:
+# - id: carboncloud
+#   url: https://apps.carboncloud.com/climatehub
+#   type: json_or_html
+#   priority: high
+#   manual_download_fallback: true
+# - id: eaternity
+#   url: http://www.eaternity.org/foodprint/database
+#   type: json_or_html
+#   priority: medium
+
+scrape_defaults:
+  user_agent: "my-rag-bot/0.1 - contact: you@example.com"
+  rate_limit_per_domain: 1.0 # req/sec
+  retries: 3
+  playwright_timeout_seconds: 20
+
+sources:
+  - id: carboncloud
+    url: "https://apps.carboncloud.com/climatehub"
+    type: json_or_html
+    priority: high
+    manual_download_fallback: true
+
+  - id: eaternity
+    url: "http://www.eaternity.org/foodprint/database"
+    type: json_or_html
+    priority: medium
+    manual_download_fallback: true
+
+  - id: nestle_reports
+    url: "https://www.nestle.com"
+    type: pdf_reports
+    priority: low
+    manual_download_fallback: true

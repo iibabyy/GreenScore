@@ -1,0 +1,22 @@
+Données SYNTHÉTIQUES (fictives) – test RAG – ne pas utiliser comme référence réelle.
+
+Profil environnemental – Capsules Oméga-3 algues
+Etapes:
+1. Culture microalgues photobioréacteurs (éclairage + nutriments) – principal poste énergétique.
+2. Extraction huile supercritique CO2 (rendement élevé, énergie modérée).
+3. Raffinage, standardisation DHA/EPA.
+4. Capsulage gélule végétale (hydrocolloïdes).
+5. Conditionnement flacon PET ambré (protection oxydation).
+
+Indicateurs (2 caps = 1 g):
+ - Empreinte carbone: ~48 g CO2e
+ - Eau: 6 L
+ - Energie transformation: 3.1 kWh/kg
+ - Recyclabilité flacon: 94%
+
+Améliorations:
+ - Utiliser chaleur fatale circulation CO2
+ - Flacon PET recyclé post-consommation
+ - Optimiser densité d'algues (moins d'énergie lumière)
+
+Conseil: stocker à l'abri chaleur et refermer immédiatement.

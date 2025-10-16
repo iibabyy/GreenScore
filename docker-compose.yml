@@ -1,0 +1,108 @@
+version: '3.8'
+
+services:
+  # Base de données PostgreSQL
+  database:
+    image: postgres:13
+    container_name: greenscore_db
+    restart: always
+    environment:
+      POSTGRES_USER: greenscore_user
+      POSTGRES_PASSWORD: greenscore_password
+      POSTGRES_DB: greenscore_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./app/database/init:/docker-entrypoint-initdb.d
+    networks:
+      - greenscore_network
+
+  # Backend Node.js
+  backend:
+    build:
+      context: ./app/backend
+      dockerfile: Dockerfile
+    container_name: greenscore_backend
+    restart: always
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=postgresql://greenscore_user:greenscore_password@database:5432/greenscore_db
+      - NODE_ENV=development
+      - AI_SERVICE_URL=http://ai-service:5000/api/evaluate
+    volumes:
+      - ./app/backend:/app          # Monte ton code local
+      - /app/node_modules           # Préserve node_modules du container
+    command: npm run dev            # Nodemon pour reload automatique
+    depends_on:
+      - database
+      - ai-service
+    networks:
+      - greenscore_network
+
+  # Frontend React
+  frontend:
+    build:
+      context: ./app/frontend
+      dockerfile: Dockerfile
+    container_name: greenscore_frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://backend:3001  # ✅ utilise le service backend, pas localhost
+    volumes:
+      - ./app/frontend:/app
+      - /app/node_modules
+    command: npm run dev
+    depends_on:
+      - backend
+    networks:
+      - greenscore_network
+
+  # Service Ollama (modèle LLM)
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama_service
+    restart: always
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - greenscore_network
+    # Assure-toi d'avoir téléchargé un modèle compatible avec Ollama
+    # exemple : docker exec -it ollama_service ollama pull phi3:mini
+
+  # Service IA Python (FastAPI + RAG)
+  ai-service:
+    build:
+      context: ./app/ai-service
+      dockerfile: Dockerfile
+    container_name: greenscore_ai
+    restart: always
+    ports:
+      - "5001:5000"
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - MODEL_NAME=phi3:mini
+      - PDF_DIR=./data
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./app/ai-service:/app       # Monte ton code local
+      - /app/__pycache__            # Ignore cache Python
+    command: uvicorn app:app --host 0.0.0.0 --port 5000 --reload
+    depends_on:
+      - ollama
+    networks:
+      - greenscore_network
+
+networks:
+  greenscore_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  ollama_data:

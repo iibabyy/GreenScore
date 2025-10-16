@@ -1,0 +1,22 @@
+Données SYNTHÉTIQUES (fictives) – test RAG – ne pas utiliser comme référence réelle.
+
+Profil environnemental – Poudre protéine végétale pois/riz
+Processus:
+1. Broyage pois & riz, séparation fractions.
+2. Extraction protéique aqueuse (enzymes) – consommation énergétique notable.
+3. Séchage spray dryer (forte intensité kWh) – principal levier optimisation.
+4. Mélange, aromatisation légère.
+5. Conditionnement sachet kraft + doublure PE.
+
+Indicateurs (portion 30 g):
+ - Empreinte carbone: ~210 g CO2e
+ - Eau: 55 L
+ - Energie transformation: 2.4 kWh/kg
+ - Recyclabilité emballage: 52%
+
+Améliorations:
+ - Doublure bio-sourcée compostable
+ - Récupération chaleur sur spray dryer
+ - Logistique groupée inter-usines
+
+Conseil: conserver hermétique, recycler parties papier séparables.
