@@ -1,9 +1,0 @@
-services:
-  nginx:
-    container_name: nginx
-    build: nginx
-    ports:
-      - "8080:80"
-    restart: on-failure
-    volumes:
-      - ./frontend:/var/www/html
